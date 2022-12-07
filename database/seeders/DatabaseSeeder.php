@@ -1,5 +1,5 @@
 <?php
-
+// babi halal
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
