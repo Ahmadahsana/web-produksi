@@ -29,14 +29,26 @@ class DatabaseSeeder extends Seeder
             'nama' => 'admin',
             'username' => 'admin',
             'password' => bcrypt('admin'),
-            'role_id' => 1
+            'role_id' => 1,
+            'nomor' => '087777666555',
+            'kecamatan' => 'kudus',
+            'kota' => 'kudus',
+            'provinsi' => 'kudus',
+            'alamat' => 'kudus, rt00',
+            'status_user_id' => 1
         ]);
 
         User::create([
             'nama' => 'marketing',
             'username' => 'marketing',
-            'password' => bcrypt('123456'),
-            'role_id' => 2
+            'password' => bcrypt('marketing'),
+            'role_id' => 2,
+            'nomor' => '087777666555',
+            'kecamatan' => 'kudus',
+            'kota' => 'kudus',
+            'provinsi' => 'kudus',
+            'alamat' => 'kudus, rt00',
+            'status_user_id' => 1
         ]);
 
         Role::create([
@@ -46,29 +58,29 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Sales'
         ]);
 
-        Status_pengerjaan::create([
-            'nama' => 'Pending',
-            'warna' => 'danger'
-        ]);
-        Status_pengerjaan::create([
-            'nama' => 'List order',
-            'warna' => 'secondary'
-        ]);
-        Status_pengerjaan::create([
-            'nama' => 'Mentahan',
-            'warna' => 'warning'
-        ]);
-        Status_pengerjaan::create([
-            'nama' => 'Finishing',
-            'warna' => 'info'
-        ]);
-        Status_pengerjaan::create([
-            'nama' => 'Jok',
-            'warna' => 'primary'
-        ]);
-        Status_pengerjaan::create([
-            'nama' => 'Gudang bungkus',
-            'warna' => 'success'
-        ]);
+        // Status_pengerjaan::create([
+        //     'nama' => 'Pending',
+        //     'warna' => 'danger'
+        // ]);
+        // Status_pengerjaan::create([
+        //     'nama' => 'List order',
+        //     'warna' => 'secondary'
+        // ]);
+        // Status_pengerjaan::create([
+        //     'nama' => 'Mentahan',
+        //     'warna' => 'warning'
+        // ]);
+        // Status_pengerjaan::create([
+        //     'nama' => 'Finishing',
+        //     'warna' => 'info'
+        // ]);
+        // Status_pengerjaan::create([
+        //     'nama' => 'Jok',
+        //     'warna' => 'primary'
+        // ]);
+        // Status_pengerjaan::create([
+        //     'nama' => 'Gudang bungkus',
+        //     'warna' => 'success'
+        // ]);
     }
 }

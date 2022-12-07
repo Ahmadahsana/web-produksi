@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('kota');
             $table->string('kecamatan');
             $table->string('foto')->nullable();
-            $table->string('status_sales');
+            $table->string('status_user_id');
             $table->rememberToken();
             $table->timestamps();
         });

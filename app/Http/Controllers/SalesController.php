@@ -17,7 +17,7 @@ class SalesController extends Controller
     public function index()
     {
         return view('dashboard.admin.daftar_sales', [
-            'sales' => Sales::all()
+            'sales' => User::where('role_id', 2)->get()
         ]);
     }
 
