@@ -65,19 +65,12 @@ class SalesController extends Controller
             'kota' => $request->kota,
             'kecamatan' => $request->kecamatan,
             'foto' => $request->file('gambar')->store('foto-sales'),
-            'status_sales' => $request->status
-        ];
-
-        $dataLogin = [
-            'nama' => $request->nama,
-            'username' => $request->username,
+            'status_user_id' => $request->status,
             'password' => bcrypt($request->password),
-            'role_id' => 2,
+            'role_id' => 2
         ];
 
-        Sales::create($validatedData);
-
-        User::create($dataLogin);
+        User::create($validatedData);
 
         return redirect('/sales')->with('success', 'Data sales berhasil ditambahkan');
     }
