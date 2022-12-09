@@ -4,7 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Katgeori_barang;
 use App\Models\Role;
+use App\Models\Status_barang;
+use App\Models\Status_jual;
 use App\Models\Status_pengerjaan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -56,6 +59,34 @@ class DatabaseSeeder extends Seeder
         ]);
         Role::create([
             'nama' => 'Sales'
+        ]);
+
+        Status_barang::create([
+            'nama'  =>  'Aktif'
+        ]);
+
+        Status_barang::create([
+            'nama'  =>  'Tidak Aktif'
+        ]);
+
+        Status_jual::create([
+            'nama'  =>  'Jual'
+        ]);
+
+        Status_jual::create([
+            'nama'  =>  'Tidak di Jual'
+        ]);
+
+        Katgeori_barang::create([
+            'nama'  =>  'Mentahan'
+        ]);
+
+        Katgeori_barang::create([
+            'nama'  =>  'Aksesoris'
+        ]);
+
+        Katgeori_barang::create([
+            'nama'  =>  'Barang Jadi'
         ]);
 
         // Status_pengerjaan::create([

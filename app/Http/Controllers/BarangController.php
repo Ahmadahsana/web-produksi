@@ -6,6 +6,9 @@ use App\Models\Barang;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
 use App\Models\Deskripsi_barang;
+use App\Models\Katgeori_barang;
+use App\Models\Status_barang;
+use App\Models\Status_jual;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -29,7 +32,11 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.tambah_barang');
+        return view('dashboard.admin.tambah_barang', [
+            'status_barang'     => Status_barang::all(),
+            'status_jual'       => Status_jual::all(),
+            'kategori_barang'   => Katgeori_barang::all()
+        ]);
     }
 
     /**
@@ -42,12 +49,15 @@ class BarangController extends Controller
     {
         // return $request;
         $request->validate([
-            'nama' => 'required',
-            'kode_barang' => 'required',
-            'foto' => 'image|file|max:1024',
-            'status' => 'required',
-            'harga' => 'required',
-            'deskripsi' => 'required'
+            'nama'              => 'required',
+            'kode_barang'       => 'required',
+            'foto'              => 'image|file|min:1024',
+            'status_barang'     => 'required',
+            'status_jual'       => 'required',
+            'kategori_barang'   => 'required',
+            'harga'             => 'required',
+            'hpp'               => 'required',
+            'deskripsi'         => 'required'
         ]);
 
         $validatedData = [

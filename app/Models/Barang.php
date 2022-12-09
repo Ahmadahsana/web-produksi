@@ -15,4 +15,19 @@ class Barang extends Model
     {
         return $this->hasOne(Deskripsi_barang::class);
     }
+
+    public function Status_barang()
+    {
+        return $this->belongsTo(Status_barang::class);
+    }
+
+    public function Status_jual()
+    {
+        return $this->belongsTo(Status_jual::class);
+    }
+
+    public function Katgeori_barang()
+    {
+        return $this->belongsTo(Katgeori_barang::class);
+    }
 }

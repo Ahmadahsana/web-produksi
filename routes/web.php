@@ -37,6 +37,7 @@ Route::resource('/sales', SalesController::class)->middleware('auth');
 Route::get('/sales_show/{sales}', [SalesController::class, 'show_sales']);
 Route::put('/sales_update/{sales}', [SalesController::class, 'sales_update']);
 
+// BARANG
 Route::resource('/barang', BarangController::class)->middleware('auth');
 
 // sales
