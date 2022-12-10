@@ -40,6 +40,8 @@
                             <th class="sort" data-sort="customer_name">Nama</th>
                             <th class="sort" data-sort="phone">Kode barang</th>
                             <th class="sort" data-sort="phone">Status Barang</th>
+                            <th class="sort" data-sort="phone">Status Jual</th>
+                            {{-- <th class="sort" data-sort="phone">Kategori Barang</th> --}}
                             <th class="sort" data-sort="action">Action</th>
                         </tr>
                     </thead>
@@ -52,6 +54,8 @@
                             <td class="customer_name">{{ $s->nama }}</td>
                             <td class="phone">{{ $s->kode_barang }}</td>
                             <td class="phone">{{ $s->Status_barang->nama }}</td>
+                            <td class="phone">{{ $s->Status_jual->nama }}</td>
+                            {{-- <td class="phone">{{ $s->Katgeori_barang->nama }}</td> --}}
                             {{-- <td class="status"><span
                                     class="badge  @if ($s->status_barang==1) badge-soft-success @else badge-soft-primary @endif text-uppercase">@if
                                     ($s->status_barang==1) Order @else Ready stok @endif</span></td> --}}

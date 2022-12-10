@@ -60,8 +60,8 @@ class BarangController extends Controller
             'deskripsi'         =>  'required',
         ]);
 
-        if ($request->file('image')) {
-            $validatedCreate['image'] = $request->file('image')->store('img-barang');
+        if ($request->file('foto')) {
+            $validatedCreate['foto'] = $request->file('foto')->store('img-barang');
         }
 
         Barang::create($validatedCreate);
