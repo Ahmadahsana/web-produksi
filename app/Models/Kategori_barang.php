@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Katgeori_barang extends Model
+class Kategori_barang extends Model
 {
     use HasFactory;
-
-    protected $guarded = ['id'];
-
     public function Barang()
     {
         return $this->hasMany(Barang::class);

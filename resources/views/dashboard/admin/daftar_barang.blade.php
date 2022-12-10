@@ -37,11 +37,12 @@
                     <thead class="table-light">
                         <tr>
                             <th scope="col" style="width: 50px;"> No </th>
-                            <th class="sort" data-sort="customer_name">Nama</th>
-                            <th class="sort" data-sort="phone">Kode barang</th>
-                            <th class="sort" data-sort="phone">Status Barang</th>
-                            <th class="sort" data-sort="phone">Status Jual</th>
-                            <th class="sort" data-sort="phone">Stok</th>
+                            <th class="sort" data-sort="nama">Nama</th>
+                            <th class="sort" data-sort="kode">Kode barang</th>
+                            <th class="sort" data-sort="status_barang">Status Barang</th>
+                            <th class="sort" data-sort="status_jual">Status Jual</th>
+                            <th class="sort" data-sort="kategori_barang">Kategori Barang</th>
+                            <th class="sort" data-sort="stok">Stok</th>
                             <th class="sort" data-sort="action">Action</th>
                         </tr>
                     </thead>
@@ -51,11 +52,12 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td class="id" style="display:none;"><a href="javascript:void(0);"
                                     class="fw-medium link-primary">#VZ2101</a></td>
-                            <td class="customer_name">{{ $s->nama }}</td>
-                            <td class="phone">{{ $s->kode_barang }}</td>
-                            <td class="phone">{{ $s->Status_barang->nama }}</td>
-                            <td class="phone">{{ $s->Status_jual->nama }}</td>
-                            {{-- <td class="phone">{{ $s->Katgeori_barang->nama }}</td> --}}
+                            <td class="nama">{{ $s->nama }}</td>
+                            <td class="kode">{{ $s->kode_barang }}</td>
+                            <td class="status_barang">{{ $s->Status_barang->nama }}</td>
+                            <td class="status_jual">{{ $s->Status_jual->nama }}</td>
+                            <td class="kategori_barang">{{ $s->Kategori_barang->nama }}</td>
+                            <td class="stok">0</td>
                             {{-- <td class="status"><span
                                     class="badge  @if ($s->status_barang==1) badge-soft-success @else badge-soft-primary @endif text-uppercase">@if
                                     ($s->status_barang==1) Order @else Ready stok @endif</span></td> --}}
@@ -199,7 +201,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="jumlah" class="form-label">Jumlah</label>
-                        <input type="text" id="jumlah" class="form-control" placeholder="masukkan jumlah" required />
+                        <input type="text" id="jumlah" class="form-control" placeholder="masukkan jumlah" name="jumlah"
+                            required />
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Http\Requests\StoreBarangRequest;
 use App\Http\Requests\UpdateBarangRequest;
 use App\Models\Deskripsi_barang;
+use App\Models\Kategori_barang;
 use App\Models\Katgeori_barang;
 use App\Models\Status_barang;
 use App\Models\Status_jual;
@@ -35,7 +36,7 @@ class BarangController extends Controller
         return view('dashboard.admin.tambah_barang', [
             'status_barang'     => Status_barang::all(),
             'status_jual'       => Status_jual::all(),
-            'kategori_barang'   => Katgeori_barang::all()
+            'kategori_barang'   => Kategori_barang::all()
         ]);
     }
 

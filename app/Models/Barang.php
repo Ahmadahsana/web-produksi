@@ -26,8 +26,13 @@ class Barang extends Model
         return $this->belongsTo(Status_jual::class);
     }
 
-    public function Katgeori_barang()
+    public function Kategori_barang()
     {
-        return $this->belongsTo(Katgeori_barang::class);
+        return $this->belongsTo(Kategori_barang::class);
+    }
+
+    public function Transaksi_barang()
+    {
+        return $this->belongsTo(Transaksi_barang::class);
     }
 }

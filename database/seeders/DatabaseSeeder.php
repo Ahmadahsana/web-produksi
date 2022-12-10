@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Kategori_barang;
 use App\Models\Katgeori_barang;
 use App\Models\Role;
 use App\Models\Status_barang;
@@ -77,15 +78,15 @@ class DatabaseSeeder extends Seeder
             'nama'  =>  'Tidak di Jual'
         ]);
 
-        Katgeori_barang::create([
+        Kategori_barang::create([
             'nama'  =>  'Mentahan'
         ]);
 
-        Katgeori_barang::create([
+        Kategori_barang::create([
             'nama'  =>  'Aksesoris'
         ]);
 
-        Katgeori_barang::create([
+        Kategori_barang::create([
             'nama'  =>  'Barang Jadi'
         ]);
 
