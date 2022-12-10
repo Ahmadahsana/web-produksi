@@ -105,7 +105,7 @@
                 </div>
                 <form>
                     <div class="modal-body">
-                        <div>
+                        <div class="mb-3">
                             <label for="status-field" class="form-label">Nama barang</label>
                             <select class="form-control" data-trigger name="nama" id="status-field" >
                                 <option selected disabled>Pilih barang</option>
