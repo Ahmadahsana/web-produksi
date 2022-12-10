@@ -19,7 +19,7 @@
                         <a href="/barang/create" class="btn btn-success add-btn"><i
                                 class="ri-add-line align-bottom me-1"></i> Tambah barang</a>
                         <a href="/barang/create" class="btn btn-primary add-btn" data-bs-toggle="modal"
-                            data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Tambah Stok</a>
+                            data-bs-target="#tambahStok"><i class="ri-add-line align-bottom me-1"></i> Tambah Stok</a>
                     </div>
                 </div>
                 <div class="col-sm">
@@ -40,6 +40,7 @@
                             <th class="sort" data-sort="customer_name">Nama</th>
                             <th class="sort" data-sort="phone">Kode barang</th>
                             <th class="sort" data-sort="phone">Status Barang</th>
+                            <th class="sort" data-sort="phone">Stok</th>
                             <th class="sort" data-sort="action">Action</th>
                         </tr>
                     </thead>
@@ -157,6 +158,45 @@
                             <option value="1">Active</option>
                             <option value="0">Block</option>
                         </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="hstack gap-2 justify-content-end">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" id="add-btn">Add Sales</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{{-- modal tambah stok --}}
+
+<div class="modal fade" id="tambahStok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    id="close-modal"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label for="nama_barang" class="form-label">Nama barang</label>
+                        <select class="form-control" data-trigger name="status" id="nama_barang">
+                            <option selected disabled>Nama barang</option>
+                            @foreach ($barang as $b)
+                                <option value="{{ $b->id }}">{{ $b->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="jumlah" class="form-label">Jumlah</label>
+                        <input type="text" id="jumlah" class="form-control" placeholder="masukkan jumlah" required />
                     </div>
                 </div>
                 <div class="modal-footer">
