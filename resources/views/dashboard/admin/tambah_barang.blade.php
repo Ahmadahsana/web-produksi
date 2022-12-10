@@ -44,16 +44,16 @@
 
             <div class="row mb-3">
                 <div class="col-lg-3">
-                    <label for="status_barang" class="form-label">Status Barang</label>
+                    <label for="status_barang_id" class="form-label">Status Barang</label>
                 </div>
                 <div class="col-lg-9">
-                    <select class="form-select mb-3" aria-label="Default select example" name="status_barang">
+                    <select class="form-select mb-3" aria-label="Default select example" name="status_barang_id">
                         <option selected>Pilih status</option>
                         @foreach ($status_barang as $sb)
                         <option value="{{ $sb->id }}">{{ $sb->nama }}</option>
                         @endforeach
                     </select>
-                    @error('status_barang')
+                    @error('status_barang_id')
                     <div class="text-danger">
                         {{ $message }}
                     </div>
@@ -63,16 +63,16 @@
 
             <div class="row mb-3">
                 <div class="col-lg-3">
-                    <label for="status_jual" class="form-label">Status Jual</label>
+                    <label for="status_jual_id" class="form-label">Status Jual</label>
                 </div>
                 <div class="col-lg-9">
-                    <select class="form-select mb-3" aria-label="Default select example" name="status_jual">
+                    <select class="form-select mb-3" aria-label="Default select example" name="status_jual_id">
                         <option selected>Pilih status</option>
                         @foreach ($status_jual as $sj)
                         <option value="{{ $sj->id }}">{{ $sj->nama }}</option>
                         @endforeach
                     </select>
-                    @error('status_jual')
+                    @error('status_jual_id')
                     <div class="text-danger">
                         {{ $message }}
                     </div>
@@ -82,16 +82,16 @@
 
             <div class="row mb-3">
                 <div class="col-lg-3">
-                    <label for="kategori_barang" class="form-label">Kategori Barang</label>
+                    <label for="kategori_barang_id" class="form-label">Kategori Barang</label>
                 </div>
                 <div class="col-lg-9">
-                    <select class="form-select mb-3" aria-label="Default select example" name="kategori_barang">
+                    <select class="form-select mb-3" aria-label="Default select example" name="kategori_barang_id">
                         <option selected>Pilih Kategori</option>
                         @foreach ($kategori_barang as $kb)
                         <option value="{{ $kb->id }}">{{ $kb->nama }}</option>
                         @endforeach
                     </select>
-                    @error('kategori_barang')
+                    @error('kategori_barang_id')
                     <div class="text-danger">
                         {{ $message }}
                     </div>

@@ -47,44 +47,64 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        $request->validate([
-            'nama'              => 'required',
-            'kode_barang'       => 'required',
-            'foto'              => 'image|file|min:1024',
-            'status_barang'     => 'required',
-            'status_jual'       => 'required',
-            'kategori_barang'   => 'required',
-            'harga'             => 'required',
-            'hpp'               => 'required',
-            'deskripsi'         => 'required'
+
+        $validatedCreate = $request->validate([
+            'nama'              =>  'required',
+            'kode_barang'       =>  'required',
+            'foto'              =>  'image|file',
+            'status_barang_id'  =>  'required',
+            'status_jual_id'    =>  'required',
+            'kategori_barang_id' =>  'required',
+            'harga'             =>  'required',
+            'hpp'               =>  'required',
+            'deskripsi'         =>  'required',
         ]);
 
-        $validatedData = [
-            'nama' => $request->nama,
-            'kode_barang' => $request->kode_barang,
-            'foto' => $request->file('foto')->store('foto-barang'),
-            'status_barang' => $request->status
-        ];
+        if ($request->file('image')) {
+            $validatedCreate['image'] = $request->file('image')->store('img-barang');
+        }
+
+        Barang::create($validatedCreate);
+
+        return redirect('/barang')->with('success', 'Sukses Menambah Barang !!');
+        // // return $request;
+        // $request->validate([
+        //     'nama'              => 'required',
+        //     'kode_barang'       => 'required',
+        //     'foto'              => 'image|file|min:1024',
+        //     'status_barang'     => 'required',
+        //     'status_jual'       => 'required',
+        //     'kategori_barang'   => 'required',
+        //     'harga'             => 'required',
+        //     'hpp'               => 'required',
+        //     'deskripsi'         => 'required'
+        // ]);
+
+        // $validatedData = [
+        //     'nama' => $request->nama,
+        //     'kode_barang' => $request->kode_barang,
+        //     'foto' => $request->file('foto')->store('foto-barang'),
+        //     'status_barang' => $request->status
+        // ];
 
         // if ($request->file('gambar')) {
         //     $validatedData['image'] = $request->file('gambar')->store('post-image');
         // }
 
 
-        $barang_head = Barang::create($validatedData);
+        // $barang_head = Barang::create($validatedData);
 
-        $id_barang = $barang_head->id;
+        // $id_barang = $barang_head->id;
 
-        $dataDeskripsi = [
-            'barang_id' => $id_barang,
-            'deskripsi' => $request->deskripsi,
-            'harga' => $request->harga
-        ];
+        // $dataDeskripsi = [
+        //     'barang_id' => $id_barang,
+        //     'deskripsi' => $request->deskripsi,
+        //     'harga' => $request->harga
+        // ];
 
-        Deskripsi_barang::create($dataDeskripsi);
+        // Deskripsi_barang::create($dataDeskripsi);
 
-        return redirect('/barang')->with('success', 'Data barang berhasil ditambahkan');
+        // return redirect('/barang')->with('success', 'Data barang berhasil ditambahkan');
     }
 
     /**
