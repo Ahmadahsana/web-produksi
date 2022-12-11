@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
-use App\Http\Requests\StoreBarangRequest;
-use App\Http\Requests\UpdateBarangRequest;
-use App\Models\Deskripsi_barang;
-use App\Models\Kategori_barang;
-use App\Models\Katgeori_barang;
-use App\Models\Status_barang;
 use App\Models\Status_jual;
-use App\Models\Transaksi_barang;
 use Illuminate\Http\Request;
+use App\Models\Status_barang;
+use App\Models\Kategori_barang;
+use Illuminate\Support\Facades\Storage;
 
 class BarangController extends Controller
 {
@@ -69,44 +65,6 @@ class BarangController extends Controller
         Barang::create($validatedCreate);
 
         return redirect('/barang')->with('success', 'Sukses Menambah Barang !!');
-        // // return $request;
-        // $request->validate([
-        //     'nama'              => 'required',
-        //     'kode_barang'       => 'required',
-        //     'foto'              => 'image|file|min:1024',
-        //     'status_barang'     => 'required',
-        //     'status_jual'       => 'required',
-        //     'kategori_barang'   => 'required',
-        //     'harga'             => 'required',
-        //     'hpp'               => 'required',
-        //     'deskripsi'         => 'required'
-        // ]);
-
-        // $validatedData = [
-        //     'nama' => $request->nama,
-        //     'kode_barang' => $request->kode_barang,
-        //     'foto' => $request->file('foto')->store('foto-barang'),
-        //     'status_barang' => $request->status
-        // ];
-
-        // if ($request->file('gambar')) {
-        //     $validatedData['image'] = $request->file('gambar')->store('post-image');
-        // }
-
-
-        // $barang_head = Barang::create($validatedData);
-
-        // $id_barang = $barang_head->id;
-
-        // $dataDeskripsi = [
-        //     'barang_id' => $id_barang,
-        //     'deskripsi' => $request->deskripsi,
-        //     'harga' => $request->harga
-        // ];
-
-        // Deskripsi_barang::create($dataDeskripsi);
-
-        // return redirect('/barang')->with('success', 'Data barang berhasil ditambahkan');
     }
 
     /**
@@ -128,19 +86,49 @@ class BarangController extends Controller
      */
     public function edit(Barang $barang)
     {
-        //
+        return view('dashboard.admin.edit_barang', [
+            'barang'            => $barang,
+            'status_barang'     => Status_barang::all(),
+            'status_jual'       => Status_jual::all(),
+            'kategori_barang'   => Kategori_barang::all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBarangRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBarangRequest $request, Barang $barang)
+    public function update(Request $request, Barang $barang)
     {
-        //
+        $rules  = [
+            'nama'                  =>  'required',
+            'kode_barang'           =>  'required',
+            'status_barang_id'      =>  'required',
+            'status_jual_id'        =>  'required',
+            'kategori_barang_id'    =>  'required',
+            'foto'                  =>  'image',
+            'harga'                 =>  'required',
+            'hpp'                   =>  'required',
+            'deskripsi'             =>  'required',
+        ];
+
+        $validateEdit = $request->validate($rules);
+
+        if ($request->file('foto')) {
+            if ($request->oldFoto) {
+                Storage::delete($request->oldFoto);
+            }
+
+            $validateEdit['foto']  =   $request->file('foto')->store('img-barang');
+        }
+
+        Barang::where('id', $barang->id)
+            ->update($validateEdit);
+
+        return redirect('/barang')->with('success', 'Update Barang Success');
     }
 
     /**
@@ -151,6 +139,11 @@ class BarangController extends Controller
      */
     public function destroy(Barang $barang)
     {
-        //
+        if ($barang->foto) {
+            Storage::delete($barang->foto);
+        }
+        Barang::destroy($barang->id);
+
+        return redirect('/barang')->with('success', 'Delete Barang Success');
     }
 }

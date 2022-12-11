@@ -50,21 +50,21 @@ class TransaksiBarangController extends Controller
             // ini jika stok sebelumnya belum ada.
             $data = [
                 'kode_barang'       =>  $request->kode_barang,
-                'stok_awal' => 0,
-                'stok_akhir' => $request->jumlah, //stok akhir iku tak padakke jumlah mergo stok awale 0
+                'stok_awal'         => 0,
+                'stok_akhir'        => $request->jumlah, //stok akhir iku tak padakke jumlah mergo stok awale 0
                 'jumlah'            =>  $request->jumlah,
-                'jenis_transaksi' => 'Debit',
-                'keterangan' => 'dari input stok',
+                'jenis_transaksi'   => 'Debit',
+                'keterangan'        => 'dari input stok',
             ];
         } else {
             // ini jika sebelumnya sudah ada stok
             $data = [
                 'kode_barang'       =>  $request->kode_barang,
-                'stok_awal' => $stokBarang[0]['stok_akhir'],
-                'stok_akhir' => $request->jumlah + $stokBarang[0]['stok_akhir'], //stok akhir iku tak padakke jumlah mergo stok awale 0
+                'stok_awal'         => $stokBarang[0]['stok_akhir'],
+                'stok_akhir'        => $request->jumlah + $stokBarang[0]['stok_akhir'], //stok akhir iku tak padakke jumlah mergo stok awale 0
                 'jumlah'            =>  $request->jumlah,
-                'jenis_transaksi' => 'Debit',
-                'keterangan' => 'dari input stok',
+                'jenis_transaksi'   => 'Debit',
+                'keterangan'        => 'Dari Input Stok' . auth()->user(),
             ];
         }
 
