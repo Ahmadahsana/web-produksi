@@ -23,8 +23,7 @@ class BarangController extends Controller
     public function index()
     {
         return view('dashboard.admin.daftar_barang', [
-            'barang' => Barang::all(),
-            'stok'  =>  Barang::with('Transaksi_barang')->latest()->get()
+            'barang' => Barang::with('Transaksi_barang')->get()
         ]);
     }
 

@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            @dd($stok)
+            {{-- @dd($stok) --}}
             <div class="table-responsive table-card mt-3 mb-1">
                 <table class="table align-middle table-nowrap" id="customerTable">
                     <thead class="table-light">
@@ -57,7 +57,11 @@
                             <td class="status_barang">{{ $s->Status_barang->nama }}</td>
                             <td class="status_jual">{{ $s->Status_jual->nama }}</td>
                             <td class="kategori_barang">{{ $s->Kategori_barang->nama }}</td>
-                            <td class="stok">{{ $stok->Transaksi_barang }}</td>
+                            <td class="stok">@if (!empty($s->Transaksi_barang->stok_akhir))
+                                {{ $s->Transaksi_barang->stok_akhir }}
+                                @else
+                                0
+                            @endif</td>
                             {{-- <td class="status"><span
                                     class="badge  @if ($s->status_barang==1) badge-soft-success @else badge-soft-primary @endif text-uppercase">@if
                                     ($s->status_barang==1) Order @else Ready stok @endif</span></td> --}}
