@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalessController;
+use App\Http\Controllers\TransaksiBarangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,9 @@ Route::put('/sales_update/{sales}', [SalesController::class, 'sales_update']);
 
 // BARANG
 Route::resource('/barang', BarangController::class)->middleware('auth');
+
+// Transaksi Barang
+Route::resource('/transaksibarang', TransaksiBarangController::class)->middleware('auth');
 
 // sales
 Route::resource('/order', OrderController::class)->middleware('auth');

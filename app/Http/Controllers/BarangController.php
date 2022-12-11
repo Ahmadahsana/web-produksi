@@ -10,6 +10,7 @@ use App\Models\Kategori_barang;
 use App\Models\Katgeori_barang;
 use App\Models\Status_barang;
 use App\Models\Status_jual;
+use App\Models\Transaksi_barang;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -22,7 +23,8 @@ class BarangController extends Controller
     public function index()
     {
         return view('dashboard.admin.daftar_barang', [
-            'barang' => Barang::all()
+            'barang' => Barang::all(),
+            'stok'  =>  Barang::with('Transaksi_barang')->latest()->get()
         ]);
     }
 

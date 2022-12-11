@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-
+            @dd($stok)
             <div class="table-responsive table-card mt-3 mb-1">
                 <table class="table align-middle table-nowrap" id="customerTable">
                     <thead class="table-light">
@@ -57,7 +57,7 @@
                             <td class="status_barang">{{ $s->Status_barang->nama }}</td>
                             <td class="status_jual">{{ $s->Status_jual->nama }}</td>
                             <td class="kategori_barang">{{ $s->Kategori_barang->nama }}</td>
-                            <td class="stok">0</td>
+                            <td class="stok">{{ $stok->Transaksi_barang }}</td>
                             {{-- <td class="status"><span
                                     class="badge  @if ($s->status_barang==1) badge-soft-success @else badge-soft-primary @endif text-uppercase">@if
                                     ($s->status_barang==1) Order @else Ready stok @endif</span></td> --}}
@@ -187,15 +187,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-modal"></button>
             </div>
-            <form>
+            <form action="/transaksibarang" method="POST">
+                @csrf
                 <div class="modal-body">
 
                     <div class="mb-3">
-                        <label for="nama_barang" class="form-label">Nama barang</label>
-                        <select class="form-control" data-trigger name="status" id="nama_barang">
+                        <label for="nama" class="form-label">Nama barang</label>
+                        <select class="form-control" data-trigger name="kode_barang" id="nama">
                             <option selected disabled>Nama barang</option>
                             @foreach ($barang as $b)
-                            <option value="{{ $b->id }}">{{ $b->nama }}</option>
+                            <option value="{{ $b->kode_barang }}">{{ $b->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -208,7 +209,7 @@
                 <div class="modal-footer">
                     <div class="hstack gap-2 justify-content-end">
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success" id="add-btn">Add Sales</button>
+                        <button type="submit" class="btn btn-success" id="add-btn">Add Stok</button>
                     </div>
                 </div>
             </form>
