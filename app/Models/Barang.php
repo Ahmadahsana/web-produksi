@@ -33,6 +33,6 @@ class Barang extends Model
 
     public function Transaksi_barang()
     {
-        return $this->belongsTo(Transaksi_barang::class);
+        return $this->hasMany(Transaksi_barang::class, 'kode_barang', 'kode_barang');
     }
 }
