@@ -11,11 +11,6 @@ class Barang extends Model
 
     protected $guarded = ['id'];
 
-    public function deskripsi_barang()
-    {
-        return $this->hasOne(Deskripsi_barang::class);
-    }
-
     public function Status_barang()
     {
         return $this->belongsTo(Status_barang::class);
