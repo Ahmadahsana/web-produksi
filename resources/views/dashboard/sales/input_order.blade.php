@@ -38,7 +38,7 @@
                         <div class="col-4">
                             <div class="mb-3">
                                 <label for="jumlah" class="form-label">jumlah</label>
-                                <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="">
+                                <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="" min="1">
                             </div>
                         </div>
                     </div>
@@ -140,6 +140,7 @@
     let nama = document.querySelector('#nama');
     
     nama.addEventListener('change', function() {
+        document.getElementById("jumlah").focus();
         tampung_gambar.innerHTML = ''
         let muncul = document.createElement('div');
         muncul.setAttribute("id","muncul_gambar");
@@ -152,7 +153,7 @@
 
         tampilHarga.value = harga;
         muncul_gambar.insertAdjacentHTML('afterend', `<img src="{{ asset('storage/')}}/${dataBarang[index].foto}" class="img-thumbnail" alt="">`);
-        // document.querySelector('#jumlah').focus();
+        
     });
 
     barang = document.querySelector('#nama');
@@ -161,6 +162,7 @@
 
     masukKeranjang = [];
     hargaKeranjang = [];
+    let sum = 0;
     let tombol_keranjang = document.querySelector('#tombol_keranjang');
     tombol_keranjang.addEventListener('click', function(){
         let id = barang.value;
@@ -186,42 +188,43 @@
                 jumlah : jumlahBarang
             });
             hargaKeranjang.push(Total)
-            // console.log('masuk');
+            sum = sum + Total
 
             let masukSini = document.querySelector('#masukSini');
 
             masukSini.insertAdjacentHTML('beforeend', `<div class="row d-flex align-items-center mb-2">
-                    <div class="col-3">
-                        <img src="{{ asset('storage/')}}/${fotoBarang}" class="rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                    </div>
-                    <div class="col-5">
-                        <div class="flex-1">
-                            <h6 class="mt-0 mb-1 fs-14">
-                                ${namaBarang}
-                            </h6>
-                            <p class="mb-0 fs-12 text-muted">
-                                Quantity: <span>${jumlahBarang} x ${hargaBarang}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <h5 class="m-0 fw-normal">Rp. <span class="cart-item-price">${Total}</span> </h5>
-                    </div>
-                    <div class="col-1">
-                        <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn">
-                            <i class="ri-close-fill fs-16"></i></button>
-                    </div>
-                </div>
-                <input type="text" class="d-none" name="idbarang[]" value="${idBarang}">
-                <input type="text" class="d-none" name="jumlahbarang[]" value="${jumlahBarang}">`);
+                                                            <div class="col-3">
+                                                                <img src="{{ asset('storage/')}}/${fotoBarang}" class="rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <div class="flex-1">
+                                                                    <h6 class="mt-0 mb-1 fs-14">
+                                                                        ${namaBarang}
+                                                                    </h6>
+                                                                    <p class="mb-0 fs-12 text-muted">
+                                                                        Quantity: <span>${jumlahBarang} x ${hargaBarang}</span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <h5 class="m-0 fw-normal">Rp. <span class="cart-item-price">${Total}</span> </h5>
+                                                            </div>
+                                                            <div class="col-1">
+                                                                <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn" onclick="hapusItem(this, ${idBarang}, ${Total})">
+                                                                    <i class="ri-close-fill fs-16"></i></button>
+                                                            </div>
+                                                            
+                                                            <input type="text" class="d-none" name="idbarang[]" value="${idBarang}">
+                                                            <input type="text" class="d-none" name="jumlahbarang[]" value="${jumlahBarang}">
+                                                        </div>`);
                 
                 
             }
 
-        let sum = 0;
-        hargaKeranjang.forEach(harga => {
-            sum += parseInt(harga);
-        });
+        
+        // hargaKeranjang.forEach(harga => {
+        //     sum = sum + parseInt(harga);
+        // });
 
         let totalItem = document.querySelector('#totalItem');
         let totalBayar = document.querySelector('#totalBayar');
@@ -230,9 +233,24 @@
 
         harga.value = '';
         jumlah.value = '';
+        console.log(hargaKeranjang);
         
     });
 
+
+    // hapus item di kranjang
+    function hapusItem(e, id, Total) {
+        let idx = masukKeranjang.findIndex((barang) => barang.id == id);
+        let ttl = hargaKeranjang.findIndex((element) => element == Total);
+        console.log(ttl);
+        masukKeranjang.splice(idx, 1);
+        hargaKeranjang.splice(ttl, 1);
+        e.parentElement.parentElement.remove();
+        totalItem.innerHTML= masukKeranjang.length;
+        sum = sum-Total;
+        totalBayar.innerHTML = `<h5 class="m-0" id="cart-item-total">Rp ${sum}</h5>`;
+        console.log(sum);
+    } 
 </script>
 
 @endsection
