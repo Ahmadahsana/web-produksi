@@ -24,7 +24,7 @@
                     <label for="sales" class="form-label">Nama Sales</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="sales" name="sales" placeholder="Masukkan sales" required>
+                    <input type="text" class="form-control" id="sales" name="sales" placeholder="Masukkan sales" value="{{ $order->header->sales->nama }}" readonly required>
                 </div>
             </div>
             <div class="row mb-3">

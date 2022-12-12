@@ -71,12 +71,33 @@
                         <i class="ri-team-fill"></i> <span data-key="t-landing">Sales</span>
                     </a>
                 </li>
+                @endcan
+
+                @can('admin')
+                <li class="menu-title"><span data-key="t-menu">Inventori</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('barang') ? 'active' : '' }}" href="/barang">
                         <i class="ri-store-2-fill"></i> <span data-key="t-landing">Barang</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Request::is('barang') ? 'active' : '' }}" href="/barang">
+                        <i class="ri-store-2-fill"></i> <span data-key="t-landing">Mentahan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Request::is('barang') ? 'active' : '' }}" href="/barang">
+                        <i class="ri-store-2-fill"></i> <span data-key="t-landing">Jok / Aksesoris</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Request::is('barang') ? 'active' : '' }}" href="/barang">
+                        <i class="ri-store-2-fill"></i> <span data-key="t-landing">Packing / bungkus</span>
+                    </a>
+                </li>
                 @endcan
+
+                <li class="menu-title"><span data-key="t-menu">Produksi</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('order') ? 'active' : '' }}" href="/order">
                         <i class="ri-shopping-cart-2-fill"></i> <span data-key="t-landing">Input order</span>

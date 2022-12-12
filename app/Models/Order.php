@@ -18,6 +18,6 @@ class Order extends Model
 
     public function sales()
     {
-        return $this->belongsTo(Sales::class, 'sales_username', 'username');
+        return $this->belongsTo(User::class, 'sales_username', 'username');
     }
 }

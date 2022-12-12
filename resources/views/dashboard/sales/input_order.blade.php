@@ -31,7 +31,7 @@
                                 <label for="harga" class="form-label">harga</label>
                                 <div class="input-group">
                                     <div class="input-group-text">Rp. </div>
-                                    <input type="text" class="form-control" placeholder="Harga" id="cleave-numeral">
+                                    <input type="text" class="form-control" placeholder="Harga" id="cleave-numeral" readonly>
                                 </div>
                             </div>
                         </div>
@@ -79,30 +79,6 @@
             </div><!-- end card header -->
             <div class="card-body">
                 <div class="" id="masukSini"></div>
-                
-                {{-- <div class="row d-flex align-items-center mb-2">
-                    <div class="col-3">
-                        <img src="assets/images/products/img-2.png" class="rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                    </div>
-                    <div class="col-5">
-                        <div class="flex-1">
-                            <h6 class="mt-0 mb-1 fs-14">
-                                Bentwood Chair
-                            </h6>
-                            <p class="mb-0 fs-12 text-muted">
-                                Quantity: <span>5 x $18</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <h5 class="m-0 fw-normal">$<span class="cart-item-price">89</span> </h5>
-                    </div>
-                    <div class="col-1">
-                        <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn">
-                            <i class="ri-close-fill fs-16"></i></button>
-                    </div>
-                    
-                </div> --}}
                 
 
                 <div class="row">
@@ -170,7 +146,7 @@
         document.querySelector('#tampung_gambar').appendChild(muncul)
         let id = this.value;
         let index = dataBarang.findIndex((barang) => barang.id == id);
-        let harga = dataBarang[index].deskripsi_barang.harga
+        let harga = dataBarang[index].hpp
         let tampilHarga = document.querySelector('#cleave-numeral');
         let muncul_gambar = document.querySelector('#muncul_gambar');
 
@@ -195,7 +171,7 @@
         let idBarang = dataBarang[index].id;
         let fotoBarang = dataBarang[index].foto;
         let jumlahBarang = jumlah.value
-        let hargaBarang = dataBarang[index].deskripsi_barang.harga
+        let hargaBarang = dataBarang[index].hpp
         let Total = parseInt(jumlahBarang) * parseInt(hargaBarang)
         
         let found = masukKeranjang.find(({id}) => id == idBarang);
