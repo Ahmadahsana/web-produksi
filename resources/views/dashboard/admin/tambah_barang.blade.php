@@ -131,7 +131,8 @@
 
 
             <div class="text-end">
-                <button type="submit" class="btn btn-primary">Tambah</button>
+                <button type="submit" class="btn btn-primary"
+                    onclick="return confirm('Yakin ingin menambah data baru ?')">Tambah</button>
             </div>
         </form>
     </div>

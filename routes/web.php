@@ -39,7 +39,7 @@ Route::get('/sales_show/{sales}', [SalesController::class, 'show_sales']);
 Route::put('/sales_update/{sales}', [SalesController::class, 'sales_update']);
 
 // BARANG
-Route::resource('/barang', BarangController::class)->middleware('auth');
+Route::resource('/barang', BarangController::class);
 
 // Transaksi Barang
 Route::resource('/transaksibarang', TransaksiBarangController::class)->middleware('auth');

@@ -61,19 +61,23 @@
                                 {{ $s->Transaksi_barang->stok_akhir }}
                                 @else
                                 0
-                            @endif</td>
+                                @endif</td>
                             {{-- <td class="status"><span
                                     class="badge  @if ($s->status_barang==1) badge-soft-success @else badge-soft-primary @endif text-uppercase">@if
                                     ($s->status_barang==1) Order @else Ready stok @endif</span></td> --}}
                             <td>
                                 <div class="d-flex gap-2">
                                     <div class="edit">
-                                        <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
-                                            data-bs-target="#showModal">Edit</button>
+                                        <a href="/barang/{{ $s->id }}/edit"
+                                            class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                     </div>
                                     <div class="remove">
-                                        <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRecordModal">Remove</button>
+                                        <form action="/barang/{{ $s->id }}" method="POST" enctype="multipart/form-data">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-danger remove-item-btn"
+                                                onclick="return confirm('Yakin ingin menghapus data {{ strtoupper( $s->nama )}} ?')">Remove</button>
+                                        </form>
                                     </div>
                                 </div>
                             </td>
@@ -213,7 +217,8 @@
                 <div class="modal-footer">
                     <div class="hstack gap-2 justify-content-end">
                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success" id="add-btn">Add Stok</button>
+                        <button type="submit" class="btn btn-success" id="add-btn"
+                            onclick="return confirm('Yakin ingin menambah data stok baru ?')">Add Stok</button>
                     </div>
                 </div>
             </form>
