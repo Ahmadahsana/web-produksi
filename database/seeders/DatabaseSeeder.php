@@ -114,5 +114,10 @@ class DatabaseSeeder extends Seeder
         //     'nama' => 'Gudang bungkus',
         //     'warna' => 'success'
         // ]);
+        // Status_pengerjaan::create([
+        //     'id' => 9,
+        //     'nama' => 'Tolak',
+        //     'warna' => 'success'
+        // ]);
     }
 }
