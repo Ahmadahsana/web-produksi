@@ -2,7 +2,7 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="index.html" class="logo logo-dark">
+        <a href="/dashboard" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ url('assets/images/logo-sm.png') }}" alt="" height="22">
             </span>
@@ -11,7 +11,7 @@
             </span>
         </a>
         <!-- Light Logo-->
-        <a href="index.html" class="logo logo-light">
+        <a href="/dashboard" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{ url('assets/images/logo-sm.png') }}" alt="" height="22">
             </span>
@@ -46,7 +46,7 @@
                             <li class="nav-item">
                                 <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> CRM </a>
                             </li>
-                            
+
                             <li class="nav-item">
                                 <a href="dashboard-crypto.html" class="nav-link" data-key="t-crypto"> Crypto </a>
                             </li>
@@ -56,10 +56,10 @@
                         </ul>
                     </div>
                 </li> <!-- end Dashboard Menu --> --}}
-                
+
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('dashboard') ? 'active' : '' }}"  href="/dashboard">
+                    <a class="nav-link menu-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">
                         <i class="ri-dashboard-fill"></i> <span data-key="t-landing">Dashboard</span>
                     </a>
                 </li>
@@ -104,7 +104,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('list_permintaan') ? 'active' : '' }}" href="/list_permintaan">
+                    <a class="nav-link menu-link {{ Request::is('list_permintaan') ? 'active' : '' }}"
+                        href="/list_permintaan">
                         <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">List permintaan</span>
                         <span class="badge badge-pill bg-danger" data-key="t-new">New</span>
                     </a>
@@ -119,7 +120,7 @@
                         <i class="ri-contacts-fill"></i> <span data-key="t-landing">Order sales</span>
                     </a>
                 </li>
-                
+
             </ul>
         </div>
         <!-- Sidebar -->

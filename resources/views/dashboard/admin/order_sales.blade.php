@@ -3,20 +3,21 @@
 @section('container')
 <div class="card">
     <div class="card-header">
-        <h4 class="card-title mb-0">List Order</h4>
+        <h4 class="card-title mb-0">{{ $tittlePage }}</h4>
     </div><!-- end card header -->
-{{-- {{ @ddd($order) }} --}}
+    {{-- {{ @ddd($order) }} --}}
     <div class="card-body">
         @if (session()->has('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
-        </div> 
+        </div>
         @endif
         <div id="customerList">
             <div class="row g-4 mb-3">
                 <div class="col-sm-auto">
                     {{-- <div>
-                        <a href="/sales/create" class="btn btn-success add-btn" ><i class="ri-add-line align-bottom me-1"></i> Add</a>
+                        <a href="/sales/create" class="btn btn-success add-btn"><i
+                                class="ri-add-line align-bottom me-1"></i> Add</a>
                     </div> --}}
                 </div>
                 <div class="col-sm">
@@ -28,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="table-responsive table-card mt-3 mb-1">
                 <table class="table align-middle table-nowrap" id="customerTable">
                     <thead class="table-light">
@@ -42,36 +43,39 @@
                     </thead>
                     <tbody class="list form-check-all">
                         @php
-                            $no = 1;
+                        $no = 1;
                         @endphp
                         {{-- @dd($orders) --}}
                         @foreach ($orders as $order)
-                            <tr>
-                                <th scope="row">{{ $no++ }}</th>
-                                <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
-                                <td class="tanggal">{{ $order->tanggal }}</td>
-                                <td class="sales">{{ $order->sales->nama }}</td>
-                                <td class="nama">
-                                    @foreach ($order->order_detail as $order_detail)
-                                        {{ $order_detail->barang->nama }} <br>
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <div class="edit">
-                                            {{-- <button class="btn btn-sm btn-success edit-item-btn"
-                                            data-bs-toggle="modal" data-bs-target="#showModal">Edit</button> --}}
-                                                <a href="/order_sales/{{ $order->id }}" class="btn btn-sm btn-success edit-item-btn" >Edit</a>
-                                        </div>
-                                        {{-- <div class="remove">
-                                            <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                        </div> --}}
+                        <tr>
+                            <th scope="row">{{ $no++ }}</th>
+                            <td class="id" style="display:none;"><a href="javascript:void(0);"
+                                    class="fw-medium link-primary">#VZ2101</a></td>
+                            <td class="tanggal">{{ $order->tanggal }}</td>
+                            <td class="sales">{{ $order->sales->nama }}</td>
+                            <td class="nama">
+                                @foreach ($order->order_detail as $order_detail)
+                                {{ $order_detail->barang->nama }} <br>
+                                @endforeach
+                            </td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <div class="edit">
+                                        {{-- <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
+                                            data-bs-target="#showModal">Edit</button> --}}
+                                        <a href="/order_sales/{{ $order->id }}"
+                                            class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                     </div>
-                                </td>
-                            </tr>
+                                    {{-- <div class="remove">
+                                        <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
+                                            data-bs-target="#deleteRecordModal">Remove</button>
+                                    </div> --}}
+                                </div>
+                            </td>
+                        </tr>
                         @endforeach
-                        
-                        
+
+
                     </tbody>
                 </table>
                 <div class="noresult" style="display: none">
@@ -85,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="d-flex justify-content-end">
                 <div class="pagination-wrap hstack gap-2">
                     <a class="page-item pagination-prev disabled" href="#">
@@ -102,7 +106,7 @@
 </div>
 
 
-                        
+
 
 <!-- prismjs plugin -->
 <script src="assets/libs/prismjs/prism.js"></script>

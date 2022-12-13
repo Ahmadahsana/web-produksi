@@ -82,8 +82,8 @@ class OrderController extends Controller
      */
     public function show(Request $request)
     {
-        dd($request->id);
         return view('dashboard.admin.edit_order', [
+            'tittlePage'    => 'DETAIL ORDER',
             'order' => Order_detail::find($request)
         ]);
     }
@@ -98,6 +98,7 @@ class OrderController extends Controller
     {
         // dd($order);
         return view('dashboard.admin.edit_order', [
+            'tittlePage'    => 'EDIT ORDER',
             'order' => $order,
             'status' => Status_pengerjaan::all()
         ]);
@@ -141,6 +142,7 @@ class OrderController extends Controller
     public function permintaan()
     {
         return view('dashboard.admin.permintaan_order', [
+            'tittlePage'    => 'LIST PERMINTAAN ORDER',
             'orders' => Order_detail::where('status_pengerjaan_id', '=', '1')->with(['barang', 'status_pengerjaan', 'header', 'header.sales'])
                 ->get()
         ]);
@@ -149,6 +151,7 @@ class OrderController extends Controller
     public function list()
     {
         return view('dashboard.admin.daftar_order', [
+            'tittlePage'    => 'LIST ORDER',
             'orders' => Order_detail::where('status_pengerjaan_id', '!=', '1')->with(['barang', 'status_pengerjaan', 'header'])
                 ->get()
         ]);
@@ -157,6 +160,7 @@ class OrderController extends Controller
     public function order_by_sales()
     {
         return view('dashboard.admin.order_sales', [
+            'tittlePage'    => 'ORDER SALES',
             'orders' => Order::with(['order_detail', 'order_detail.barang'])->get()
         ]);
     }
@@ -165,6 +169,7 @@ class OrderController extends Controller
     {
         $order = Order::where('id', $id)->with(['order_detail', 'order_detail.barang', 'order_detail.status_pengerjaan', 'sales'])->first();
         return view('dashboard.admin.order_sales_detail', [
+            'tittlePage'    => 'ORDER SALES DETAIL',
             'title' => 'Detail order sales',
             'orders' => $order
         ]);

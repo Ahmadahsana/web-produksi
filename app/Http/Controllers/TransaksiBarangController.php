@@ -26,6 +26,7 @@ class TransaksiBarangController extends Controller
     public function create(Request $request)
     {
         return view('dashboard.admin.daftar_transaksi_barang', [
+            'tittlePage'    => 'TAMBAH TRANSAKSI BARANG',
             'transaksibarang'   =>  Transaksi_barang::all()
         ]);
     }
