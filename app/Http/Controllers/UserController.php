@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Province;
-use App\Models\Sales;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class SalesController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -80,25 +79,25 @@ class SalesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sales  $sales
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Sales $sales)
+    public function show(User $user)
     {
-        return $sales;
+        return $user;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sales  $sales
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($sales)
+    public function edit(User $user)
     {
         return view('dashboard.admin.edit_sales', [
             'tittlePage'    =>  'EDIT SALES',
-            'sales' => User::where('id', $sales)->with(['province', 'city', 'district'])->first()
+            'user' => User::where('id', $user)->with(['province', 'city', 'district'])->first()
         ]);
     }
 
@@ -106,10 +105,10 @@ class SalesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sales  $sales
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sales $sales)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -117,12 +116,20 @@ class SalesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sales  $sales
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sales $sales)
+    public function destroy(User $user)
     {
         //
+    }
+
+    public function list_sales()
+    {
+        return view('dashboard.admin.daftar_sales', [
+            'tittlePage'    =>  'LIST SALES',
+            'sales' => User::where('role_id', 2)->get()
+        ]);
     }
 
     public function show_sales(User $user)
@@ -133,7 +140,7 @@ class SalesController extends Controller
         ]);
     }
 
-    public function sales_update(Sales $sales, Request $request)
+    public function sales_update(User $user, Request $request)
     {
         // return $request;
 
@@ -147,7 +154,7 @@ class SalesController extends Controller
             'kecamatan' => 'required',
         ]);
 
-        Sales::where('id', $sales->id)->update($validatedData);
+        User::where('id', $user->id)->update($validatedData);
         return redirect()->back()->back()->with('success', 'Data barang berhasil ditambahkan');
     }
 }

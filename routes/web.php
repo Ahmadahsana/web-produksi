@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalessController;
 use App\Http\Controllers\TransaksiBarangController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,9 +35,9 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 // Admin //sales
-Route::resource('/sales', SalesController::class)->middleware('auth');
-Route::get('/sales_show/{user}', [SalesController::class, 'show_sales']);
-Route::put('/sales_update/{sales}', [SalesController::class, 'sales_update']);
+Route::resource('/sales', UserController::class)->middleware('auth');
+Route::get('/sales_show/{user}', [UserController::class, 'show_sales']);
+Route::put('/sales_update/{sales}', [UserController::class, 'sales_update']);
 
 // BARANG
 Route::resource('/barang', BarangController::class);

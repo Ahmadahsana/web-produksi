@@ -2,7 +2,7 @@
 @section('container_beda')
 
 <div class="main-content">
-    {{-- @dd($sales) --}}
+    @dd($user)
     <div class="page-content">
         <div class="container-fluid">
 
@@ -29,7 +29,7 @@
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
-                                    <img src="{{ asset('storage').'/'. $sales->foto }}"
+                                    <img src="{{ asset('storage').'/'. $user->foto }}"
                                         class="rounded-circle avatar-xl img-thumbnail user-profile-image"
                                         alt="user-profile-image">
                                     <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
@@ -41,7 +41,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <h5 class="fs-16 mb-1">{{ $sales->nama }}</h5>
+                                <h5 class="fs-16 mb-1">{{ $user->nama }}</h5>
                                 <p class="text-muted mb-0">Sales</p>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                         <div class="card-body p-4">
                             <div class="tab-content">
                                 <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                                    <form action="/sales_update/{{ $sales->id }}" method="POST">
+                                    <form action="/sales_update/{{ $user->id }}" method="POST">
                                         @method('put')
                                         @csrf
                                         <div class="row">
@@ -82,7 +82,7 @@
                                                     <label for="firstnameInput" class="form-label">Nama Lengkap</label>
                                                     <input type="text" class="form-control" id="firstnameInput"
                                                         name="nama" placeholder="Enter your firstname"
-                                                        value="{{ $sales->nama }}">
+                                                        value="{{ $user->nama }}">
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -91,7 +91,7 @@
                                                     <label for="lastnameInput" class="form-label">Username</label>
                                                     <input type="text" class="form-control" id="lastnameInput"
                                                         name="username" placeholder="Enter your lastname"
-                                                        value="{{ $sales->username }}" readonly>
+                                                        value="{{ $user->username }}" readonly>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -101,7 +101,7 @@
                                                         Number</label>
                                                     <input type="number" class="form-control" name="nomor"
                                                         id="phonenumberInput" placeholder="Enter your phone number"
-                                                        value="{{ $sales->nomor }}">
+                                                        value="{{ $user->nomor }}">
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -110,7 +110,7 @@
                                                     <label for="emailInput" class="form-label">Alamat</label>
                                                     <input type="text" class="form-control" id="emailInput"
                                                         name="alamat" placeholder="Enter your email"
-                                                        value="{{ $sales->alamat }}">
+                                                        value="{{ $user->alamat }}">
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -120,7 +120,7 @@
                                                     <label for="cityInput" class="form-label">Kecamatan</label>
                                                     <input type="text" class="form-control" id="cityInput"
                                                         name="kecamatan" placeholder="City"
-                                                        value="{{ $sales->district }}" />
+                                                        value="{{ $user->district }}" />
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -128,7 +128,7 @@
                                                 <div class="mb-3">
                                                     <label for="countryInput" class="form-label">Kota</label>
                                                     <input type="text" class="form-control" id="countryInput"
-                                                        name="kota" placeholder="Country" value="{{ $sales->city }}" />
+                                                        name="kota" placeholder="Country" value="{{ $user->city }}" />
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -137,7 +137,7 @@
                                                     <label for="zipcodeInput" class="form-label">Provinsi</label>
                                                     <input type="text" class="form-control" id="zipcodeInput"
                                                         name="provinsi" placeholder="Enter zipcode"
-                                                        value="{{ $sales->province }}">
+                                                        value="{{ $user->province }}">
                                                 </div>
                                             </div>
                                             <!--end col-->
