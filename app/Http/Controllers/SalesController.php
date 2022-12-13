@@ -17,6 +17,7 @@ class SalesController extends Controller
     public function index()
     {
         return view('dashboard.admin.daftar_sales', [
+            'tittlePage'    =>  'LIST SALES',
             'sales' => User::where('role_id', 2)->get()
         ]);
     }
@@ -29,6 +30,7 @@ class SalesController extends Controller
     public function create()
     {
         return view('dashboard.admin.tambah_sales', [
+            'tittlePage'    =>  'TAMBAH SALES',
             'provinsi' => Province::with(['city', 'city.district'])->get()
         ]);
     }
@@ -95,7 +97,8 @@ class SalesController extends Controller
     public function edit($sales)
     {
         return view('dashboard.admin.edit_sales', [
-            'sales' => Sales::where('id', $sales)->with(['province', 'city', 'district'])->first()
+            'tittlePage'    =>  'EDIT SALES',
+            'sales' => User::where('id', $sales)->with(['province', 'city', 'district'])->first()
         ]);
     }
 
@@ -122,10 +125,11 @@ class SalesController extends Controller
         //
     }
 
-    public function show_sales(Sales $sales)
+    public function show_sales(User $user)
     {
         return view('dashboard.admin.show_sales', [
-            'sales' => $sales->where('id', $sales->id)->with(['province', 'city', 'district'])->first()
+            'tittlePage'    =>  'DETAIL PROFIL',
+            'sales' => $user->where('id', $user->id)->with(['province', 'city', 'district'])->first()
         ]);
     }
 

@@ -42,4 +42,18 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function province()
+    {
+        return $this->belongsTo(Province::class, 'provinsi', 'prov_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'kota', 'city_id');
+    }
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'kecamatan', 'dis_id');
+    }
 }

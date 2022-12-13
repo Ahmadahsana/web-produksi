@@ -20,7 +20,8 @@ class OrderController extends Controller
     public function index()
     {
         return view('dashboard.sales.input_order', [
-            'barang' => Barang::all()
+            'tittlePage'    => 'INPUT ORDER',
+            'barang'        => Barang::all()
         ]);
     }
 

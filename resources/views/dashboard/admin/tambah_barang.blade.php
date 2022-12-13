@@ -3,7 +3,7 @@
 @section('container')
 <div class="card">
     <div class="card-header">
-        <h4 class="card-title mb-0">Tambah Barang</h4>
+        <h4 class="card-title mb-0">{{ $tittlePage }}</h4>
     </div><!-- end card header -->
 
     <div class="card-body">

@@ -1,29 +1,29 @@
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg">
 
-    <head>
-        
-        <meta charset="utf-8" />
-        <title>Starter | Velzon - Admin & Dashboard Template</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesbrand" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
+<head>
 
-        <!-- Layout config Js -->
-        <script src="{{ url('assets/js/layout.js') }}"></script>
-        <!-- Bootstrap Css -->
-        <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-        <!-- Icons Css -->
-        <link href="{{ url('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <!-- App Css-->
-        <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-        <!-- custom Css-->
-        <link href="{{ url('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <title>MEBEL | {{ $tittlePage }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
+
+    <!-- Layout config Js -->
+    <script src="{{ url('assets/js/layout.js') }}"></script>
+    <!-- Bootstrap Css -->
+    <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{ url('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="{{ url('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
 
-    </head>
+</head>
 
 <body>
 
@@ -84,8 +84,9 @@
     <script src="{{ url('assets/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ url('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
     <script src="{{ url('assets/js/plugins.js') }}"></script>
-    <script type="text/javascript" src="{{ url('assets/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
-    
+    <script type="text/javascript" src="{{ url('assets/libs/choices.js/public/assets/scripts/choices.min.js') }}">
+    </script>
+
     <!-- cleave.js -->
     {{-- <script src="{{ url('assets/libs/cleave.js/cleave.min.js') }}"></script> --}}
     <!-- form masks init -->

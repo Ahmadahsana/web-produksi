@@ -35,7 +35,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 // Admin //sales
 Route::resource('/sales', SalesController::class)->middleware('auth');
-Route::get('/sales_show/{sales}', [SalesController::class, 'show_sales']);
+Route::get('/sales_show/{user}', [SalesController::class, 'show_sales']);
 Route::put('/sales_update/{sales}', [SalesController::class, 'sales_update']);
 
 // BARANG

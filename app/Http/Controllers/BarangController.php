@@ -19,7 +19,8 @@ class BarangController extends Controller
     public function index()
     {
         return view('dashboard.admin.daftar_barang', [
-            'barang' => Barang::with('Transaksi_barang')->get()
+            'tittlePage'    =>  'LIST BARANG',
+            'barang'        => Barang::with('Transaksi_barang')->get()
         ]);
     }
 
@@ -31,6 +32,7 @@ class BarangController extends Controller
     public function create()
     {
         return view('dashboard.admin.tambah_barang', [
+            'tittlePage'        => 'TAMBAH BARANG',
             'status_barang'     => Status_barang::all(),
             'status_jual'       => Status_jual::all(),
             'kategori_barang'   => Kategori_barang::all()
@@ -87,6 +89,7 @@ class BarangController extends Controller
     public function edit(Barang $barang)
     {
         return view('dashboard.admin.edit_barang', [
+            'tittlePage'        => 'EDIT BARANG',
             'barang'            => $barang,
             'status_barang'     => Status_barang::all(),
             'status_jual'       => Status_jual::all(),

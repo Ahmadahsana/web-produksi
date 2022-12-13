@@ -14,8 +14,7 @@
                             <div class="p-0 ms-auto rounded-circle profile-photo-edit">
                                 <input id="profile-foreground-img-file-input" type="file"
                                     class="profile-foreground-img-file-input">
-                                <label for="profile-foreground-img-file-input"
-                                    class="profile-photo-edit btn btn-light">
+                                <label for="profile-foreground-img-file-input" class="profile-photo-edit btn btn-light">
                                     <i class="ri-image-edit-line align-bottom me-1"></i> Change Cover
                                 </label>
                             </div>
@@ -34,10 +33,8 @@
                                         class="rounded-circle avatar-xl img-thumbnail user-profile-image"
                                         alt="user-profile-image">
                                     <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
-                                        <input id="profile-img-file-input" type="file"
-                                            class="profile-img-file-input">
-                                        <label for="profile-img-file-input"
-                                            class="profile-photo-edit avatar-xs">
+                                        <input id="profile-img-file-input" type="file" class="profile-img-file-input">
+                                        <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
                                             <span class="avatar-title rounded-circle bg-light text-body">
                                                 <i class="ri-camera-fill"></i>
                                             </span>
@@ -50,18 +47,16 @@
                         </div>
                     </div>
                     <!--end card-->
-                    
-                    
+
+
                 </div>
                 <!--end col-->
                 <div class="col-xxl-9">
                     <div class="card mt-xxl-n5">
                         <div class="card-header">
-                            <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0"
-                                role="tablist">
+                            <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#personalDetails"
-                                        role="tab">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#personalDetails" role="tab">
                                         <i class="fas fa-home"></i>
                                         Personal Details
                                     </a>
@@ -72,7 +67,7 @@
                                         Change Password
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </div>
                         <div class="card-body p-4">
@@ -85,25 +80,27 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="firstnameInput" class="form-label">Nama Lengkap</label>
-                                                    <input type="text" class="form-control" id="firstnameInput" name="nama"
-                                                        placeholder="Enter your firstname" value="{{ $sales->nama }}">
+                                                    <input type="text" class="form-control" id="firstnameInput"
+                                                        name="nama" placeholder="Enter your firstname"
+                                                        value="{{ $sales->nama }}">
                                                 </div>
                                             </div>
                                             <!--end col-->
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="lastnameInput" class="form-label">Username</label>
-                                                    <input type="text" class="form-control" id="lastnameInput" name="username"
-                                                        placeholder="Enter your lastname" value="{{ $sales->username }}" readonly>
+                                                    <input type="text" class="form-control" id="lastnameInput"
+                                                        name="username" placeholder="Enter your lastname"
+                                                        value="{{ $sales->username }}" readonly>
                                                 </div>
                                             </div>
                                             <!--end col-->
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="phonenumberInput" class="form-label">Phone Number</label>
+                                                    <label for="phonenumberInput" class="form-label">Phone
+                                                        Number</label>
                                                     <input type="number" class="form-control" name="nomor"
-                                                        id="phonenumberInput"
-                                                        placeholder="Enter your phone number"
+                                                        id="phonenumberInput" placeholder="Enter your phone number"
                                                         value="{{ $sales->nomor }}">
                                                 </div>
                                             </div>
@@ -111,34 +108,36 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="emailInput" class="form-label">Alamat</label>
-                                                    <input type="text" class="form-control" id="emailInput" name="alamat"
-                                                        placeholder="Enter your email"
+                                                    <input type="text" class="form-control" id="emailInput"
+                                                        name="alamat" placeholder="Enter your email"
                                                         value="{{ $sales->alamat }}">
                                                 </div>
                                             </div>
                                             <!--end col-->
-                                            
+
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
                                                     <label for="cityInput" class="form-label">Kecamatan</label>
-                                                    <input type="text" class="form-control" id="cityInput" name="kecamatan"
-                                                        placeholder="City" value="{{ $sales->district->dis_name }}" />
+                                                    <input type="text" class="form-control" id="cityInput"
+                                                        name="kecamatan" placeholder="City"
+                                                        value="{{ $sales->district }}" />
                                                 </div>
                                             </div>
                                             <!--end col-->
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
                                                     <label for="countryInput" class="form-label">Kota</label>
-                                                    <input type="text" class="form-control" id="countryInput" name="kota"
-                                                        placeholder="Country" value="{{ $sales->city->city_name }}" />
+                                                    <input type="text" class="form-control" id="countryInput"
+                                                        name="kota" placeholder="Country" value="{{ $sales->city }}" />
                                                 </div>
                                             </div>
                                             <!--end col-->
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
                                                     <label for="zipcodeInput" class="form-label">Provinsi</label>
-                                                    <input type="text" class="form-control" id="zipcodeInput" name="provinsi"
-                                                        placeholder="Enter zipcode" value="{{ $sales->province->prov_name }}">
+                                                    <input type="text" class="form-control" id="zipcodeInput"
+                                                        name="provinsi" placeholder="Enter zipcode"
+                                                        value="{{ $sales->province }}">
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -146,8 +145,7 @@
                                                 <div class="mb-3 pb-2">
                                                     <label for="exampleFormControlTextarea"
                                                         class="form-label">Description</label>
-                                                    <textarea class="form-control"
-                                                        id="exampleFormControlTextarea"
+                                                    <textarea class="form-control" id="exampleFormControlTextarea"
                                                         placeholder="Enter your description"
                                                         rows="3">Hi I'm Anna Adame,It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is European languages are members of the same family.</textarea>
                                                 </div>
@@ -155,8 +153,7 @@
                                             <!--end col--> --}}
                                             <div class="col-lg-12">
                                                 <div class="hstack gap-2 justify-content-end">
-                                                    <button type="submit"
-                                                        class="btn btn-primary">Updates</button>
+                                                    <button type="submit" class="btn btn-primary">Updates</button>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -172,8 +169,7 @@
                                                 <div>
                                                     <label for="oldpasswordInput" class="form-label">Old
                                                         Password*</label>
-                                                    <input type="password" class="form-control"
-                                                        id="oldpasswordInput"
+                                                    <input type="password" class="form-control" id="oldpasswordInput"
                                                         placeholder="Enter current password">
                                                 </div>
                                             </div>
@@ -182,8 +178,8 @@
                                                 <div>
                                                     <label for="newpasswordInput" class="form-label">New
                                                         Password*</label>
-                                                    <input type="password" class="form-control"
-                                                        id="newpasswordInput" placeholder="Enter new password">
+                                                    <input type="password" class="form-control" id="newpasswordInput"
+                                                        placeholder="Enter new password">
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -192,8 +188,7 @@
                                                     <label for="confirmpasswordInput" class="form-label">Confirm
                                                         Password*</label>
                                                     <input type="password" class="form-control"
-                                                        id="confirmpasswordInput"
-                                                        placeholder="Confirm password">
+                                                        id="confirmpasswordInput" placeholder="Confirm password">
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -215,11 +210,11 @@
                                         </div>
                                         <!--end row-->
                                     </form>
-                                    
+
                                 </div>
                                 <!--end tab-pane-->
-                                
-                                
+
+
                             </div>
                         </div>
                     </div>
@@ -236,7 +231,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © Velzon.
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> © Velzon.
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end d-none d-sm-block">
@@ -248,5 +245,5 @@
     </footer>
 </div>
 <!-- end main content-->
-    
+
 @endsection

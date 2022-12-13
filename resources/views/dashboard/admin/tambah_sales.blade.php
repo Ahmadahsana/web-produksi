@@ -4,7 +4,7 @@
 {{-- @dd($provinsi) --}}
 <div class="card">
     <div class="card-header">
-        <h4 class="card-title mb-0">Tambah Sales</h4>
+        <h4 class="card-title mb-0">{{ $tittlePage }}</h4>
     </div><!-- end card header -->
 
     <div class="card-body">
@@ -15,11 +15,12 @@
                     <label for="nama" class="form-label">Name</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" value="{{ old('nama') }}" required>
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama"
+                        value="{{ old('nama') }}" required>
                     @error('nama')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
             </div>
@@ -28,11 +29,12 @@
                     <label for="nomor" class="form-label">Nomor</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Masukkan nomor" value="{{ old('nomor') }}" required>
+                    <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Masukkan nomor"
+                        value="{{ old('nomor') }}" required>
                     @error('nomor')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
             </div>
@@ -41,31 +43,34 @@
                     <label for="alamat" class="form-label">Alamat</label>
                 </div>
                 <div class="col-lg-9">
-                    <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Alamat" required>{{ old('alamat') }}</textarea>
+                    <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Alamat"
+                        required>{{ old('alamat') }}</textarea>
                     @error('alamat')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
             </div>
-            
+
             <div class="row mb-3">
                 <div class="col-lg-3">
                     <label for="provinsi" class="form-label">provinsi</label>
                 </div>
                 <div class="col-lg-9">
-                    {{-- <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="" value="{{ old('provinsi') }}" required> --}}
-                    <select class="form-select mb-3" aria-label="Default select example" id="provinsi" name="provinsi" data-choices >
+                    {{-- <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder=""
+                        value="{{ old('provinsi') }}" required> --}}
+                    <select class="form-select mb-3" aria-label="Default select example" id="provinsi" name="provinsi"
+                        data-choices>
                         <option selected disabled>Pilih provinsi</option>
                         {{-- @foreach ($provinsi as $p)
-                            <option value="{{ $p->prov_id }}">{{ $p->prov_name }}</option>
+                        <option value="{{ $p->prov_id }}">{{ $p->prov_name }}</option>
                         @endforeach --}}
                     </select>
                     @error('provinsi')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
             </div>
@@ -74,15 +79,16 @@
                     <label for="kota" class="form-label">kota</label>
                 </div>
                 <div class="col-lg-9">
-                    {{-- <input type="text" class="form-control" id="kota" name="kota" placeholder="" value="{{ old('kota') }}" required> --}}
+                    {{-- <input type="text" class="form-control" id="kota" name="kota" placeholder=""
+                        value="{{ old('kota') }}" required> --}}
                     <select class="form-select mb-3" aria-label="Default select example" id="kota" name="kota">
                         <option selected disabled>Pilih kota</option>
-                        
+
                     </select>
                     @error('kota')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
             </div>
@@ -91,15 +97,17 @@
                     <label for="kecamatan" class="form-label">kecamatan</label>
                 </div>
                 <div class="col-lg-9">
-                    {{-- <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="" value="{{ old('kecamatan') }}" required> --}}
-                    <select class="form-select mb-3" aria-label="Default select example" id="kecamatan" name="kecamatan">
+                    {{-- <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder=""
+                        value="{{ old('kecamatan') }}" required> --}}
+                    <select class="form-select mb-3" aria-label="Default select example" id="kecamatan"
+                        name="kecamatan">
                         <option selected disabled>Pilih kecamatan</option>
-                        
+
                     </select>
                     @error('kecamatan')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
             </div>
@@ -110,9 +118,9 @@
                 <div class="col-lg-9">
                     <input type="file" class="form-control" id="gambar" name="gambar" placeholder="Kode" required>
                     @error('gambar')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
             </div>
@@ -127,9 +135,9 @@
                         <option value="0">NonAktif</option>
                     </select>
                     @error('status')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
             </div>
@@ -138,11 +146,12 @@
                     <label for="username" class="form-label">Username</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="username" name="username" placeholder="" value="{{ old('username') }}" required>
+                    <input type="text" class="form-control" id="username" name="username" placeholder=""
+                        value="{{ old('username') }}" required>
                     @error('username')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
             </div>
@@ -151,15 +160,16 @@
                     <label for="password" class="form-label">Password</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="" value="{{ old('password') }}" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder=""
+                        value="{{ old('password') }}" required>
                     @error('password')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
             </div>
-            
+
             <div class="text-end">
                 <button type="submit" class="btn btn-primary">Tambah</button>
             </div>
@@ -168,7 +178,7 @@
 </div>
 
 <script>
-let provinsi = @json($provinsi);
+    let provinsi = @json($provinsi);
 let selectProvinsi = document.querySelector('#provinsi');
 let selectKota = document.querySelector('#kota');
 let selectKecamatan = document.querySelector('#kecamatan');
