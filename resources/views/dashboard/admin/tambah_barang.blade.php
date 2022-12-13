@@ -105,7 +105,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="harga" name="harga" placeholder="Harga"
-                        value="{{ old('harga') }}" required>
+                        value="{{ old('harga') }} " required>
                 </div>
             </div>
 

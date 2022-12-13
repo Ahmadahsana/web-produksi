@@ -137,7 +137,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga"
-                        placeholder="Masukkan Harga" value="{{ old('harga', $barang->harga) }}" autocomplete="off">
+                        placeholder="Masukkan Harga" value=" @currency($barang->harga) " autocomplete="off">
                 </div>
                 @error('harga')
                 <div class="invalid-feedback">
@@ -151,7 +151,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control @error('hpp') is-invalid @enderror" id="hpp" name="hpp"
-                        placeholder="Masukkan hpp" value="{{ old('hpp', $barang->hpp) }}" autocomplete="off">
+                        placeholder="Masukkan hpp" value=" @currency($barang->hpp)" autocomplete="off">
                 </div>
                 @error('hpp')
                 <div class="invalid-feedback">
