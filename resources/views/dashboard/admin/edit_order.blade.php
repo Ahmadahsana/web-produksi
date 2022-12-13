@@ -49,21 +49,39 @@
                     <label for="status" class="form-label">Status</label>
                 </div>
                 <div class="col-lg-9">
+                    @if ($order->status_pengerjaan_id == 1)
+                    <span class="badge badge-soft-danger text-uppercase">{{ $order->status_pengerjaan->nama }}</span>
+                    @else    
                     <select class="form-select mb-3" aria-label="Default select example" name="status">
-                        @foreach ($status as $s)
-                            <option value="{{ $s->id }}" @if ($s->id == $order->status_pengerjaan_id)
-                                selected
-                            @endif>{{ $s->nama }}</option>
-                        @endforeach
+                            @foreach ($status as $s)
+                                <option value="{{ $s->id }}" @if ($s->id == $order->status_pengerjaan_id)
+                                    selected
+                                @endif>{{ $s->nama }}</option>
+                            @endforeach
                     </select>
+                    @endif
                 </div>
             </div>
             
             
-            <div class="text-end">
+            {{-- <div class="text-end">
                 <button type="submit" class="btn btn-primary">Update</button>
-            </div>
+            </div> --}}
         </form>
+        <div class="text-end">
+            <form action="/order/{{ $order->id }}" method="POST" class="d-inline">
+                @method('put')
+                @csrf
+                <input class="d-none" type="text" value="2" name="status">
+                <button type="submit" class="btn btn-success">Terima</button>
+            </form>
+            <form action="/order/{{ $order->id }}" method="post" class="d-inline">
+                @method('put')
+                @csrf
+                <input class="d-none" type="text" value="9" name="status">
+                <button type="submit" class="btn btn-danger">Tolak</button>
+            </form>
+        </div>
     </div>
 </div>
 

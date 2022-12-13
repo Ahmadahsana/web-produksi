@@ -111,13 +111,13 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order_detail $order)
     {
-        $request->validate([
-            'tanggal' => 'required',
-            'sales' => 'required',
-            'nama' => 'required',
-            'jumlah' => 'required',
-            'status' => 'required'
-        ]);
+        // $request->validate([
+        //     'tanggal' => 'required',
+        //     'sales' => 'required',
+        //     'nama' => 'required',
+        //     'jumlah' => 'required',
+        //     'status' => 'required'
+        // ]);
         $data = [
             'status_pengerjaan_id' => $request->status
         ];

@@ -20,4 +20,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class, 'sales_username', 'username');
     }
+
+    public function status_pengerjaan()
+    {
+        return $this->belongsTo(Status_pengerjaan::class);
+    }
 }
