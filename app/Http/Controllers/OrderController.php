@@ -45,9 +45,11 @@ class OrderController extends Controller
     {
         date_default_timezone_set("Asia/Jakarta");
         // return $request;
+        // dd($request->total_bayar);
         $validatedData = [
             'sales_username' => auth()->user()->username,
             'tanggal' => date("Y/m/d H:i:s"),
+            'total_bayar' => $request->total_bayar,
             'dp' => $request->dp,
             'payment' => $request->payment
         ];
@@ -63,6 +65,7 @@ class OrderController extends Controller
                 'order_id' => $idOrder,
                 'barang_id' => $request->idbarang[$i],
                 'jumlah' => $request->jumlahbarang[$i],
+                'total_harga' => $request->total_harga[$i],
                 'status_pengerjaan_id' => 1
             ];
 

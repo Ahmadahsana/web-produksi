@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('sales_username');
             $table->dateTime('tanggal');
+            $table->integer('total_bayar');
             $table->string('dp');
             $table->string('payment');
             $table->timestamps();

@@ -4,10 +4,12 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalessController;
 use App\Http\Controllers\TransaksiBarangController;
 use App\Http\Controllers\UserController;
+use App\Models\Prod_mentahan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +26,9 @@ use Illuminate\Support\Facades\Route;
 // ini dari branch fitur jajal hahahaha
 
 Route::get('/', function () {
-    return view('dashboard.layout.main');
+    return view('dashboard.layout.main', [
+        'tittlePage' => 'Menu Utama'
+    ]);
 })->middleware('auth');
 
 // LOGIN
@@ -56,3 +60,6 @@ Route::get('/order_sales/{id}', [OrderController::class, 'order_by_sales_edit'])
 
 // dashboard admin
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+// mentahan
+Route::get('/mentahan', [ProdMentahanController::class, 'index']);

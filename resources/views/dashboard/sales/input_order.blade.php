@@ -218,6 +218,7 @@
                                                             
                                                             <input type="text" class="d-none" name="idbarang[]" value="${idBarang}">
                                                             <input type="text" class="d-none" name="jumlahbarang[]" value="${jumlahBarang}">
+                                                            <input type="text" class="d-none" name="total_harga[]" value="${Total}">
                                                         </div>`);
                 
                 
@@ -231,7 +232,7 @@
         let totalItem = document.querySelector('#totalItem');
         let totalBayar = document.querySelector('#totalBayar');
         totalItem.innerHTML= masukKeranjang.length;
-        totalBayar.innerHTML = `<h5 class="m-0" id="cart-item-total">Rp ${sum}</h5>`;
+        totalBayar.innerHTML = `<h5 class="m-0" id="cart-item-total">Rp ${sum}</h5><input type="text" class="d-none" value="${sum}" name="total_bayar">`;
 
         harga.value = '';
         jumlah.value = '';
@@ -250,9 +251,8 @@
         e.parentElement.parentElement.remove();
         totalItem.innerHTML= masukKeranjang.length;
         sum = sum-Total;
-        totalBayar.innerHTML = `<h5 class="m-0" id="cart-item-total">Rp ${sum}</h5>`;
+        totalBayar.innerHTML = `<h5 class="m-0" id="cart-item-total">Rp ${sum}</h5><input type="text" class="d-none" value="${sum}" name="total_bayar">`;
         console.log(sum);
     } 
 </script>
-
 @endsection

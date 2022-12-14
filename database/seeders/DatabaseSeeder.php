@@ -90,34 +90,34 @@ class DatabaseSeeder extends Seeder
             'nama'  =>  'Barang Jadi'
         ]);
 
-        // Status_pengerjaan::create([
-        //     'nama' => 'Pending',
-        //     'warna' => 'danger'
-        // ]);
-        // Status_pengerjaan::create([
-        //     'nama' => 'List order',
-        //     'warna' => 'secondary'
-        // ]);
-        // Status_pengerjaan::create([
-        //     'nama' => 'Mentahan',
-        //     'warna' => 'warning'
-        // ]);
-        // Status_pengerjaan::create([
-        //     'nama' => 'Finishing',
-        //     'warna' => 'info'
-        // ]);
-        // Status_pengerjaan::create([
-        //     'nama' => 'Jok',
-        //     'warna' => 'primary'
-        // ]);
-        // Status_pengerjaan::create([
-        //     'nama' => 'Gudang bungkus',
-        //     'warna' => 'success'
-        // ]);
-        // Status_pengerjaan::create([
-        //     'id' => 9,
-        //     'nama' => 'Tolak',
-        //     'warna' => 'success'
-        // ]);
+        Status_pengerjaan::create([
+            'nama' => 'Pending',
+            'warna' => 'danger'
+        ]);
+        Status_pengerjaan::create([
+            'nama' => 'List order',
+            'warna' => 'secondary'
+        ]);
+        Status_pengerjaan::create([
+            'nama' => 'Mentahan',
+            'warna' => 'warning'
+        ]);
+        Status_pengerjaan::create([
+            'nama' => 'Finishing',
+            'warna' => 'info'
+        ]);
+        Status_pengerjaan::create([
+            'nama' => 'Jok',
+            'warna' => 'primary'
+        ]);
+        Status_pengerjaan::create([
+            'nama' => 'Gudang bungkus',
+            'warna' => 'success'
+        ]);
+        Status_pengerjaan::create([
+            'id' => 9,
+            'nama' => 'Tolak',
+            'warna' => 'success'
+        ]);
     }
 }

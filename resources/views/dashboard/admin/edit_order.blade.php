@@ -52,13 +52,14 @@
                     @if ($order->status_pengerjaan_id == 1)
                     <span class="badge badge-soft-danger text-uppercase">{{ $order->status_pengerjaan->nama }}</span>
                     @else    
-                    <select class="form-select mb-3" aria-label="Default select example" name="status">
+                    <span class="badge badge-soft-danger text-uppercase">{{ $order->status_pengerjaan->nama }}</span>
+                    {{-- <select class="form-select mb-3" aria-label="Default select example" name="status">
                             @foreach ($status as $s)
                                 <option value="{{ $s->id }}" @if ($s->id == $order->status_pengerjaan_id)
                                     selected
                                 @endif>{{ $s->nama }}</option>
                             @endforeach
-                    </select>
+                    </select> --}}
                     @endif
                 </div>
             </div>
@@ -68,6 +69,7 @@
                 <button type="submit" class="btn btn-primary">Update</button>
             </div> --}}
         </form>
+        @if ($order->status_pengerjaan_id == 1)
         <div class="text-end">
             <form action="/order/{{ $order->id }}" method="POST" class="d-inline">
                 @method('put')
@@ -82,6 +84,18 @@
                 <button type="submit" class="btn btn-danger">Tolak</button>
             </form>
         </div>
+        @endif
+
+        @if ($order->status_pengerjaan_id == 2)
+        <div class="text-end">
+            <form action="/order/{{ $order->id }}" method="POST" class="d-inline">
+                @method('put')
+                @csrf
+                <input class="d-none" type="text" value="3" name="status">
+                <button type="submit" class="btn btn-success">Mulai Produksi</button>
+            </form>
+        </div>
+        @endif
     </div>
 </div>
 

@@ -99,10 +99,13 @@
 
                 <li class="menu-title"><span data-key="t-menu">Produksi</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('order') ? 'active' : '' }}" href="/order">
-                        <i class="ri-shopping-cart-2-fill"></i> <span data-key="t-landing">Input order</span>
+                    <a class="nav-link menu-link {{ Request::is('mentahan') ? 'active' : '' }}"
+                        href="/mentahan">
+                        <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">Mentahan</span>
                     </a>
                 </li>
+
+                <li class="menu-title"><span data-key="t-menu">Order</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('list_permintaan') ? 'active' : '' }}"
                         href="/list_permintaan">
@@ -116,8 +119,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('order_sales') ? 'active' : '' }}" href="/order_sales">
-                        <i class="ri-contacts-fill"></i> <span data-key="t-landing">Order sales</span>
+                    <a class="nav-link menu-link {{ Request::is('order') ? 'active' : '' }}" href="/order">
+                        <i class="ri-shopping-cart-2-fill"></i> <span data-key="t-landing">Input order</span>
                     </a>
                 </li>
 
