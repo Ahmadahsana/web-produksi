@@ -93,7 +93,7 @@ class ProdMentahanController extends Controller
     {
         // return $order_detail;
         return view('produksi.mentahan.tambah_mentahan', [
-            'tittlePage' => 'List Mentahan',
+            'tittlePage' => 'Buat Mentahan',
             'order_detail' => $order_detail
         ]);
     }
