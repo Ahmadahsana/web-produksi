@@ -63,3 +63,4 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // mentahan
 Route::get('/mentahan', [ProdMentahanController::class, 'index']);
+Route::get('/mentahan/{order_detail}', [ProdMentahanController::class, 'buat_mentahan']);

@@ -88,4 +88,13 @@ class ProdMentahanController extends Controller
     {
         //
     }
+
+    public function buat_mentahan(Order_detail $order_detail)
+    {
+        // return $order_detail;
+        return view('produksi.mentahan.tambah_mentahan', [
+            'tittlePage' => 'List Mentahan',
+            'order_detail' => $order_detail
+        ]);
+    }
 }
