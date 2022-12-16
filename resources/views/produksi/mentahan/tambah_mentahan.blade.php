@@ -3,7 +3,7 @@
 @section('container')
 <div class="card">
     <div class="card-header">
-        <h4 class="card-title mb-0">{{ $tittlePage }}</h4>
+        <h4 class="card-title mb-0">Orderan</h4>
     </div><!-- end card header -->
 
     <div class="card-body">
@@ -15,7 +15,7 @@
         <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Nama Barang</label>
             <div class="col-sm-10">
-              {{ $order_detail->barang_id }}
+              {{ $order_detail->barang->nama }}
             </div>
           </div>
           <div class="mb-3 row">
@@ -26,8 +26,76 @@
           </div>
     </div><!-- end card -->
 </div>
+{{-- @dd($mentahan) --}}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Mentahan</label>
+                <select class="form-select" aria-label="Default select example" id="mentahan" name="mentahan">
+                    <option selected>Open this select menu</option>
+                    @foreach ($mentahan as $m)
+                        <option value="{{ $m->kode_barang }}" data-value="{{ $m->nama }}">{{ $m->nama }}</option>
+                    @endforeach
+                </select>
+              </div>
+              <div class="col-md-2">
+                <label for="inputPassword4" class="form-label">Jumlah</label>
+                <input type="text" class="form-control" id="formGroupExampleInput">
+              </div>
+              <div class="col-md-2 align-self-end">
+                <button type="button" id="tambah" class="btn btn-primary">Tambah</button>
+              </div>
+        </div>
+        <hr>
 
+        <h5>Daftar Mentahan</h5>
 
+        <!-- Striped Rows -->
+        <table class="table table-striped mt-2">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Invoice</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Bobby Davis</td>
+                    <td>Nov 14, 2021</td>
+                    <td>$2,410</td>
+                    <td><span class="badge bg-success">Confirmed</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Christopher Neal</td>
+                    <td>Nov 21, 2021</td>
+                    <td>$1,450</td>
+                    <td><span class="badge bg-warning">Waiting</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Monkey Karry</td>
+                    <td>Nov 24, 2021</td>
+                    <td>$3,500</td>
+                    <td><span class="badge bg-success">Confirmed</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Aaron James</td>
+                    <td>Nov 25, 2021</td>
+                    <td>$6,875</td>
+                    <td><span class="badge bg-danger">Cancelled</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div><!-- end card -->
 
 
 <!-- Modal -->
@@ -64,4 +132,18 @@
 
 <!-- listjs init -->
 <script src="assets/js/pages/listjs.init.js"></script>
+
+<script>
+    document.querySelector('#mentahan').addEventListener('change', function () {
+        let kodeBarang = this.value;
+        let v = document.querySelector(`option[value=${kodeBarang}]`);
+        console.log(v.dataset.value);
+    })
+
+    document.querySelector('#tambah').addEventListener('click', function(){
+        console.log('hai');
+        
+    })
+</script>
+
 @endsection

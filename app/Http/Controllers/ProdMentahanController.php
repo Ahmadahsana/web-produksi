@@ -94,7 +94,8 @@ class ProdMentahanController extends Controller
         // return $order_detail;
         return view('produksi.mentahan.tambah_mentahan', [
             'tittlePage' => 'Buat Mentahan',
-            'order_detail' => $order_detail
+            'order_detail' => $order_detail,
+            'mentahan' => Barang::where('kategori_barang_id', 1)->get()
         ]);
     }
 }
