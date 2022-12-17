@@ -6,6 +6,7 @@ use App\Models\Prod_mentahan;
 use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\Order_detail;
+use App\Models\Prod_finishing;
 use App\Models\Prod_mentahan_detail;
 use Illuminate\Http\Request;
 
@@ -70,6 +71,16 @@ class ProdMentahanController extends Controller
 
             Prod_mentahan_detail::create($data_detail);
         }
+
+        $data_update = [
+            'status_pengerjaan_id' => 4
+        ];
+        Order_detail::where('id', $request->order_detail_id)->update($data_update);
+
+        $data_finishing = [
+            'order_detail_id' => $request->order_detail_id
+        ];
+        Prod_finishing::create($data_finishing);
 
         return 'sukses';
     }
