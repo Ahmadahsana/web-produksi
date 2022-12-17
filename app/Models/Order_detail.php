@@ -25,4 +25,9 @@ class Order_detail extends Model
     {
         return $this->belongsTo(Order::class, 'order_id');
     }
+
+    public function finishing()
+    {
+        return $this->hasOne(Prod_finishing::class);
+    }
 }

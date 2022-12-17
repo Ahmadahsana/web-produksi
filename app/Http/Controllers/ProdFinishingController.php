@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order_detail;
 use App\Models\Prod_finishing;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class ProdFinishingController extends Controller
      */
     public function index()
     {
-        //
+        return view('produksi.finishing.list_finishing', [
+            'tittlePage' => 'List Finishing',
+            'finishing' => Order_detail::where('status_pengerjaan_id', 4)->get()
+        ]);
     }
 
     /**
@@ -57,7 +61,7 @@ class ProdFinishingController extends Controller
      */
     public function edit(Prod_finishing $prod_finishing)
     {
-        //
+        return $prod_finishing;
     }
 
     /**
@@ -81,5 +85,10 @@ class ProdFinishingController extends Controller
     public function destroy(Prod_finishing $prod_finishing)
     {
         //
+    }
+
+    public function buat_finishing(Prod_finishing $finishing_id)
+    {
+        return $finishing_id;
     }
 }
