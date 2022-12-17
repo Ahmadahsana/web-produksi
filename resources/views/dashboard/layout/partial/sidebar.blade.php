@@ -81,17 +81,20 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('barang') ? 'active' : '' }}" href="/barang">
+                    <a class="nav-link menu-link {{ Request::is('mentahan_barang') ? 'active' : '' }}"
+                        href="/mentahan_barang">
                         <i class="ri-store-2-fill"></i> <span data-key="t-landing">Mentahan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('barang') ? 'active' : '' }}" href="/barang">
+                    <a class="nav-link menu-link {{ Request::is('jok_aksesoris_barang') ? 'active' :'' }}"
+                        href="/jok_aksesoris_barang">
                         <i class="ri-store-2-fill"></i> <span data-key="t-landing">Jok / Aksesoris</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('barang') ? 'active' : '' }}" href="/barang">
+                    <a class="nav-link menu-link {{ Request::is('packing_barang') ? 'active' : '' }}"
+                        href="/packing_barang">
                         <i class="ri-store-2-fill"></i> <span data-key="t-landing">Packing / bungkus</span>
                     </a>
                 </li>
@@ -99,9 +102,13 @@
 
                 <li class="menu-title"><span data-key="t-menu">Produksi</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('mentahan') ? 'active' : '' }}"
-                        href="/mentahan">
+                    <a class="nav-link menu-link {{ Request::is('mentahan') ? 'active' : '' }}" href="/mentahan">
                         <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">Mentahan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Request::is('finishing') ? 'active' : '' }}" href="/finishing">
+                        <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">Finishing</span>
                     </a>
                 </li>
 
