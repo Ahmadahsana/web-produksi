@@ -21,7 +21,7 @@ class OrderController extends Controller
     {
         return view('dashboard.sales.input_order', [
             'tittlePage'    => 'INPUT ORDER',
-            'barang'        => Barang::all()
+            'barang'        => Barang::where('status_jual_id', 1)->get()
         ]);
     }
 
@@ -128,7 +128,10 @@ class OrderController extends Controller
         ];
         Order_detail::where('id', $order->id)->update($data);
 
-        return 'sukses';
+        if ($request->status > 2) {
+            return redirect('/list_order')->with('success', 'Orderan Sudah Mulai Di Produksi !!');
+        }
+        return redirect('/list_permintaan')->with('success', 'Permintaan Berhasil Terima Orderan!!');
     }
 
     /**

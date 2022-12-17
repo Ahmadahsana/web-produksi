@@ -131,6 +131,13 @@
                     </a>
                 </li>
 
+                <li class="menu-title"><span data-key="t-menu">Vendor</span></li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Request::is('vendor') ? 'active' : '' }}" href="/vendor">
+                        <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">Vendor</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
         <!-- Sidebar -->

@@ -9,6 +9,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalessController;
 use App\Http\Controllers\TransaksiBarangController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VendorProduksiController;
 use App\Models\Prod_mentahan;
 use Illuminate\Support\Facades\Route;
 
@@ -67,3 +68,6 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 // mentahan
 Route::resource('/mentahan', ProdMentahanController::class);
 Route::get('/buat_mentahan/{order_detail}', [ProdMentahanController::class, 'buat_mentahan']);
+
+// vendor
+Route::resource('/vendor', VendorProduksiController::class)->middleware('auth');
