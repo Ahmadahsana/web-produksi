@@ -90,6 +90,10 @@ class DatabaseSeeder extends Seeder
             'nama'  =>  'Barang Jadi'
         ]);
 
+        Kategori_barang::create([
+            'nama'  =>  'Packing'
+        ]);
+
         Status_pengerjaan::create([
             'nama' => 'Pending',
             'warna' => 'danger'

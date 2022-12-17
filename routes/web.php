@@ -44,6 +44,9 @@ Route::get('/sales_show/{user}', [UserController::class, 'show_sales']);
 Route::put('/sales_update/{sales}', [UserController::class, 'sales_update']);
 
 // BARANG
+Route::get('/mentahan_barang', [BarangController::class, 'tampilmentahan'])->middleware('auth');
+Route::get('/jok_aksesoris_barang', [BarangController::class, 'tampiljokaksesoris'])->middleware('auth');
+Route::get('/packing_barang', [BarangController::class, 'packingbarang'])->middleware('auth');
 Route::resource('/barang', BarangController::class);
 
 // Transaksi Barang

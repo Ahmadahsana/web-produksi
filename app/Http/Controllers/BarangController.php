@@ -20,7 +20,8 @@ class BarangController extends Controller
     {
         return view('dashboard.admin.daftar_barang', [
             'tittlePage'    =>  'LIST BARANG',
-            'barang'        => Barang::with('Transaksi_barang')->get()
+            'barang'        =>  Barang::where('kategori_barang_id', 3)->with('Transaksi_barang')->get()
+            // 'barang'        => Barang::with('Transaksi_barang')->get()
         ]);
     }
 
@@ -148,5 +149,33 @@ class BarangController extends Controller
         Barang::destroy($barang->id);
 
         return redirect('/barang')->with('success', 'Delete Barang Success');
+    }
+
+
+    // mentahan barang
+    public function tampilmentahan()
+    {
+        return view('dashboard.admin.daftar_barang', [
+            'tittlePage'    =>  'BARANG MENTAHAN',
+            'barang'        => Barang::where('kategori_barang_id', 1)->with('Transaksi_barang')->get()
+        ]);
+    }
+
+    // jok/aksesoris
+    public function tampiljokaksesoris()
+    {
+        return view('dashboard.admin.daftar_barang', [
+            'tittlePage'    =>  'JOK/AKSESORIS',
+            'barang'        => Barang::where('kategori_barang_id', 2)->with('Transaksi_barang')->get()
+        ]);
+    }
+
+    // packing/bungkus
+    public function packingbarang()
+    {
+        return view('dashboard.admin.daftar_barang', [
+            'tittlePage'    =>  'PACKING/BUNGKUS',
+            'barang'        => Barang::where('kategori_barang_id', 4)->with('Transaksi_barang')->get()
+        ]);
     }
 }
