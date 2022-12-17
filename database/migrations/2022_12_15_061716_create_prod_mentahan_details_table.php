@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('prod_mentahan_id');
             $table->string('kode_barang');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }

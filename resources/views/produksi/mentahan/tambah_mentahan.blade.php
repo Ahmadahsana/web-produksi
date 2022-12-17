@@ -32,16 +32,16 @@
         <div class="row">
             <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Mentahan</label>
-                <select class="form-select" aria-label="Default select example" id="mentahan" name="mentahan">
-                    <option selected>Open this select menu</option>
+                <select class="form-select" aria-label="Default select example" id="mentahan">
+                    <option selected disabled></option>
                     @foreach ($mentahan as $m)
-                        <option value="{{ $m->kode_barang }}" data-value="{{ $m->nama }}">{{ $m->nama }}</option>
+                        <option value="{{ $m->kode_barang }}" data-value="{{ $m->nama }}" data-harga="{{ $m->harga }}"  data-hpp="{{ $m->hpp }}">{{ $m->nama }} </option>
                     @endforeach
                 </select>
               </div>
               <div class="col-md-2">
                 <label for="inputPassword4" class="form-label">Jumlah</label>
-                <input type="text" class="form-control" id="formGroupExampleInput">
+                <input type="text" class="form-control" id="jumlah">
               </div>
               <div class="col-md-2 align-self-end">
                 <button type="button" id="tambah" class="btn btn-primary">Tambah</button>
@@ -52,47 +52,29 @@
         <h5>Daftar Mentahan</h5>
 
         <!-- Striped Rows -->
-        <table class="table table-striped mt-2">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Invoice</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Bobby Davis</td>
-                    <td>Nov 14, 2021</td>
-                    <td>$2,410</td>
-                    <td><span class="badge bg-success">Confirmed</span></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Christopher Neal</td>
-                    <td>Nov 21, 2021</td>
-                    <td>$1,450</td>
-                    <td><span class="badge bg-warning">Waiting</span></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Monkey Karry</td>
-                    <td>Nov 24, 2021</td>
-                    <td>$3,500</td>
-                    <td><span class="badge bg-success">Confirmed</span></td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Aaron James</td>
-                    <td>Nov 25, 2021</td>
-                    <td>$6,875</td>
-                    <td><span class="badge bg-danger">Cancelled</span></td>
-                </tr>
-            </tbody>
-        </table>
+        <form action="/mentahan" method="POST">
+            @csrf
+            <input type="text" value="{{ $order_detail->id }}" name="order_detail_id" class="d-none">
+            <table class="table table-striped mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Mentahan</th>
+                        <th scope="col">Jumlah</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="wadah_mentahan">
+                    
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-3" id="wadah_tombol">
+                    
+                </div>
+            </div>
+        </form>
     </div>
 
 </div><!-- end card -->
@@ -134,15 +116,31 @@
 <script src="assets/js/pages/listjs.init.js"></script>
 
 <script>
-    document.querySelector('#mentahan').addEventListener('change', function () {
-        let kodeBarang = this.value;
-        let v = document.querySelector(`option[value=${kodeBarang}]`);
-        console.log(v.dataset.value);
-    })
 
+    let tombolKonfir = false
     document.querySelector('#tambah').addEventListener('click', function(){
-        console.log('hai');
+        let kodeBarang = document.querySelector('#mentahan').value;
+        let jumlah = document.querySelector('#jumlah').value;
+        let namaBarang = document.querySelector(`option[value=${kodeBarang}]`).dataset.value;
+        let hppBarang = document.querySelector(`option[value=${kodeBarang}]`).dataset.hpp;
+        let hargaBarang = document.querySelector(`option[value=${kodeBarang}]`).dataset.harga;
         
+        let wadahMentahan = document.querySelector('#wadah_mentahan');
+        let wadahTombol = document.querySelector('#wadah_tombol');
+        wadahMentahan.insertAdjacentHTML('beforeend', `<tr>
+                                                                <th scope="row">1</th>
+                                                                <td>${namaBarang} <input type="text" class="form-control d-none" name="kode_barang[]" value="${kodeBarang}"></td>
+                                                                <td>${jumlah}
+                                                                    <input type="text" class="form-control d-none" name="jumlah_barang[]" value="${jumlah}">
+                                                                    <input type="text" class="form-control d-none" name="hpp_barang[]" value="${hppBarang}">
+                                                                </td>
+                                                                <td><a href="javascript:void(0)"><span class="badge bg-danger">Hapus</span></a></td>
+                                                            </tr>`)
+        if (tombolKonfir == false) {
+            wadahTombol.insertAdjacentHTML('beforeend', `<button type="submit" class="btn btn-primary">Konfirmasi</button>`)
+        }
+
+        tombolKonfir = true
     })
 </script>
 

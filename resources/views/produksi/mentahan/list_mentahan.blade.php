@@ -56,7 +56,7 @@
                                     <div class="edit">
                                         {{-- <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                             data-bs-target="#showModal">Edit</button> --}}
-                                        <a href="/mentahan/{{ $m->id }}"
+                                        <a href="/buat_mentahan/{{ $m->id }}"
                                             class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                     </div>
                                     {{-- <div class="remove">

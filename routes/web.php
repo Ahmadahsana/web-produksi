@@ -62,5 +62,5 @@ Route::get('/order_sales/{id}', [OrderController::class, 'order_by_sales_edit'])
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // mentahan
-Route::get('/mentahan', [ProdMentahanController::class, 'index']);
-Route::get('/mentahan/{order_detail}', [ProdMentahanController::class, 'buat_mentahan']);
+Route::resource('/mentahan', ProdMentahanController::class);
+Route::get('/buat_mentahan/{order_detail}', [ProdMentahanController::class, 'buat_mentahan']);
