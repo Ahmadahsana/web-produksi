@@ -10,6 +10,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalessController;
 use App\Http\Controllers\TransaksiBarangController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VendorProduksiController;
 use App\Models\Prod_mentahan;
 use Illuminate\Support\Facades\Route;
 
@@ -82,3 +83,5 @@ Route::get('/buat_mentahan/{order_detail}', [ProdMentahanController::class, 'bua
 // finishing
 Route::resource('/finishing', ProdFinishingController::class);
 Route::get('/buat_finishing/{finishing_id}', [ProdFinishingController::class, 'buat_finishing']);
+// vendor
+Route::resource('/vendor', VendorProduksiController::class)->middleware('auth');
