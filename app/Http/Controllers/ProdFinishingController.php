@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order_detail;
 use App\Models\Prod_finishing;
+use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
 
 class ProdFinishingController extends Controller
@@ -28,7 +29,6 @@ class ProdFinishingController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -89,6 +89,36 @@ class ProdFinishingController extends Controller
 
     public function buat_finishing(Prod_finishing $finishing_id)
     {
-        return $finishing_id;
+        // return $finishing_id;
+        return view('produksi.finishing.edit_finishing', [
+            'tittlePage'        => 'FINISHING',
+            'finishing' => $finishing_id,
+            'vendor' => Vendor_produksi::all()
+        ]);
+    }
+
+    public function edit_finishing(Request $request)
+    {
+        // return $request->all();
+
+        if ($request->harga_finishing) {
+            $data_vendor = [
+                'biaya' => $request->harga_finishing + $request->harga_servis,
+                'is_selesai' => 1,
+                'jumlah_finishing' => $request->jumlah_finishing,
+                'jumlah_service' => $request->jumlah_servis,
+                'harga_finishing' => $request->harga_finishing,
+                'harga_service' => $request->harga_servis,
+            ];
+        } else {
+            $data_vendor = [
+                'vendor_produksi_id' => $request->vendor,
+                'tgl_diproses' => date("Y-m-d H:i:s")
+            ];
+        }
+
+        Prod_finishing::where('id', $request->finishing_id)->update($data_vendor);
+
+        return redirect('/finishing')->with('success', 'Berhasil proses finishing');
     }
 }

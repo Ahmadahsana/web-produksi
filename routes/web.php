@@ -70,18 +70,9 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('/mentahan', ProdMentahanController::class);
 Route::get('/buat_mentahan/{order_detail}', [ProdMentahanController::class, 'buat_mentahan']);
 
-
-
-
-
-
-
-
-
-
-
 // finishing
 Route::resource('/finishing', ProdFinishingController::class);
 Route::get('/buat_finishing/{finishing_id}', [ProdFinishingController::class, 'buat_finishing']);
+Route::post('/edit_finishing', [ProdFinishingController::class, 'edit_finishing']);
 // vendor
 Route::resource('/vendor', VendorProduksiController::class)->middleware('auth');

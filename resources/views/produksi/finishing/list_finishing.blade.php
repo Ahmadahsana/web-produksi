@@ -8,6 +8,11 @@
     </div><!-- end card header -->
     {{-- {{ dd($order) }} --}}
     <div class="card-body">
+        @if (session()->has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
         <div id="customerList">
             <div class="row g-4 mb-3">
                 <div class="col-sm-auto">
