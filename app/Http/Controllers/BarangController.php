@@ -58,6 +58,7 @@ class BarangController extends Controller
             'kategori_barang_id' =>  'required',
             'harga'             =>  'required',
             'hpp'               =>  'required',
+            'satuan'            =>  'required',
             'deskripsi'         =>  'required',
         ]);
 

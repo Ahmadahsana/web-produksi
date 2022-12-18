@@ -105,7 +105,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="harga" name="harga" placeholder="Harga"
-                        value="{{ old('harga') }} " required>
+                        value="{{ old('harga') }}" required>
                 </div>
             </div>
 
@@ -116,6 +116,26 @@
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="hpp" name="hpp" placeholder="HPP"
                         value="{{ old('hpp') }}" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-lg-3">
+                    <label for="satuan" class="form-label">Pilih Satuan Barang</label>
+                </div>
+                <div class="col-lg-9">
+                    <select class="form-select mb-3" aria-label="Default select example" name="satuan">
+                        <option value="Cm">Cm</option>
+                        <option value="m">m</option>
+                        <option value="Kg">Kg</option>
+                        <option value="Pcs">Pcs</option>
+                        <option value="Liter">Liter</option>
+                    </select>
+                    @error('satuan')
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             </div>
 

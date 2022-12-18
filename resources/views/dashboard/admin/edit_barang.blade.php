@@ -11,11 +11,11 @@
         <div class="row text-center">
             <div class="col-lg">
                 @if ($barang->foto)
-                <img src="{{ asset('storage/'. $barang->foto) }}" alt="" class="rounded-3 shadow-lg my-3" width="500px"
+                <img src="{{ asset('storage/'. $barang->foto) }}" alt="" class="rounded-3 shadow-lg my-3"
                     height="300px">
                 @else
                 <img src="https://source.unsplash.com/random/300×300?{{ $barang->nama }}" alt=""
-                    class="rounded-3 shadow-lg my-3" width="500px" height="300px">
+                    class="rounded-3 shadow-lg my-3" height="300px">
                 @endif
             </div>
         </div>
@@ -158,6 +158,36 @@
                     {{ $message }}
                 </div>
                 @enderror
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-3">
+                    <label for="satuan" class="form-label">Pilih Satuan Barang</label>
+                </div>
+                <div class="col-lg-9">
+                    <select class="form-select mb-3" aria-label="Default select example" name="satuan">
+
+                        <option value="Cm" @if ($barang->satuan == 'Cm')
+                            selected
+                            @endif>Cm</option>
+                        <option value="m" @if ($barang->satuan == 'm')
+                            selected
+                            @endif>m</option>
+                        <option value="Kg" @if ($barang->satuan == 'Kg')
+                            selected
+                            @endif>Kg</option>
+                        <option value="Pcs" @if ($barang->satuan == 'Pcs')
+                            selected
+                            @endif>Pcs</option>
+                        <option value="Liter" @if ($barang->satuan == 'Liter')
+                            selected
+                            @endif>Liter</option>
+                    </select>
+                    @error('satuan')
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
             </div>
             <div class="row mb-3">
                 <div class="col-lg-3">

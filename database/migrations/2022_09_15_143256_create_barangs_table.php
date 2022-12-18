@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('foto')->nullable();
             $table->string('harga');
             $table->string('hpp');
+            $table->string('satuan');
             $table->string('deskripsi');
             $table->timestamps();
         });
