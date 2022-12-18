@@ -4,6 +4,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProdFinishingController;
 use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalessController;
@@ -69,5 +70,9 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('/mentahan', ProdMentahanController::class);
 Route::get('/buat_mentahan/{order_detail}', [ProdMentahanController::class, 'buat_mentahan']);
 
+// finishing
+Route::resource('/finishing', ProdFinishingController::class);
+Route::get('/buat_finishing/{finishing_id}', [ProdFinishingController::class, 'buat_finishing']);
+Route::post('/edit_finishing', [ProdFinishingController::class, 'edit_finishing']);
 // vendor
 Route::resource('/vendor', VendorProduksiController::class)->middleware('auth');

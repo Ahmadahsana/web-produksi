@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('order_detail_id');
             $table->foreignId('vendor_produksi_id')->nullable();
             $table->integer('biaya')->nullable();
+            $table->dateTime('tgl_diproses')->nullable();
             $table->integer('is_selesai')->nullable();
             $table->integer('jumlah_finishing')->nullable();
             $table->integer('jumlah_service')->nullable();
