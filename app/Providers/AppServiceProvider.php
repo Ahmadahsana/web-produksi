@@ -30,6 +30,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('admin', function (User $user) {
             return $user->role_id == 1;
         });
+        Gate::define('sales', function (User $user) {
+            return $user->role_id == 2;
+        });
 
         // untuk menampilkan format number
         Blade::directive('currency', function ($expression) {

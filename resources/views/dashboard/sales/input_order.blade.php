@@ -66,7 +66,7 @@
 <form action="" method="post">
     @csrf
     <div class="row">
-        <div class="col-7">
+        <div class="col-sm">
             <div class="card mt-1">
                 <div class="card-header">
                     <div class="row">
@@ -85,48 +85,46 @@
 
 
                     <div class="row">
-                        <div class="d-flex justify-content-between align-items-center pb-3 mt-3">
-                            <h5 class="m-0 text-muted">Total:</h5>
+                        <div class="d-flex justify-content-around align-items-center pb-3 mt-3">
+                            <h5 class="ms-5 text-muted">Total:</h5>
                             <div class="px-2" id="totalBayar">
                                 <h5 class="m-0" id="cart-item-total">Rp 0</h5>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-            </div><!-- end card -->
+            </div>
         </div>
-        <div class="col">
-            <div class="card mt-1">
-                <div class="card-header">
-                    <h4 class="card-title mb-0">Down Payment</h4>
-                </div><!-- end card header -->
-                <div class="card-body">
-                    <div class="row mb-2">
-                        <div class="col-12">
-                            <label for="dp" class="form-label">DP</label>
-                            <input type="number" class="form-control" id="dp" name="dp" placeholder="dp">
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col-12">
-                            <label for="jumlah" class="form-label">Bank</label>
-                            <select id="payment" name="payment" class="form-select">
-                                <option value="" disabled selected>Pilih Bank</option>
-                                <option value="bni">BNI</option>
-                                <option value="mandiri">Mandiri</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Input Data</button>
-                        </div>
+    </div><!-- end card -->
+    <div class="col-sm">
+        <div class="card mt-1">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Down Payment</h4>
+            </div><!-- end card header -->
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col-12">
+                        <label for="dp" class="form-label">DP</label>
+                        <input type="number" class="form-control" id="dp" name="dp" placeholder="dp">
                     </div>
                 </div>
-            </div><!-- end card -->
-        </div>
+                <div class="row ">
+                    <div class="col-12">
+                        <label for="jumlah" class="form-label">Bank</label>
+                        <select id="payment" name="payment" class="form-select">
+                            <option value="" disabled selected>Pilih Bank</option>
+                            <option value="bni">BNI</option>
+                            <option value="mandiri">Mandiri</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Input Data</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end card -->
     </div>
 </form>
 

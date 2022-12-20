@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProdFinishingController;
-use App\Http\Controllers\ProdMentahanController;
-use App\Http\Controllers\SalesController;
-use App\Http\Controllers\SalessController;
-use App\Http\Controllers\TransaksiBarangController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\VendorProduksiController;
+use App\Models\Order;
 use App\Models\Prod_mentahan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\SalessController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProdMentahanController;
+use App\Http\Controllers\ProdFinishingController;
+use App\Http\Controllers\VendorProduksiController;
+use App\Http\Controllers\TransaksiBarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dashboard.layout.main', [
-        'tittlePage' => 'Menu Utama'
+        'tittlePage' => 'Menu Utama',
     ]);
 })->middleware('auth');
 

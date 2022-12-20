@@ -128,10 +128,14 @@ class OrderController extends Controller
         ];
         Order_detail::where('id', $order->id)->update($data);
 
-        if ($request->status > 2) {
+
+        if ($request->status == 9) {
+            return redirect('/list_permintaan')->with('success', 'Permintaan Berhasil Menolak Orderan !!');
+        } elseif ($request->status > 2) {
             return redirect('/list_order')->with('success', 'Orderan Sudah Mulai Di Produksi !!');
+        } else {
+            return redirect('/list_permintaan')->with('success', 'Permintaan Berhasil Terima Orderan!!');
         }
-        return redirect('/list_permintaan')->with('success', 'Permintaan Berhasil Terima Orderan!!');
     }
 
     /**

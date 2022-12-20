@@ -57,9 +57,8 @@
                     </div>
                 </li> <!-- end Dashboard Menu --> --}}
 
-
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">
+                    <a class="nav-link menu-link {{ Request::is('dashboard*') ? 'active' : '' }}" href="/dashboard">
                         <i class="ri-dashboard-fill"></i> <span data-key="t-landing">Dashboard</span>
                     </a>
                 </li>
@@ -76,24 +75,24 @@
                 @can('admin')
                 <li class="menu-title"><span data-key="t-menu">Inventori</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('barang') ? 'active' : '' }}" href="/barang">
+                    <a class="nav-link menu-link {{ Request::is('barang*') ? 'active' : '' }}" href="/barang">
                         <i class="ri-store-2-fill"></i> <span data-key="t-landing">Barang</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('mentahan_barang') ? 'active' : '' }}"
+                    <a class="nav-link menu-link {{ Request::is('mentahan_barang*') ? 'active' : '' }}"
                         href="/mentahan_barang">
-                        <i class="ri-store-2-fill"></i> <span data-key="t-landing">Mentahan</span>
+                        <i class="ri-store-2-fill"></i> <span data-key="t-landing">Barang Mentahan</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('jok_aksesoris_barang') ? 'active' :'' }}"
+                    <a class="nav-link menu-link {{ Request::is('jok_aksesoris_barang*') ? 'active' :'' }}"
                         href="/jok_aksesoris_barang">
                         <i class="ri-store-2-fill"></i> <span data-key="t-landing">Jok / Aksesoris</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('packing_barang') ? 'active' : '' }}"
+                    <a class="nav-link menu-link {{ Request::is('packing_barang*') ? 'active' : '' }}"
                         href="/packing_barang">
                         <i class="ri-store-2-fill"></i> <span data-key="t-landing">Packing / bungkus</span>
                     </a>
@@ -107,33 +106,33 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('finishing') ? 'active' : '' }}" href="/finishing">
+                    <a class="nav-link menu-link {{ Request::is('finishing*') ? 'active' : '' }}" href="/finishing">
                         <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">Finishing</span>
                     </a>
                 </li>
 
                 <li class="menu-title"><span data-key="t-menu">Order</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('list_permintaan') ? 'active' : '' }}"
+                    <a class="nav-link menu-link {{ Request::is('list_permintaan*') ? 'active' : '' }}"
                         href="/list_permintaan">
                         <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">List permintaan</span>
                         <span class="badge badge-pill bg-danger" data-key="t-new">New</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('list_order') ? 'active' : '' }}" href="/list_order">
+                    <a class="nav-link menu-link {{ Request::is('list_order*') ? 'active' : '' }}" href="/list_order">
                         <i class="ri-chat-download-fill"></i> <span data-key="t-landing">List order</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('order') ? 'active' : '' }}" href="/order">
+                    <a class="nav-link menu-link {{ Request::is('order*') ? 'active' : '' }}" href="/order">
                         <i class="ri-shopping-cart-2-fill"></i> <span data-key="t-landing">Input order</span>
                     </a>
                 </li>
 
                 <li class="menu-title"><span data-key="t-menu">Vendor</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('vendor') ? 'active' : '' }}" href="/vendor">
+                    <a class="nav-link menu-link {{ Request::is('vendor*') ? 'active' : '' }}" href="/vendor">
                         <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">Vendor</span>
                     </a>
                 </li>

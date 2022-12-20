@@ -35,8 +35,8 @@
                     <thead class="table-light">
                         <tr>
                             <th scope="col" style="width: 50px;"> No </th>
-                            <th class="sort" data-sort="nama">Nama Vendor</th>
-                            <th class="sort" data-sort="nama">Nama Pemilik</th>
+                            <th class="sort" data-sort="nama_vendor">Nama Vendor</th>
+                            <th class="sort" data-sort="nama_pemilik">Nama Pemilik</th>
                             <th class="sort" data-sort="alamat">Alamat</th>
                             <th class="sort" data-sort="nomer">Nomor Telp</th>
                             <th class="sort" data-sort="email">Email</th>
@@ -60,15 +60,15 @@
                             <td>
                                 <div class="d-flex gap-2">
                                     <div class="edit">
-                                        <a href="/barang/{{ $v->id }}/edit"
+                                        <a href="/vendor/{{ $v->id }}/edit"
                                             class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                     </div>
                                     <div class="remove">
-                                        <form action="/barang/{{ $v->id }}" method="POST" enctype="multipart/form-data">
+                                        <form action="/vendor/{{ $v->id }}" method="POST" enctype="multipart/form-data">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="btn btn-sm btn-danger remove-item-btn"
-                                                onclick="return confirm('Yakin ingin menghapus data {{ strtoupper( $v->nama )}} ?')">Remove</button>
+                                                onclick="return confirm('Yakin ingin menghapus data {{ strtoupper( $v->nama_vendor )}} ?')">Remove</button>
                                         </form>
                                     </div>
                                 </div>
@@ -105,145 +105,6 @@
         </div>
     </div><!-- end card -->
 </div>
-
-
-<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-modal"></button>
-            </div>
-            <form>
-                <div class="modal-body">
-
-                    <div class="mb-3" id="modal-id" style="display: none;">
-                        <label for="id-field" class="form-label">ID</label>
-                        <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
-                        <input type="text" id="nama" class="form-control" placeholder="masukkan nama" required />
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="nomor" class="form-label">Nomor</label>
-                        <input type="number" id="nomor" class="form-control" placeholder="masukkan nomor hp" required />
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="alamat" class="form-label">Alamat</label>
-                        <input type="text" id="phone-field" class="form-control" placeholder="masukkan alamat"
-                            required />
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="provinsi" class="form-label">Provinsi</label>
-                        <input type="text" id="provinsi" class="form-control" placeholder="Select Date" required />
-                    </div>
-                    <div class="mb-3">
-                        <label for="kota" class="form-label">Kota</label>
-                        <input type="text" id="kota" class="form-control" placeholder="Select Date" required />
-                    </div>
-                    <div class="mb-3">
-                        <label for="kecamatan" class="form-label">Kecamatan</label>
-                        <input type="text" id="kecamatan" class="form-control" placeholder="Select Date" required />
-                    </div>
-                    <div class="mb-3">
-                        <label for="foto" class="form-label">Foto</label>
-                        <input type="file" id="foto" class="form-control" placeholder="Select Date" required />
-                    </div>
-
-                    <div>
-                        <label for="status-field" class="form-label">Status</label>
-                        <select class="form-control" data-trigger name="status" id="status-field">
-                            <option selected disabled>Status</option>
-                            <option value="1">Active</option>
-                            <option value="0">Block</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="hstack gap-2 justify-content-end">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success" id="add-btn">Add Sales</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-{{-- modal tambah stok --}}
-
-<div class="modal fade" id="tambahStok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-modal"></button>
-            </div>
-            <form action="/transaksibarang" method="POST">
-                @csrf
-                <div class="modal-body">
-
-                    <div class="mb-3">
-                        <label for="nama" class="form-label">Nama barang</label>
-                        <select class="form-control" data-trigger name="kode_barang" id="nama">
-                            <option selected disabled>Nama barang</option>
-                            @foreach ($vendor as $v)
-                            <option value="{{ $v->kode_barang }}">{{ $v->nama }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="jumlah" class="form-label">Jumlah</label>
-                        <input type="text" id="jumlah" class="form-control" placeholder="masukkan jumlah" name="jumlah"
-                            required />
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="hstack gap-2 justify-content-end">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success" id="add-btn"
-                            onclick="return confirm('Yakin ingin menambah data stok baru ?')">Add Stok</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="btn-close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mt-2 text-center">
-                    <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                        colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                    <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                        <h4>Are you Sure ?</h4>
-                        <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this Record ?</p>
-                    </div>
-                </div>
-                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                    <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn w-sm btn-danger " id="delete-record">Yes, Delete It!</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--end modal -->
 
 <!-- prismjs plugin -->
 <script src="assets/libs/prismjs/prism.js"></script>

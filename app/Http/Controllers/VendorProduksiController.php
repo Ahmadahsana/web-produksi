@@ -71,9 +71,12 @@ class VendorProduksiController extends Controller
      * @param  \App\Models\Vendor_produksi  $vendor_produksi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vendor_produksi $vendor_produksi)
+    public function edit(Vendor_produksi $vendor)
     {
-        //
+        return view('dashboard.admin.edit_vendor', [
+            'tittlePage'    =>  'Edit Vendor',
+            'vendorr'        =>  $vendor
+        ]);
     }
 
     /**
@@ -83,9 +86,20 @@ class VendorProduksiController extends Controller
      * @param  \App\Models\Vendor_produksi  $vendor_produksi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vendor_produksi $vendor_produksi)
+    public function update(Request $request, Vendor_produksi $vendor)
     {
-        //
+        $validateEdit   =   $request->validate([
+            'nama_vendor'   =>  'required',
+            'nama_pemilik'  =>  'required',
+            'alamat'        =>  'required',
+            'nomer'         =>  'required',
+            'email'         =>  'required|email'
+        ]);
+
+        Vendor_produksi::where('id', $vendor->id)
+            ->update($validateEdit);
+
+        return redirect('/vendor')->with('success', 'Update Vendor Success');
     }
 
     /**
@@ -94,8 +108,10 @@ class VendorProduksiController extends Controller
      * @param  \App\Models\Vendor_produksi  $vendor_produksi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vendor_produksi $vendor_produksi)
+    public function destroy(Vendor_produksi $vendor)
     {
-        //
+        Vendor_produksi::destroy($vendor->id);
+
+        return redirect('/vendor')->with('success', 'Delete Vendor Success');
     }
 }
