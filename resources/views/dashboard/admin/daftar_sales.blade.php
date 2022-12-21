@@ -54,7 +54,7 @@
                             <td class="phone">{{ $s->nomor }}</td>
                             <td class="alamat">{{ $s->alamat }}</td>
                             <td class="status"><span
-                                    class="badge  @if ($s->status_sales==1) badge-soft-success @else badge-soft-danger @endif text-uppercase">@if($s->status_sales==1)
+                                    class="badge  @if ($s->status_user_id==1) badge-soft-success @else badge-soft-danger @endif text-uppercase">@if($s->status_user_id==1)
                                     Active @else NonActive @endif</span></td>
                             <td>
                                 <div class="d-flex gap-2">
@@ -123,7 +123,11 @@
                 </div>
                 <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                     <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn w-sm btn-danger " id="delete-record">Yes, Delete It!</button>
+                    <form action="/sales/{{ $s->id }}" method="post">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn w-sm btn-danger " id="delete-record">Yes, Delete It!</button>
+                    </form>
                 </div>
             </div>
         </div>

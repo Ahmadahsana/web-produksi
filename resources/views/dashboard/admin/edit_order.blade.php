@@ -90,8 +90,9 @@
                 @method('put')
                 @csrf
                 <input class="d-none" type="text" value="9" name="status">
-                <button type="submit" class="btn btn-danger">Tolak</button>
+                <button type="submit" class="btn btn-info">Tolak</button>
             </form>
+            <a href="/list_permintaan" class="btn btn-danger">Kembali</a>
         </div>
         @endif
 
@@ -102,6 +103,7 @@
                 @csrf
                 <input class="d-none" type="text" value="3" name="status">
                 <button type="submit" class="btn btn-success">Mulai Produksi</button>
+                <a href="/list_order" class="btn btn-danger">Kembali</a>
             </form>
         </div>
         @endif

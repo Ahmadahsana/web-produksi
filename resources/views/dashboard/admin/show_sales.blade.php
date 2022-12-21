@@ -26,10 +26,10 @@
                             <div class="hstack text-white-50 gap-1">
                                 <div class="me-2"><i
                                         class="ri-map-pin-user-line me-1 text-white-75 fs-16 align-middle"></i>{{
-                                    $sales->city }},
-                                    {{ $sales->province }}</div>
+                                    $sales->city->city_name }},
+                                    {{ $sales->province->prov_name }}</div>
                                 <div><i class="ri-building-line me-1 text-white-75 fs-16 align-middle"></i>{{
-                                    $sales->district }}
+                                    $sales->district->dis_name }}
                                 </div>
                             </div>
                         </div>
@@ -64,8 +64,16 @@
                                 </li>
                             </ul>
                             <div class="flex-shrink-0">
-                                <a href="/sales/{{ $sales->id }}/edit" class="btn btn-success"><i
+                                @can('admin')
+                                <a href="/sales/{{ auth()->user()->id }}/edit" class="btn btn-success"><i
                                         class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
+                                @endcan
+                                @can('sales')
+                                <a href="/sales/{{ $sales->id }}/edit" class="btn btn-success"><i
+                                        class="ri-edit-box-line align-bottom"></i>
+                                    Edit Profile</a>
+                                @endcan
+                                <a href="/sales" class="btn btn-danger">Kembali</a>
                             </div>
                         </div>
                         <!-- Tab panes -->
@@ -81,28 +89,28 @@
                                                     <table class="table table-borderless mb-0">
                                                         <tbody>
                                                             <tr>
-                                                                <th class="ps-0" scope="row">Nama Lengkap :</th>
-                                                                <td class="text-muted">{{ $sales->nama }}</td>
+                                                                <th class="ps-0" scope="row">Nama Lengkap</th>
+                                                                <td class="text-muted">: {{ $sales->nama }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th class="ps-0" scope="row">Username :</th>
-                                                                <td class="text-muted">{{ $sales->username }}</td>
+                                                                <th class="ps-0" scope="row">Username </th>
+                                                                <td class="text-muted">: {{ $sales->username }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th class="ps-0" scope="row">Nomor HP :</th>
-                                                                <td class="text-muted">{{ $sales->nomor }}</td>
+                                                                <th class="ps-0" scope="row">Nomor HP </th>
+                                                                <td class="text-muted">: {{ $sales->nomor }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th class="ps-0" scope="row">Alamat :</th>
-                                                                <td class="text-muted">{{ $sales->alamat . ', ' .
-                                                                    $sales->district.', '.
-                                                                    $sales->city. ', '.
-                                                                    $sales->province }}
+                                                                <th class="ps-0" scope="row">Alamat</th>
+                                                                <td class="text-muted">: {{ $sales->alamat . ', ' .
+                                                                    $sales->district->dis_name.', '.
+                                                                    $sales->city->city_name. ', '.
+                                                                    $sales->province->prov_name }}
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <th class="ps-0" scope="row">Tanggal bergabung :</th>
-                                                                <td class="text-muted">{{ date("d-M-Y",
+                                                                <th class="ps-0" scope="row">Tanggal bergabung</th>
+                                                                <td class="text-muted">: {{ date("d-M-Y",
                                                                     strtotime($sales->created_at)) }}</td>
                                                             </tr>
                                                         </tbody>

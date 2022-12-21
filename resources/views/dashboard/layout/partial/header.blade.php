@@ -41,7 +41,7 @@
                         <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
                             id="search-close-options"></span>
                     </div>
-                    
+
                 </form>
             </div>
 
@@ -68,9 +68,9 @@
                     </div>
                 </div>
 
-                
 
-                
+
+
 
                 <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
@@ -390,11 +390,13 @@
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="{{ url('assets/images/users/avatar-1.jpg') }}"
-                                alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user"
+                                src="{{ url('assets/images/users/avatar-1.jpg') }}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ auth()->user()->nama }}</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{ auth()->user()->role_id }}</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{
+                                    auth()->user()->nama }}</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{
+                                    auth()->user()->role_id }}</span>
                             </span>
                         </span>
                     </button>
@@ -407,7 +409,7 @@
                         <a class="dropdown-item" href="apps-chat.html"><i
                                 class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Messages</span></a>
-                        
+
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="POST">
                             @csrf

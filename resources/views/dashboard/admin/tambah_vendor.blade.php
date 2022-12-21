@@ -63,6 +63,7 @@
             <div class="text-end">
                 <button type="submit" class="btn btn-primary"
                     onclick="return confirm('Yakin ingin menambah data baru ?')">Tambah</button>
+                <a href="/vendor" class="btn btn-danger">Kembali</a>
             </div>
         </form>
     </div>

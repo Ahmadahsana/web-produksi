@@ -39,41 +39,41 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 // Admin //sales
 Route::resource('/sales', UserController::class)->middleware('auth');
-Route::get('/sales_show/{user}', [UserController::class, 'show_sales']);
-Route::put('/sales_update/{sales}', [UserController::class, 'sales_update']);
+Route::get('/sales_show/{user}', [UserController::class, 'show_sales'])->middleware('auth');
+Route::put('/sales_update/{sales}', [UserController::class, 'sales_update'])->middleware('auth');
 
 // BARANG
-Route::get('/mentahan_barang', [BarangController::class, 'tampilmentahan'])->middleware('auth');
-Route::get('/jok_aksesoris_barang', [BarangController::class, 'tampiljokaksesoris'])->middleware('auth');
-Route::get('/packing_barang', [BarangController::class, 'packingbarang'])->middleware('auth');
-Route::resource('/barang', BarangController::class);
+Route::get('/mentahan_barang', [BarangController::class, 'tampilmentahan'])->middleware('admin');
+Route::get('/jok_aksesoris_barang', [BarangController::class, 'tampiljokaksesoris'])->middleware('admin');
+Route::get('/packing_barang', [BarangController::class, 'packingbarang'])->middleware('admin');
+Route::resource('/barang', BarangController::class)->middleware('admin');
 
 // Transaksi Barang
-Route::resource('/transaksibarang', TransaksiBarangController::class)->middleware('auth');
+Route::resource('/transaksibarang', TransaksiBarangController::class)->middleware('admin');
 
-// sales
-Route::resource('/order', OrderController::class)->middleware('auth');
+// Order
+Route::resource('/order', OrderController::class)->middleware('sales');
 
 // admin list order
-Route::get('/list_permintaan', [OrderController::class, 'permintaan']); //pending / belum di terima
-Route::get('/list_order', [OrderController::class, 'list']);
-Route::get('/order_sales', [OrderController::class, 'order_by_sales']);
-Route::get('/order_sales/{id}', [OrderController::class, 'order_by_sales_edit']);
+Route::get('/list_permintaan', [OrderController::class, 'permintaan'])->middleware('sales'); //pending / belum di terima
+Route::get('/list_order', [OrderController::class, 'list'])->middleware('sales');
+Route::get('/order_sales', [OrderController::class, 'order_by_sales'])->middleware('sales');
+Route::get('/order_sales/{id}', [OrderController::class, 'order_by_sales_edit'])->middleware('sales');
 
 // dashboard admin
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 // mentahan
-Route::resource('/mentahan', ProdMentahanController::class);
-Route::get('/buat_mentahan/{order_detail}', [ProdMentahanController::class, 'buat_mentahan']);
+Route::resource('/mentahan', ProdMentahanController::class)->middleware('admin');
+Route::get('/buat_mentahan/{order_detail}', [ProdMentahanController::class, 'buat_mentahan'])->middleware('admin');
 
 // finishing
-Route::resource('/finishing', ProdFinishingController::class);
-Route::get('/buat_finishing/{finishing_id}', [ProdFinishingController::class, 'buat_finishing']);
-Route::post('/edit_finishing', [ProdFinishingController::class, 'edit_finishing']);
+Route::resource('/finishing', ProdFinishingController::class)->middleware('admin');
+Route::get('/buat_finishing/{finishing_id}', [ProdFinishingController::class, 'buat_finishing'])->middleware('admin');
+Route::post('/edit_finishing', [ProdFinishingController::class, 'edit_finishing'])->middleware('admin');
 // vendor
-Route::resource('/vendor', VendorProduksiController::class)->middleware('auth');
+Route::resource('/vendor', VendorProduksiController::class)->middleware('admin');

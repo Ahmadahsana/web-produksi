@@ -2,6 +2,7 @@
 
 @section('container')
 <div class="row">
+    @can('admin')
     <div class="col-xl-3 col-md-6">
         <!-- card -->
         <div class="card card-animate">
@@ -250,6 +251,9 @@
             </div><!-- end card body -->
         </div><!-- end card -->
     </div><!-- end col -->
+    @endcan
+
+    @can('sales')
     <div class="col-xl-3 col-md-6">
         <!-- card -->
         <div class="card card-animate">
@@ -312,6 +316,7 @@
             </div><!-- end card body -->
         </div><!-- end card -->
     </div><!-- end col -->
+    @endcan
 </div> <!-- end row-->
 
 @endsection

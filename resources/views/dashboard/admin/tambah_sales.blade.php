@@ -172,6 +172,7 @@
 
             <div class="text-end">
                 <button type="submit" class="btn btn-primary">Tambah</button>
+                <a href="/sales" class="btn btn-danger">Kembali</a>
             </div>
         </form>
     </div>

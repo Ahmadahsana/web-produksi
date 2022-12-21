@@ -63,16 +63,12 @@
                     </a>
                 </li>
 
-
                 @can('admin')
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('sales*') ? 'active' : '' }}" href="/sales">
                         <i class="ri-team-fill"></i> <span data-key="t-landing">Sales</span>
                     </a>
                 </li>
-                @endcan
-
-                @can('admin')
                 <li class="menu-title"><span data-key="t-menu">Inventori</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('barang*') ? 'active' : '' }}" href="/barang">
@@ -82,41 +78,40 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('mentahan_barang*') ? 'active' : '' }}"
                         href="/mentahan_barang">
-                        <i class="ri-store-2-fill"></i> <span data-key="t-landing">Barang Mentahan</span>
+                        <i class="ri-inbox-archive-fill"></i> <span data-key="t-landing">Barang Mentahan</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('jok_aksesoris_barang*') ? 'active' :'' }}"
                         href="/jok_aksesoris_barang">
-                        <i class="ri-store-2-fill"></i> <span data-key="t-landing">Jok / Aksesoris</span>
+                        <i class="ri-stack-fill"></i> <span data-key="t-landing">Jok / Aksesoris</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('packing_barang*') ? 'active' : '' }}"
                         href="/packing_barang">
-                        <i class="ri-store-2-fill"></i> <span data-key="t-landing">Packing / bungkus</span>
+                        <i class="ri-file-lock-fill"></i> <span data-key="t-landing">Packing / bungkus</span>
                     </a>
                 </li>
-                @endcan
 
                 <li class="menu-title"><span data-key="t-menu">Produksi</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('mentahan') ? 'active' : '' }}" href="/mentahan">
-                        <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">Mentahan</span>
+                        <i class="ri-file-download-fill"></i> <span data-key="t-landing">Mentahan</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('finishing*') ? 'active' : '' }}" href="/finishing">
-                        <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">Finishing</span>
+                        <i class="ri-radio-2-fill"></i> <span data-key="t-landing">Finishing</span>
                     </a>
                 </li>
-
+                @endcan
+                @can('sales')
                 <li class="menu-title"><span data-key="t-menu">Order</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('list_permintaan*') ? 'active' : '' }}"
                         href="/list_permintaan">
-                        <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">List permintaan</span>
-                        <span class="badge badge-pill bg-danger" data-key="t-new">New</span>
+                        <i class="ri-checkbox-circle-fill"></i> <span data-key="t-landing">List permintaan</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -126,17 +121,18 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('order*') ? 'active' : '' }}" href="/order">
-                        <i class="ri-shopping-cart-2-fill"></i> <span data-key="t-landing">Input order</span>
+                        <i class="ri-add-box-fill"></i> <span data-key="t-landing">Input order</span>
                     </a>
                 </li>
-
+                @endcan
+                @can('admin')
                 <li class="menu-title"><span data-key="t-menu">Vendor</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('vendor*') ? 'active' : '' }}" href="/vendor">
-                        <i class="ri-chat-forward-fill"></i> <span data-key="t-landing">Vendor</span>
+                        <i class="ri-account-pin-box-fill"></i> <span data-key="t-landing">Vendor</span>
                     </a>
                 </li>
-
+                @endcan
             </ul>
         </div>
         <!-- Sidebar -->

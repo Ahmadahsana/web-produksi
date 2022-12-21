@@ -2,7 +2,6 @@
 @section('container_beda')
 
 <div class="main-content">
-    @dd($user)
     <div class="page-content">
         <div class="container-fluid">
 
@@ -22,7 +21,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-xxl-3">
                     <div class="card mt-n5">
@@ -73,13 +71,14 @@
                         <div class="card-body p-4">
                             <div class="tab-content">
                                 <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                                    <form action="/sales_update/{{ $user->id }}" method="POST">
+                                    <form action="/sales/{{ $user->id }}" method="POST">
                                         @method('put')
                                         @csrf
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="firstnameInput" class="form-label">Nama Lengkap</label>
+                                                    <label for="firstnameInput" class="form-label">Nama
+                                                        Lengkap</label>
                                                     <input type="text" class="form-control" id="firstnameInput"
                                                         name="nama" placeholder="Enter your firstname"
                                                         value="{{ $user->nama }}">
@@ -120,7 +119,7 @@
                                                     <label for="cityInput" class="form-label">Kecamatan</label>
                                                     <input type="text" class="form-control" id="cityInput"
                                                         name="kecamatan" placeholder="City"
-                                                        value="{{ $user->district }}" />
+                                                        value="{{ $user->district->dis_name }}" />
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -128,7 +127,8 @@
                                                 <div class="mb-3">
                                                     <label for="countryInput" class="form-label">Kota</label>
                                                     <input type="text" class="form-control" id="countryInput"
-                                                        name="kota" placeholder="Country" value="{{ $user->city }}" />
+                                                        name="kota" placeholder="Country"
+                                                        value="{{ $user->city->city_name }}" />
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -137,7 +137,7 @@
                                                     <label for="zipcodeInput" class="form-label">Provinsi</label>
                                                     <input type="text" class="form-control" id="zipcodeInput"
                                                         name="provinsi" placeholder="Enter zipcode"
-                                                        value="{{ $user->province }}">
+                                                        value="{{ $user->province->prov_name }}">
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -154,6 +154,8 @@
                                             <div class="col-lg-12">
                                                 <div class="hstack gap-2 justify-content-end">
                                                     <button type="submit" class="btn btn-primary">Updates</button>
+                                                    <a href="/sales_show/{{ $user->id }}"
+                                                        class="btn btn-danger">Kembali</a>
                                                 </div>
                                             </div>
                                             <!--end col-->

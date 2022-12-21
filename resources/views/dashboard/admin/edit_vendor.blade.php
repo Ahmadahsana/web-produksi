@@ -90,6 +90,7 @@
             <div class="text-end">
                 <button type="submit" class="btn btn-primary"
                     onclick="return confirm('Yakin ingin mengubah data {{ strtoupper($vendorr->nama_vendor) }} ?')">Update</button>
+                <a href="/vendor" class="btn btn-danger">Kembali</a>
             </div>
         </form>
     </div>

@@ -23,8 +23,7 @@
                     </a>
                 </div>
 
-                <button type="button"
-                    class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
+                <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
                     id="topnav-hamburger-icon">
                     <span class="hamburger-icon">
                         <span></span>
@@ -103,8 +102,7 @@
                                     <h6 class="m-0 fs-16 fw-semibold"> My Cart</h6>
                                 </div>
                                 <div class="col-auto">
-                                    <span class="badge badge-soft-warning fs-13"><span
-                                            class="cartitem-badge">2</span>
+                                    <span class="badge badge-soft-warning fs-13"><span class="cartitem-badge">2</span>
                                         items</span>
                                 </div>
                             </div>
@@ -126,8 +124,7 @@
                                             class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                         <div class="flex-1">
                                             <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html"
-                                                    class="text-reset">Branded
+                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Branded
                                                     T-Shirts</a>
                                             </h6>
                                             <p class="mb-0 fs-12 text-muted">
@@ -177,8 +174,7 @@
                                             class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                         <div class="flex-1">
                                             <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html"
-                                                    class="text-reset">
+                                                <a href="apps-ecommerce-product-details.html" class="text-reset">
                                                     Borosil Paper Cup</a>
                                             </h6>
                                             <p class="mb-0 fs-12 text-muted">
@@ -203,8 +199,7 @@
                                             class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                         <div class="flex-1">
                                             <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html"
-                                                    class="text-reset">Gray
+                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Gray
                                                     Styled T-Shirt</a>
                                             </h6>
                                             <p class="mb-0 fs-12 text-muted">
@@ -212,8 +207,7 @@
                                             </p>
                                         </div>
                                         <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$ <span
-                                                    class="cart-item-price">1250</span></h5>
+                                            <h5 class="m-0 fw-normal">$ <span class="cart-item-price">1250</span></h5>
                                         </div>
                                         <div class="ps-2">
                                             <button type="button"
@@ -279,7 +273,7 @@
                     </button>
                 </div>
 
-                <div class="dropdown topbar-head-dropdown ms-1 header-item">
+                <div class="dropdown topbar-head-dropdown ms-1 d-none header-item">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
                         id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -307,8 +301,8 @@
                                 <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom" data-dropdown-tabs="true"
                                     id="notificationItemsTab" role="tablist">
                                     <li class="nav-item waves-effect waves-light">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#all-noti-tab"
-                                            role="tab" aria-selected="true">
+                                        <a class="nav-link active" data-bs-toggle="tab" href="#all-noti-tab" role="tab"
+                                            aria-selected="true">
                                             All (4)
                                         </a>
                                     </li>
@@ -332,12 +326,10 @@
                         <div class="tab-content" id="notificationItemsTabContent">
                             <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab" role="tabpanel">
                                 <div data-simplebar style="max-height: 300px;" class="pe-2">
-                                    <div
-                                        class="text-reset notification-item d-block dropdown-item position-relative">
+                                    <div class="text-reset notification-item d-block dropdown-item position-relative">
                                         <div class="d-flex">
                                             <div class="avatar-xs me-3">
-                                                <span
-                                                    class="avatar-title bg-soft-info text-info rounded-circle fs-16">
+                                                <span class="avatar-title bg-soft-info text-info rounded-circle fs-16">
                                                     <i class="bx bx-badge-check"></i>
                                                 </span>
                                             </div>
@@ -396,8 +388,7 @@
                                         </div>
                                     </div>
 
-                                    <div
-                                        class="text-reset notification-item d-block dropdown-item position-relative">
+                                    <div class="text-reset notification-item d-block dropdown-item position-relative">
                                         <div class="d-flex">
                                             <div class="avatar-xs me-3">
                                                 <span
@@ -427,8 +418,7 @@
                                         </div>
                                     </div>
 
-                                    <div
-                                        class="text-reset notification-item d-block dropdown-item position-relative">
+                                    <div class="text-reset notification-item d-block dropdown-item position-relative">
                                         <div class="d-flex">
                                             <img src="{{ url('assets/images/users/avatar-8.jpg') }}"
                                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
@@ -455,10 +445,8 @@
                                     </div>
 
                                     <div class="my-3 text-center">
-                                        <button type="button"
-                                            class="btn btn-soft-success waves-effect waves-light">View
-                                            All Notifications <i
-                                                class="ri-arrow-right-line align-middle"></i></button>
+                                        <button type="button" class="btn btn-soft-success waves-effect waves-light">View
+                                            All Notifications <i class="ri-arrow-right-line align-middle"></i></button>
                                     </div>
                                 </div>
 
@@ -579,15 +567,12 @@
                                     </div>
 
                                     <div class="my-3 text-center">
-                                        <button type="button"
-                                            class="btn btn-soft-success waves-effect waves-light">View
-                                            All Messages <i
-                                                class="ri-arrow-right-line align-middle"></i></button>
+                                        <button type="button" class="btn btn-soft-success waves-effect waves-light">View
+                                            All Messages <i class="ri-arrow-right-line align-middle"></i></button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade p-4" id="alerts-tab" role="tabpanel"
-                                aria-labelledby="alerts-tab">
+                            <div class="tab-pane fade p-4" id="alerts-tab" role="tabpanel" aria-labelledby="alerts-tab">
                                 <div class="w-25 w-sm-50 pt-3 mx-auto">
                                     <img src="{{ url('assets/images/svg/bell.svg') }}" class="img-fluid" alt="user-pic">
                                 </div>
@@ -607,38 +592,39 @@
                             <img class="rounded-circle header-profile-user"
                                 src="{{ url('assets/images/users/avatar-1.jpg') }}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ auth()->user()->nama }}</span>
-                                <span
-                                    class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{ auth()->user()->role->nama }}</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{
+                                    auth()->user()->nama }}</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{
+                                    auth()->user()->role->nama }}</span>
                             </span>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                         <h6 class="dropdown-header">Hai, {{ auth()->user()->username }}</h6>
-                        <a class="dropdown-item" href="pages-profile.html"><i
+                        <a class="dropdown-item" href="/sales_show/{{ auth()->user()->id }}"><i
                                 class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Profile</span></a>
-                        <a class="dropdown-item" href="apps-chat.html"><i
+                        {{-- <a class="dropdown-item" href="apps-chat.html"><i
                                 class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i>
-                            <span class="align-middle">Messages</span></a>
-{{--                         
+                            <span class="align-middle">Messages</span></a> --}}
+                        {{--
                         <a class="dropdown-item" href="pages-profile.html"><i
                                 class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Balance : <b>$5971.67</b></span></a> --}}
-                        <a class="dropdown-item" href="pages-profile-settings.html"><span
+                        {{-- <a class="dropdown-item" href="pages-profile-settings.html"><span
                                 class="badge bg-soft-success text-success mt-1 float-end">New</span><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
-                                class="align-middle">Settings</span></a>
+                                class="align-middle">Settings</span></a> --}}
                         {{-- <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
                                 class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Lock screen</span></a> --}}
-                                <form action="/logout" method="POST">
-                                    @csrf
-                        <button type="submit" class="dropdown-item" href="auth-logout-basic.html"><i
-                                class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                class="align-middle" data-key="t-logout">Logout</span></button>
-                            </form>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item" href="auth-logout-basic.html"><i
+                                    class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                    class="align-middle" data-key="t-logout">Logout</span></button>
+                        </form>
                     </div>
                 </div>
             </div>

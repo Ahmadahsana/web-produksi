@@ -81,8 +81,7 @@ class ProdMentahanController extends Controller
             'order_detail_id' => $request->order_detail_id
         ];
         Prod_finishing::create($data_finishing);
-
-        return 'sukses';
+        return redirect('/finishing')->with('success', 'Konfirmasi Mentahan Sukses !!');
     }
 
     /**

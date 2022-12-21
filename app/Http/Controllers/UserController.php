@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Province;
 use App\Models\User;
+use App\Models\Province;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -97,7 +98,7 @@ class UserController extends Controller
     {
         return view('dashboard.admin.edit_sales', [
             'tittlePage'    =>  'EDIT SALES',
-            'user' => User::where('id', $user)->with(['province', 'city', 'district'])->first()
+            'user' => User::where('id', auth()->user()->id)->with(['province', 'city', 'district'])->first()
         ]);
     }
 
@@ -110,7 +111,18 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'username' => 'required',
+            'nomor' => 'required',
+            'alamat' => 'required',
+            'provinsi' => 'required',
+            'kota' => 'required',
+            'kecamatan' => 'required',
+        ]);
+
+        User::where('id', $user->id)->update($validatedData);
+        return redirect('/sales');
     }
 
     /**
@@ -121,7 +133,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        // 
     }
 
     public function list_sales()
