@@ -42,9 +42,9 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 // Admin //sales
-Route::resource('/sales', UserController::class)->middleware('auth');
-Route::get('/sales_show/{user}', [UserController::class, 'show_sales'])->middleware('auth');
-Route::put('/sales_update/{sales}', [UserController::class, 'sales_update'])->middleware('auth');
+Route::resource('/sales', UserController::class)->middleware('auth'); //ini membingungkan saat kembali, detail, edit
+Route::get('/sales_show/{user}', [UserController::class, 'show_sales'])->middleware('auth'); //ini membingungkan saat kembali, detail, edit
+Route::put('/sales_update/{sales}', [UserController::class, 'sales_update'])->middleware('auth'); //ini membingungkan saat kembali, detail, edit
 
 // BARANG
 Route::get('/mentahan_barang', [BarangController::class, 'tampilmentahan'])->middleware('admin');
