@@ -10,4 +10,9 @@ class Prod_finishing extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function Vendor_produksi()
+    {
+        return $this->belongsTo(Vendor_produksi::class);
+    }
 }

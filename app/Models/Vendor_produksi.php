@@ -10,4 +10,9 @@ class Vendor_produksi extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function Prod_finishing()
+    {
+        return $this->hasMany(Prod_finishing::class);
+    }
 }
