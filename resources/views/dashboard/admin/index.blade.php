@@ -251,9 +251,6 @@
             </div><!-- end card body -->
         </div><!-- end card -->
     </div><!-- end col -->
-    @endcan
-
-    @can('sales')
     <div class="col-xl-3 col-md-6">
         <!-- card -->
         <div class="card card-animate">

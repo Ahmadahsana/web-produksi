@@ -106,8 +106,8 @@
                     </a>
                 </li>
                 @endcan
-                @can('sales')
                 <li class="menu-title"><span data-key="t-menu">Order</span></li>
+                @can('admin')
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('list_permintaan*') ? 'active' : '' }}"
                         href="/list_permintaan">
@@ -119,6 +119,8 @@
                         <i class="ri-chat-download-fill"></i> <span data-key="t-landing">List order</span>
                     </a>
                 </li>
+                @endcan
+                @can('sales')
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('order*') ? 'active' : '' }}" href="/order">
                         <i class="ri-add-box-fill"></i> <span data-key="t-landing">Input order</span>
