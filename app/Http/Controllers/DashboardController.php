@@ -25,7 +25,7 @@ class DashboardController extends Controller
             'mentahanP'     =>  Order_detail::where('status_pengerjaan_id', 3)->get(),
             'finishingP'    =>  Order_detail::where('status_pengerjaan_id', 4)->get(),
             'lpermintaan'   =>  Order_detail::where('status_pengerjaan_id', 1)->get(),
-            'lorder'        =>  Order_detail::all(),
+            'lorder'        =>  Order_detail::whereNot('status_pengerjaan_id', '=', 1)->get(),
             'vendor'        =>  Vendor_produksi::all()
         ]);
     }

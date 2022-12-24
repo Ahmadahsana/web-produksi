@@ -64,16 +64,11 @@
                                 </li>
                             </ul>
                             <div class="flex-shrink-0">
-                                @can('admin')
-                                <a href="/sales/{{ auth()->user()->id }}/edit" class="btn btn-success"><i
-                                        class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
-                                @endcan
                                 @can('sales')
                                 <a href="/sales/{{ $sales->id }}/edit" class="btn btn-success"><i
                                         class="ri-edit-box-line align-bottom"></i>
                                     Edit Profile</a>
                                 @endcan
-                                <a href="/sales" class="btn btn-danger">Kembali</a>
                             </div>
                         </div>
                         <!-- Tab panes -->
