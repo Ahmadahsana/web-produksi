@@ -123,7 +123,13 @@
                 @can('sales')
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('order*') ? 'active' : '' }}" href="/order">
-                        <i class="ri-add-box-fill"></i> <span data-key="t-landing">Input order</span>
+                        <i class="ri-add-box-fill"></i> <span data-key="t-landing">Input Order</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Request::is('riwayatOrder*') ? 'active' : '' }}"
+                        href="/riwayatOrder">
+                        <i class="ri-alarm-fill"></i> <span data-key="t-landing">Riwayat Order</span>
                     </a>
                 </li>
                 @endcan
