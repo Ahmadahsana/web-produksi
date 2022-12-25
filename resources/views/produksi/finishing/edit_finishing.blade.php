@@ -5,11 +5,12 @@
   <div class="card-header">
     <h4 class="card-title mb-0">{{ $tittlePage }}</h4>
   </div><!-- end card header -->
-
+{{-- @dd($finishing) --}}
   <div class="card-body">
     @if (isset($finishing->tgl_diproses))
     <form action="/edit_finishing" method="POST">
       @csrf
+      <input type="text" value="{{ $finishing->order_detail_id }}" name="order_detail_id" class="d-none">
       <input type="text" class="d-none" value="{{ $finishing->id }}" name="finishing_id">
       <div class="mb-3 row">
         <label for="staticEmail" class="col-sm-2 col-form-label">vendor Finishing :</label>
@@ -61,6 +62,7 @@
     @else
     <form action="/edit_finishing" method="POST" enctype="multipart/form-data">
       @csrf
+      <input type="text" value="{{ $finishing->order_detail_id }}" name="order_detail_id" class="d-none">
       <input type="text" class="d-none" value="{{ $finishing->id }}" name="finishing_id">
       <div class="row">
         <div class="col-6">
