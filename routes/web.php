@@ -12,6 +12,8 @@ use App\Http\Controllers\SalessController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\ProdFinishingController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\RiwayatOrderController;
 use App\Http\Controllers\VendorProduksiController;
 use App\Http\Controllers\TransaksiBarangController;
 
@@ -42,9 +44,17 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 // Admin //sales
-Route::resource('/sales', UserController::class)->middleware('auth'); //ini membingungkan saat kembali, detail, edit
-Route::get('/sales_show/{user}', [UserController::class, 'show_sales'])->middleware('auth'); //ini membingungkan saat kembali, detail, edit
-Route::put('/sales_update/{sales}', [UserController::class, 'sales_update'])->middleware('auth'); //ini membingungkan saat kembali, detail, edit
+Route::resource('/sales', UserController::class)->middleware('admin'); //ini membingungkan saat kembali, detail, edit
+Route::get('/sales_show/{user}', [UserController::class, 'show_sales'])->middleware('admin'); //ini membingungkan saat kembali, detail, edit
+// Route::put('/sales_update/{sales}', [UserController::class, 'sales_update'])->middleware('auth'); //ini membingungkan saat kembali, detail, edit
+
+// Profil
+Route::resource('/profil', ProfilController::class)->middleware('auth');
+
+// Route::get('/profil/{User}', [UserController::class, 'detail_profil'])->middleware('auth');
+// Route::get('/profil_edit/{User}', [UserController::class, 'edit_profil'])->middleware('auth');
+// Route::post('/profil_edit/{User:id}', [UserController::class, 'update_profil'])->middleware('auth');
+
 
 // BARANG
 Route::get('/mentahan_barang', [BarangController::class, 'tampilmentahan'])->middleware('admin');
@@ -56,13 +66,17 @@ Route::resource('/barang', BarangController::class)->middleware('admin');
 Route::resource('/transaksibarang', TransaksiBarangController::class)->middleware('admin');
 
 // Order
-Route::resource('/order', OrderController::class)->middleware('admin');
+Route::resource('/order', OrderController::class)->middleware('sales');
 
 // admin list order
 Route::get('/list_permintaan', [OrderController::class, 'permintaan'])->middleware('admin'); //pending / belum di terima
 Route::get('/list_order', [OrderController::class, 'list'])->middleware('admin');
 Route::get('/order_sales', [OrderController::class, 'order_by_sales'])->middleware('sales');
 Route::get('/order_sales/{id}', [OrderController::class, 'order_by_sales_edit'])->middleware('sales');
+
+// Riwayat Order
+Route::resource('/riwayatOrder', RiwayatOrderController::class)->middleware('sales');
+// Route::get('/riwayatOrder/{Order:auth()->user()->id}', [RiwayatOrderController::class, 'riwayatOrder'])->middleware('sales');
 
 // dashboard admin
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');

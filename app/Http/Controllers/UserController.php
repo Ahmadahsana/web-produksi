@@ -109,21 +109,21 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
-    {
-        $validatedData = $request->validate([
-            'nama' => 'required|max:255',
-            'username' => 'required',
-            'nomor' => 'required',
-            'alamat' => 'required',
-            'provinsi' => 'required',
-            'kota' => 'required',
-            'kecamatan' => 'required',
-        ]);
+    // public function update(Request $request, User $user)
+    // {
+    //     $validatedData = $request->validate([
+    //         'nama' => 'required|max:255',
+    //         'username' => 'required',
+    //         'nomor' => 'required',
+    //         'alamat' => 'required',
+    //         'provinsi' => 'required',
+    //         'kota' => 'required',
+    //         'kecamatan' => 'required',
+    //     ]);
 
-        User::where('id', $user->id)->update($validatedData);
-        return redirect('/sales');
-    }
+    //     User::where('id', $user->id)->update($validatedData);
+    //     return redirect('/sales');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -168,5 +168,48 @@ class UserController extends Controller
 
         User::where('id', $user->id)->update($validatedData);
         return redirect()->back()->back()->with('success', 'Data barang berhasil ditambahkan');
+    }
+
+    // public function detail_profil()
+    // {
+    //     return view('dashboard.admin.detail_profil', [
+    //         'tittlePage'    =>  "Detail Profil",
+    //     ]);
+    // }
+
+    // public function edit_profil()
+    // {
+    //     return view('dashboard.admin.edit_profil', [
+    //         'tittlePage'    =>  'Edit Profil ' . auth()->user()->nama,
+    //         'user'          =>  User::where('id', auth()->user()->id)->first()
+    //     ]);
+    // }
+
+    public function update_profil(Request $request, User $user)
+    {
+        $update = $request->validate([
+            'nama'      => 'required',
+            'username'  => 'required',
+            'nomor'     => 'required',
+            'alamat'    => 'required',
+            'kecamatan' => 'required',
+            'kota'      => 'required',
+            'provinsi'  => 'required',
+            'foto'      => 'required',
+        ]);
+
+
+        if ($request->file('foto')) {
+            if ($request->oldFoto) {
+                Storage::delete($request->oldFoto);
+            }
+
+            $update['foto']    =   $request->file('foto')->store('foto-sales');
+        }
+
+        User::where('id', auth()->user()->id)
+            ->update($update);
+
+        return redirect()->back('/dashboard')->with('success', 'Edit Profil Success');
     }
 }

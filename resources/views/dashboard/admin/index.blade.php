@@ -2,6 +2,11 @@
 
 @section('container')
 <div class="row">
+    @if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
     @can('admin')
     <div class="col-xl-3 col-md-6">
         <!-- card -->
