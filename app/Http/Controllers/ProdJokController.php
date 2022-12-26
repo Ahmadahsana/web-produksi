@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order_detail;
 use App\Models\Prod_jok;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class ProdJokController extends Controller
      */
     public function index()
     {
-        //
+        return view('produksi.jok.list_jok', [
+            'tittlePage' => 'List Jok',
+            'jok' => Order_detail::where('status_pengerjaan_id', 5)->get()
+        ]);
     }
 
     /**

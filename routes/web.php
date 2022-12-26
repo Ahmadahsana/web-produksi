@@ -12,6 +12,7 @@ use App\Http\Controllers\SalessController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\ProdFinishingController;
+use App\Http\Controllers\ProdJokController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RiwayatOrderController;
 use App\Http\Controllers\VendorProduksiController;
@@ -91,3 +92,7 @@ Route::get('/buat_finishing/{finishing_id}', [ProdFinishingController::class, 'b
 Route::post('/edit_finishing', [ProdFinishingController::class, 'edit_finishing'])->middleware('admin');
 // vendor
 Route::resource('/vendor', VendorProduksiController::class)->middleware('admin');
+
+// jok
+Route::resource('/jok', ProdJokController::class)->middleware('admin');
+Route::get('/buat_jok/{jok_id}', [ProdJokController::class, 'buat_jok'])->middleware('admin');
