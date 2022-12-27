@@ -96,3 +96,4 @@ Route::resource('/vendor', VendorProduksiController::class)->middleware('admin')
 // jok
 Route::resource('/jok', ProdJokController::class)->middleware('admin');
 Route::get('/buat_jok/{jok_id}', [ProdJokController::class, 'buat_jok'])->middleware('admin');
+Route::post('/edit_jok', [ProdJokController::class, 'edit_jok'])->middleware('admin');

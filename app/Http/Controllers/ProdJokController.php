@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order_detail;
 use App\Models\Prod_jok;
+use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
 
 class ProdJokController extends Controller
@@ -85,5 +86,22 @@ class ProdJokController extends Controller
     public function destroy(Prod_jok $prod_jok)
     {
         //
+    }
+
+    public function buat_jok(Prod_jok $jok_id)
+    {
+        return view('produksi.jok.edit_jok', [
+            'tittlePage'        => 'JOK',
+            'jok' => $jok_id,
+            'vendor' => Vendor_produksi::all()
+        ]);
+    }
+
+    public function edit_jok(Request $request)
+    {
+        return $request->all();
+
+
+        return redirect('/finishing')->with('success', 'Berhasil proses finishing');
     }
 }
