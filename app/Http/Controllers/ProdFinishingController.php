@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order_detail;
 use App\Models\Prod_finishing;
+use App\Models\Prod_jok;
 use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
 
@@ -118,6 +119,16 @@ class ProdFinishingController extends Controller
         }
 
         Prod_finishing::where('id', $request->finishing_id)->update($data_vendor);
+
+        $data_update = [
+            'status_pengerjaan_id' => 5
+        ];
+        Order_detail::where('id', $request->order_detail_id)->update($data_update);
+
+        $data_jok = [
+            'order_detail_id' => $request->order_detail_id
+        ];
+        Prod_jok::create($data_jok);
 
         return redirect('/finishing')->with('success', 'Berhasil proses finishing');
     }
