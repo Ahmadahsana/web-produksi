@@ -7,7 +7,7 @@
 
             <div class="position-relative mx-n4 mt-n4">
                 <div class="profile-wid-bg profile-setting-img">
-                    <img src="{{ url('assets/images/profile-bg.jpg') }}" class="profile-wid-img" alt="">
+                    <img src="{{ url('storage/default/bg.jpg') }}" class="profile-wid-img" alt="">
                     <div class="overlay-content">
                         <div class="text-end p-3">
                             <div class="p-0 ms-auto rounded-circle profile-photo-edit">
@@ -27,9 +27,15 @@
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
+                                    @if ($user->foto)
                                     <img src="{{ asset('storage').'/'. $user->foto }}"
                                         class="rounded-circle avatar-xl img-thumbnail user-profile-image"
                                         alt="user-profile-image">
+                                    @else
+                                    <img class="rounded-circle avatar-xl img-thumbnail user-profile-image"
+                                        src="/storage/foto-sales/default.jpg" alt="user-profile-default">
+                                    @endif
+
                                     <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
                                         <input id="profile-img-file-input" type="file" class="profile-img-file-input">
                                         <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">

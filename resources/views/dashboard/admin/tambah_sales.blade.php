@@ -116,7 +116,7 @@
                     <label for="foto" class="form-label">Foto</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="file" class="form-control" id="gambar" name="gambar" placeholder="Kode" required>
+                    <input type="file" class="form-control" id="gambar" name="gambar" placeholder="Gambar">
                     @error('gambar')
                     <div class="text-danger">
                         {{ $message }}

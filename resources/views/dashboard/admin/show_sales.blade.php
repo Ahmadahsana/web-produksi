@@ -7,15 +7,20 @@
         <div class="container-fluid">
             <div class="profile-foreground position-relative mx-n4 mt-n4">
                 <div class="profile-wid-bg">
-                    <img src="{{ url('assets/images/profile-bg.jpg') }}" alt="" class="profile-wid-img" />
+                    <img src="{{ url('storage/default/bg.jpg') }}" alt="" class="profile-wid-img" />
                 </div>
             </div>
             <div class="pt-4 mb-4 mb-lg-3 pb-lg-4">
                 <div class="row g-4">
                     <div class="col-auto">
                         <div class="avatar-lg">
+                            @if ($sales->foto)
                             <img src="{{ asset('storage/'). '/' . $sales->foto }}" alt="user-img"
                                 class="img-thumbnail rounded-circle" />
+                            @else
+                            <img class="img-thumbnail rounded-circle" src="/storage/foto-sales/default.jpg"
+                                alt="Header Avatar">
+                            @endif
                         </div>
                     </div>
                     <!--end col-->

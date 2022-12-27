@@ -15,4 +15,9 @@ class Status_barang extends Model
     {
         return $this->hasMany(Barang::class);
     }
+
+    public function Order_detail()
+    {
+        return $this->hasMany(Order_detail::class);
+    }
 }

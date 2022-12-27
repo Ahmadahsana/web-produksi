@@ -21,7 +21,12 @@ class Order_detail extends Model
         return $this->belongsTo(Status_pengerjaan::class);
     }
 
-    public function header()
+    public function status_barang()
+    {
+        return $this->belongsTo(Status_barang::class);
+    }
+
+    public function Order()
     {
         return $this->belongsTo(Order::class, 'order_id');
     }

@@ -24,4 +24,9 @@ class Sales extends Model
     {
         return $this->belongsTo(District::class, 'kecamatan', 'dis_id');
     }
+
+    public function Order()
+    {
+        return $this->hasOne(Order::class);
+    }
 }
