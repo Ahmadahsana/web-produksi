@@ -67,7 +67,7 @@ Route::resource('/barang', BarangController::class)->middleware('admin');
 Route::resource('/transaksibarang', TransaksiBarangController::class)->middleware('admin');
 
 // Order
-Route::resource('/order', OrderController::class)->middleware('sales');
+Route::resource('/order', OrderController::class);
 
 // admin list order
 Route::get('/list_permintaan', [OrderController::class, 'permintaan'])->middleware('admin'); //pending / belum di terima
