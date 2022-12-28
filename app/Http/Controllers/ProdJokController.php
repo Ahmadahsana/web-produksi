@@ -7,6 +7,7 @@ use App\Models\Order_detail;
 use App\Models\Prod_jok;
 use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Isset_;
 
 class ProdJokController extends Controller
 {
@@ -102,6 +103,11 @@ class ProdJokController extends Controller
     public function edit_jok(Request $request)
     {
         // return $request->all();
+        if (isset($request->biaya)) {
+            return 'ini dari vendor lain';
+        } elseif (isset($request->kode_barang)) {
+            return 'ini dari vendor sendiri';
+        }
         $data_vendor = [
             'vendor_produksi_id' => $request->vendor,
             'tgl_diproses' => date("Y-m-d H:i:s")

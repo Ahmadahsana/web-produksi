@@ -47,11 +47,12 @@
     @if (isset($jok->tgl_diproses))
       @if ($jok->Vendor_produksi->id !== 1) {{-- jika pakai vendor lain --}}
         <form action="/edit_jok" method="POST" enctype="multipart/form-data">
+          @csrf
           <label for="basic-url" class="form-label">Biaya Jok / Aksesoris</label>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon3">Rp. </span>
             <div class="col-6">
-              <input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+              <input type="number" class="form-control" name="biaya" id="biaya" aria-describedby="basic-addon3">
             </div>
           </div>
 
@@ -61,7 +62,7 @@
         <div class="row">
           <div class="col-md-6">
               <label for="inputEmail4" class="form-label">Jok / Aksesoris</label>
-              <select class="form-select" aria-label="Default select example" id="mentahan">
+              <select class="form-select" aria-label="Default select example" id="jok">
                   <option selected disabled></option>
                   @foreach ($joks as $j)
                       <option value="{{ $j->kode_barang }}" data-value="{{ $j->nama }}" data-harga="{{ $j->harga }}"  data-hpp="{{ $j->hpp }}">{{ $j->nama }}</option>
@@ -76,8 +77,63 @@
               <button type="button" id="tambah" class="btn btn-primary">Tambah</button>
             </div>
         </div>
+        <hr>
+
+        <h5>Daftar Jok / Aksesoris</h5>
+
+        <!-- Striped Rows -->
+        <form action="/edit_jok" method="POST">
+            @csrf
+            <input type="text" value="" name="order_detail_id" class="d-none">
+            <table class="table table-striped mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Jok</th>
+                        <th scope="col">Jumlah</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="wadah_jok">
+                    
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-3" id="wadah_tombol">
+                    
+                </div>
+            </div>
+        </form>
       @endif
     @endif
   </div>
 </div>
+
+<script>
+  let tombolKonfir = false
+  document.querySelector('#tambah').addEventListener('click', function(){
+    let kodeBarang = document.querySelector('#jok').value;
+    let jumlah = document.querySelector('#jumlah').value;
+    let namaBarang = document.querySelector(`option[value=${kodeBarang}]`).dataset.value;
+    let hppBarang = document.querySelector(`option[value=${kodeBarang}]`).dataset.hpp;
+    
+    let wadahJok = document.querySelector('#wadah_jok');
+    let wadahTombol = document.querySelector('#wadah_tombol');
+
+    wadahJok.insertAdjacentHTML('beforeend', `<tr>
+                                                  <th scope="row">1</th>
+                                                  <td>${namaBarang} <input type="text" class="form-control d-none" name="kode_barang[]" value="${kodeBarang}"></td>
+                                                  <td>${jumlah}
+                                                      <input type="text" class="form-control d-none" name="jumlah_barang[]" value="${jumlah}">
+                                                      <input type="text" class="form-control d-none" name="hpp_barang[]" value="${hppBarang}">
+                                                  </td>
+                                                  <td><a href="javascript:void(0)"><span class="badge bg-danger">Hapus</span></a></td>
+                                              </tr>`)
+    if (tombolKonfir == false) {
+      wadahTombol.insertAdjacentHTML('beforeend', `<button type="submit" class="btn btn-primary">Konfirmasi</button>`)
+    }
+    tombolKonfir = true
+  })
+</script>
 @endsection
