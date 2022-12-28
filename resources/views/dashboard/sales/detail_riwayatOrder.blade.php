@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-header">
         <div class="d-flex align-items-center">
-            <h5 class="card-title flex-grow-1 mb-0">Detail Riwayat Order
+            <h5 class="card-title flex-grow-1 mb-0">{{ $tittlePage }}
             </h5>
             <div class="flex-shrink-0">
                 <a href="apps-invoices-details.html" class="btn btn-success btn-sm d-none"><i

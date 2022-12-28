@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Province;
+use App\Models\Sales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -135,7 +136,21 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        // 
+        // if ($user->foto) {
+        //     Storage::delete($user->foto);
+        // }
+        // User::destroy($user->id);
+
+        // return redirect('/sales')->with('success', 'Delete User Success');
+    }
+    public function destroy_sales(User $user)
+    {
+        if ($user->foto) {
+            Storage::delete($user->foto);
+        }
+        User::destroy($user->id);
+
+        return redirect('/sales')->with('success', 'Delete User Success');
     }
 
     public function list_sales()

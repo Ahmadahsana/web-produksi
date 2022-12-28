@@ -63,8 +63,11 @@
                                             class="btn btn-sm btn-success edit-item-btn">Detail</a>
                                     </div>
                                     <div class="remove">
-                                        <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRecordModal">Remove</button>
+                                        <form action="/sales/{{ $s->id }}" method="post">
+                                            @csrf
+                                            <button class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Apakah yakin ingin menghapus data ( {{ $s->nama }} ) ?')">Remove</button>
+                                        </form>
                                     </div>
                                 </div>
                             </td>
@@ -74,13 +77,14 @@
 
                     </tbody>
                 </table>
-                <div class="noresult" style="display: none">
+                <div class=" noresult" style="display: none">
                     <div class="text-center">
                         <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
                             colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
                         </lord-icon>
                         <h5 class="mt-2">Sorry! No Result Found</h5>
-                        <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
+                        <p class="text-muted mb-0">We've searched more than 150+ Orders We
+                            did not find any
                             orders for you search.</p>
                     </div>
                 </div>
@@ -123,10 +127,7 @@
                 </div>
                 <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                     <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                    <form action="/sales/{{ $s->id }}" method="post">
-                        @method('delete')
-                        @csrf
-                        <button type="submit" class="btn w-sm btn-danger " id="delete-record">Yes, Delete It!</button>
+                    <button type="submit" class="btn w-sm btn-danger " id="delete-record">Yes, Delete It!</button>
                     </form>
                 </div>
             </div>

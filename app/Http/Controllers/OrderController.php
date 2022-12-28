@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Barang;
 use App\Models\Order_detail;
 use App\Models\Status_pengerjaan;
@@ -188,14 +186,14 @@ class OrderController extends Controller
     public function riwayatOrder()
     {
         return view('dashboard.sales.daftar_riwayatOrder', [
-            'tittlePage'    =>  'Riwayat Order',
+            'tittlePage'    =>  'RIWAYAT ORDER',
             'orders'        =>  Order::where('sales_username', auth()->user()->username)->get()
         ]);
     }
     public function Detailriwayatorder(Order_detail $id_order_detail)
     {
         return view('dashboard.sales.detail_riwayatOrder', [
-            'tittlePage'    =>  'Detail Riwayat Order',
+            'tittlePage'    =>  'DETAIL RIWAYAT ORDER',
             'order'        =>  Order_detail::where('order_id', $id_order_detail->order_id)->get()
         ]);
     }

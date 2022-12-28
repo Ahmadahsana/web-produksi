@@ -46,6 +46,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 // Admin //sales
 Route::resource('/sales', UserController::class)->middleware('admin'); //ini membingungkan saat kembali, detail, edit
+Route::post('/sales/{user}', [UserController::class, 'destroy_sales'])->middleware('admin'); //ini membingungkan saat kembali, detail, edit
 Route::get('/sales_show/{user}', [UserController::class, 'show_sales'])->middleware('admin'); //ini membingungkan saat kembali, detail, edit
 // Route::put('/sales_update/{sales}', [UserController::class, 'sales_update'])->middleware('auth'); //ini membingungkan saat kembali, detail, edit
 
