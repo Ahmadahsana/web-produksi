@@ -196,7 +196,7 @@ class OrderController extends Controller
     {
         return view('dashboard.sales.detail_riwayatOrder', [
             'tittlePage'    =>  'Detail Riwayat Order',
-            'order'        =>  Order_detail::where('order_id', $id_order_detail->order_id)->first()
+            'order'        =>  Order_detail::where('order_id', $id_order_detail->order_id)->get()
         ]);
     }
 }
