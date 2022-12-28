@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan tanggal"
-                        value="{{ $order->header->tanggal }}" required readonly>
+                        value="{{ $order->Order->tanggal }}" required readonly>
                 </div>
             </div>
             <div class="row mb-3">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="sales" name="sales" placeholder="Masukkan sales"
-                        value="{{ $order->header->sales->nama }}" readonly required>
+                        value="{{ $order->Order->sales->nama }}" readonly required>
                 </div>
             </div>
             <div class="row mb-3">

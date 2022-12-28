@@ -153,7 +153,7 @@ class OrderController extends Controller
     {
         return view('dashboard.admin.permintaan_order', [
             'tittlePage'    => 'LIST PERMINTAAN ORDER',
-            'orders' => Order_detail::where('status_pengerjaan_id', '=', '1')->with(['barang', 'status_pengerjaan', 'header', 'header.sales'])
+            'orders' => Order_detail::where('status_pengerjaan_id', '=', '1')->with(['barang', 'status_pengerjaan', 'Order', 'Order.sales'])
                 ->get()
         ]);
     }
@@ -162,7 +162,7 @@ class OrderController extends Controller
     {
         return view('dashboard.admin.daftar_order', [
             'tittlePage'    => 'LIST ORDER',
-            'orders' => Order_detail::where('status_pengerjaan_id', '!=', '1')->with(['barang', 'status_pengerjaan', 'header'])
+            'orders' => Order_detail::where('status_pengerjaan_id', '!=', '1')->with(['barang', 'status_pengerjaan', 'Order'])
                 ->get()
         ]);
     }

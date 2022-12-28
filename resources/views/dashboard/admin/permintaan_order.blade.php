@@ -53,8 +53,8 @@
                             <th scope="row">{{ $no++ }}</th>
                             <td class="id" style="display:none;"><a href="javascript:void(0);"
                                     class="fw-medium link-primary">#VZ2101</a></td>
-                            <td class="tanggal">{{ date("d-M-Y", strtotime($order->header->tanggal)) }}</td>
-                            <td class="sales">{{ $order->header->sales->nama }}</td>
+                            <td class="tanggal">{{ date("d-M-Y", strtotime($order->Order->tanggal)) }}</td>
+                            <td class="sales">{{ $order->Order->sales->nama }}</td>
                             <td class="nama">{{ $order->barang->nama }}</td>
                             <td class="jumlah">{{ $order->jumlah }}</td>
                             <td class="status"><span class="badge badge-soft-success text-uppercase">{{

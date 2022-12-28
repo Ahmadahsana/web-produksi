@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Order_detail;
 use App\Models\Prod_jok;
 use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Isset_;
 
 class ProdJokController extends Controller
 {
@@ -93,15 +95,26 @@ class ProdJokController extends Controller
         return view('produksi.jok.edit_jok', [
             'tittlePage'        => 'JOK',
             'jok' => $jok_id,
-            'vendor' => Vendor_produksi::all()
+            'vendor' => Vendor_produksi::all(),
+            'joks' => Barang::where('kategori_barang_id', 2)->get()
         ]);
     }
 
     public function edit_jok(Request $request)
     {
-        return $request->all();
+        // return $request->all();
+        if (isset($request->biaya)) {
+            return 'ini dari vendor lain';
+        } elseif (isset($request->kode_barang)) {
+            return 'ini dari vendor sendiri';
+        }
+        $data_vendor = [
+            'vendor_produksi_id' => $request->vendor,
+            'tgl_diproses' => date("Y-m-d H:i:s")
+        ];
 
+        Prod_jok::where('id', $request->jok_id)->update($data_vendor);
 
-        return redirect('/finishing')->with('success', 'Berhasil proses finishing');
+        return redirect('/jok')->with('success', 'Berhasil proses jok');
     }
 }
