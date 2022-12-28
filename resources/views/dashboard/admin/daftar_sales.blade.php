@@ -58,7 +58,7 @@
                                     Active @else NonActive @endif</span></td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <div class="edit">
+                                    <div class="detail">
                                         <a href="/sales_show/{{ $s->id }}"
                                             class="btn btn-sm btn-success edit-item-btn">Detail</a>
                                     </div>

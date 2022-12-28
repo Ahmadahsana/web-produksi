@@ -66,11 +66,13 @@ class UserController extends Controller
             'provinsi' => $request->provinsi,
             'kota' => $request->kota,
             'kecamatan' => $request->kecamatan,
-            'foto' => $request->file('gambar')->store('foto-sales'),
             'status_user_id' => $request->status,
             'password' => bcrypt($request->password),
             'role_id' => 2
         ];
+        if ($request->file('foto')) {
+            $validatedData['foto']    = $request->file('foto')->store('foto-sales');
+        }
 
         User::create($validatedData);
 

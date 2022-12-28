@@ -31,34 +31,36 @@
 
             <div class="table-responsive table-card mt-3 mb-1">
                 <table class="table align-middle table-nowrap" id="customerTable">
-                    <thead class="table-light">
+                    <thead class="table-light text-center">
                         <tr>
                             {{-- <th scope="col" style="width: 50px;">No</th> --}}
-                            <th class="sort" data-sort="customer_name">Nama Barang</th>
+                            <th class="sort" data-sort="customer_name">Nama Sales</th>
+                            <th class="sort" data-sort="customer_name">Tanggal Order</th>
                             <th class="sort" data-sort="alamat">Total Bayar</th>
                             <th class="sort" data-sort="phone">DP</th>
                             <th class="sort" data-sort="phone">Payment</th>
                             <th class="sort" data-sort="action">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="list form-check-all">
+                    <tbody class="list form-check-all text-center">
                         @foreach ($orders as $ord)
                         <tr>
                             {{-- <td class="tanggal">{{ $loop->iteration }}</td> --}}
                             <td class="id" style="display:none;"><a href="javascript:void(0);"
                                     class="fw-medium link-primary">#VZ2101</a></td>
-                            <td class="tanggal">{{ $ord }}</td>
-                            <td class="sales">{{ $ord }}</td>
-                            <td class="nama">{{ $ord }}</td>
-                            <td class="jumlah">{{ $ord }}</td>
+                            <td class="tanggal">{{ strtoupper($ord->sales_username) }}</td>
+                            <td class="sales">{{ date("d-M-Y", strtotime ($ord->tanggal)) }}</td>
+                            <td class="nama">@currency($ord->total_bayar)</td>
+                            <td class="jumlah">@currency($ord->dp)</td>
+                            <td class="jumlah">{{ strtoupper($ord->payment) }}</td>
                             <td>
 
                                 <div class="d-flex gap-2">
-                                    <div class="edit">
+                                    <div class="Detail">
                                         {{-- <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                             data-bs-target="#showModal">Edit</button> --}}
-                                        <a href="/order/{{ $ord }}/edit"
-                                            class="btn btn-sm btn-success edit-item-btn">Edit</a>
+                                        <a href="/riwayatOrder/{{ $ord->id }}"
+                                            class="btn btn-sm btn-info edit-item-btn">Detail</a>
                                     </div>
                                     {{-- <div class="remove">
                                         <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"

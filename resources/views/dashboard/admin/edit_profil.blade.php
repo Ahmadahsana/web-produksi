@@ -27,9 +27,15 @@
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
+                                    @if (auth()->user()->foto)
                                     <img src="{{ asset('storage').'/'. auth()->user()->foto }}"
                                         class="rounded-circle avatar-xl img-thumbnail user-profile-image"
                                         alt="user-profile-image">
+                                    @else
+                                    <img class="rounded-circle avatar-xl img-thumbnail user-profile-image"
+                                        src="/storage/foto-sales/default.jpg" alt="Header Avatar">
+                                    @endif
+
                                     <div class="avatar-xs d-none p-0 rounded-circle profile-photo-edit">
                                         {{-- <input id="profile-img-file-input" type="hidden"
                                             class="profile-img-file-input" name="oldFoto">

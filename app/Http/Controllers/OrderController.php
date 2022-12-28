@@ -184,4 +184,19 @@ class OrderController extends Controller
             'orders' => $order
         ]);
     }
+
+    public function riwayatOrder()
+    {
+        return view('dashboard.sales.daftar_riwayatOrder', [
+            'tittlePage'    =>  'Riwayat Order',
+            'orders'        =>  Order::where('sales_username', auth()->user()->username)->get()
+        ]);
+    }
+    public function Detailriwayatorder(Order_detail $id_order_detail)
+    {
+        return view('dashboard.sales.detail_riwayatOrder', [
+            'tittlePage'    =>  'Detail Riwayat Order',
+            'order'        =>  Order_detail::where('order_id', $id_order_detail->order_id)->first()
+        ]);
+    }
 }

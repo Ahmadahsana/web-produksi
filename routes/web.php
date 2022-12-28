@@ -74,9 +74,10 @@ Route::get('/list_permintaan', [OrderController::class, 'permintaan'])->middlewa
 Route::get('/list_order', [OrderController::class, 'list'])->middleware('admin');
 Route::get('/order_sales', [OrderController::class, 'order_by_sales'])->middleware('sales');
 Route::get('/order_sales/{id}', [OrderController::class, 'order_by_sales_edit'])->middleware('sales');
+Route::get('/riwayatOrder', [OrderController::class, 'riwayatOrder'])->middleware('sales');
+Route::get('/riwayatOrder/{id_order_detail}', [OrderController::class, 'Detailriwayatorder'])->middleware('sales');
 
 // Riwayat Order
-Route::resource('/riwayatOrder', RiwayatOrderController::class)->middleware('sales');
 // Route::get('/riwayatOrder/{Order:auth()->user()->id}', [RiwayatOrderController::class, 'riwayatOrder'])->middleware('sales');
 
 // dashboard admin
