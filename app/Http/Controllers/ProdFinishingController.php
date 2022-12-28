@@ -111,6 +111,16 @@ class ProdFinishingController extends Controller
                 'harga_finishing' => $request->harga_finishing,
                 'harga_service' => $request->harga_servis,
             ];
+
+            $data_update = [
+                'status_pengerjaan_id' => 5
+            ];
+            Order_detail::where('id', $request->order_detail_id)->update($data_update);
+
+            $data_jok = [
+                'order_detail_id' => $request->order_detail_id
+            ];
+            Prod_jok::create($data_jok);
         } else {
             $data_vendor = [
                 'vendor_produksi_id' => $request->vendor,
@@ -119,16 +129,6 @@ class ProdFinishingController extends Controller
         }
 
         Prod_finishing::where('id', $request->finishing_id)->update($data_vendor);
-
-        $data_update = [
-            'status_pengerjaan_id' => 5
-        ];
-        Order_detail::where('id', $request->order_detail_id)->update($data_update);
-
-        $data_jok = [
-            'order_detail_id' => $request->order_detail_id
-        ];
-        Prod_jok::create($data_jok);
 
         return redirect('/finishing')->with('success', 'Berhasil proses finishing');
     }
