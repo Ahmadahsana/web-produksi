@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Order_detail;
 use App\Models\Prod_jok;
+use App\Models\Prod_jok_detail;
 use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Isset_;
@@ -103,6 +104,7 @@ class ProdJokController extends Controller
     public function edit_jok(Request $request)
     {
         // return $request->all();
+        // return $request->order_detail_id;
         if (isset($request->biaya)) {
             // ini dari vendor lain
             $dataUpdate = [
@@ -110,8 +112,42 @@ class ProdJokController extends Controller
                 'is_selesai' => 1
             ];
             Prod_jok::where('id', $request->jok_id)->update($dataUpdate);
+
+            $data_update_status = [
+                'status_pengerjaan_id' => 6
+            ];
+            Order_detail::where('id', $request->order_detail_id)->update($data_update_status);
         } elseif (isset($request->kode_barang)) {
             // ini dari vendor sendiri
+            // return $request->all();
+            $total_biaya = 0;
+            foreach ($request->jumlah_barang as $no => $jum) {
+                $biaya = $request->jumlah_barang[$no] * $request->hpp_barang[$no];
+                $total_biaya = $total_biaya + $biaya;
+            }
+
+            // insert ke tabel prod_jok
+            $dataUpdate = [
+                'biaya' => $total_biaya,
+                'is_selesai' => 1
+            ];
+            Prod_jok::where('id', $request->jok_id)->update($dataUpdate);
+
+            // insert ke prod_jok_detail
+            foreach ($request->jumlah_barang as $no => $jum) {
+                $data_detail = [
+                    'prod_jok_id' => $request->jok_id,
+                    'kode_barang' => $request->kode_barang[$no],
+                    'jumlah' => $request->jumlah_barang[$no],
+                ];
+
+                Prod_jok_detail::create($data_detail);
+            }
+
+            $data_update_status = [
+                'status_pengerjaan_id' => 6
+            ];
+            Order_detail::where('id', $request->order_detail_id)->update($data_update_status);
         } else {
             $data_vendor = [
                 'vendor_produksi_id' => $request->vendor,

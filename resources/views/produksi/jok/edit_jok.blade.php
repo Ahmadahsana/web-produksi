@@ -49,6 +49,7 @@
         <form action="/edit_jok" method="POST" enctype="multipart/form-data">
           @csrf
           <input type="text" class="d-none" value="{{ $jok->id }}" name="jok_id">
+          <input type="text" value="{{ $jok->order_detail_id }}" name="order_detail_id" class="d-none">
           <label for="basic-url" class="form-label">Biaya Jok / Aksesoris</label>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon3">Rp. </span>
@@ -86,7 +87,7 @@
         <form action="/edit_jok" method="POST">
             @csrf
             <input type="text" class="d-none" value="{{ $jok->id }}" name="jok_id">
-            {{-- <input type="text" value="" name="order_detail_id" class="d-none"> --}}
+            <input type="text" value="{{ $jok->order_detail_id }}" name="order_detail_id" class="d-none">
             <table class="table table-striped mt-2">
                 <thead>
                     <tr>
