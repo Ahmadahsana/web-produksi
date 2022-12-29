@@ -104,16 +104,22 @@ class ProdJokController extends Controller
     {
         // return $request->all();
         if (isset($request->biaya)) {
-            return 'ini dari vendor lain';
+            // ini dari vendor lain
+            $dataUpdate = [
+                'biaya' => $request->biaya,
+                'is_selesai' => 1
+            ];
+            Prod_jok::where('id', $request->jok_id)->update($dataUpdate);
         } elseif (isset($request->kode_barang)) {
-            return 'ini dari vendor sendiri';
-        }
-        $data_vendor = [
-            'vendor_produksi_id' => $request->vendor,
-            'tgl_diproses' => date("Y-m-d H:i:s")
-        ];
+            // ini dari vendor sendiri
+        } else {
+            $data_vendor = [
+                'vendor_produksi_id' => $request->vendor,
+                'tgl_diproses' => date("Y-m-d H:i:s")
+            ];
 
-        Prod_jok::where('id', $request->jok_id)->update($data_vendor);
+            Prod_jok::where('id', $request->jok_id)->update($data_vendor);
+        }
 
         return redirect('/jok')->with('success', 'Berhasil proses jok');
     }
