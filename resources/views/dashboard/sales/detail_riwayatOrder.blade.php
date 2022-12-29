@@ -4,8 +4,8 @@
 <div class="card">
     <div class="card-header">
         <div class="d-flex align-items-center">
-            <h5 class="card-title flex-grow-1 mb-0">Order <span class="p-2 alert-success rounded-pill">#{{ strtoupper(
-                    $order->Barang->kode_barang )}}</span></h5>
+            <h5 class="card-title flex-grow-1 mb-0">{{ $tittlePage }}
+            </h5>
             <div class="flex-shrink-0">
                 <a href="apps-invoices-details.html" class="btn btn-success btn-sm d-none"><i
                         class="ri-download-2-fill align-middle me-1"></i> Invoice</a>
@@ -31,46 +31,49 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($order as $od)
                     <tr>
                         <td>
                             <div class="d-flex">
                                 <div class="flex-shrink-0 avatar-lg bg-light rounded p-1">
-                                    <img src="{{ asset('storage') . '/' . $order->Barang->foto }}" alt=""
+                                    <img src="{{ asset('storage') . '/' . $od->Barang->foto }}" alt=""
                                         class="img-fluid d-block h-100">
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h5 class="fs-15"><a href="apps-ecommerce-product-details.html"
-                                            class="link-primary">{{ strtoupper($order->Barang->nama) }}</a></h5>
+                                            class="link-primary">{{ strtoupper($od->Barang->nama) }} | #{{
+                                            strtoupper($od->Barang->kode_barang) }}</a></h5>
                                     <p class="text-muted mb-2">Status Barang: <span
                                             class="fw-medium p-1 rounded-pill alert-info">{{
-                                            $order->barang->Status_barang->nama }}</span></p>
+                                            $od->barang->Status_barang->nama }}</span></p>
                                     <p class="text-muted mb-2">Status Jual: <span
                                             class="fw-medium p-1 rounded-pill alert-info">{{
-                                            $order->barang->Status_jual->nama }}</span></p>
+                                            $od->barang->Status_jual->nama }}</span></p>
                                     <p class="text-muted mb-0">Kategori Barang: <span
                                             class="fw-medium p-1 rounded-pill alert-info">{{
-                                            $order->barang->Kategori_barang->nama }}</span></p>
+                                            $od->barang->Kategori_barang->nama }}</span></p>
                                 </div>
                             </div>
                         </td>
-                        <td class="text-center">@currency($order->barang->harga)</td>
+                        <td class="text-center">@currency($od->barang->harga)</td>
                         <td class="text-center">
-                            {{ $order->jumlah }}
+                            {{ $od->jumlah }}
                             {{-- <div class="text-warning fs-15">
                                 <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
                                     class="ri-star-fill"></i><i class="ri-star-half-fill"></i>
                             </div> --}}
                         </td>
-                        <td class="text-center">{{ $order->barang->satuan }}</td>
-                        <td class="text-center">@currency( $order->order->dp )</td>
-                        <td class="text-center">{{ strtoupper($order->order->payment) }}</td>
-                        <td class="text-center">{{ date("d-M-Y", strtotime ($order->order->tanggal)) }}</td>
+                        <td class="text-center">{{ $od->barang->satuan }}</td>
+                        <td class="text-center">@currency( $od->order->dp )</td>
+                        <td class="text-center">{{ strtoupper($od->order->payment) }}</td>
+                        <td class="text-center">{{ date("d-M-Y", strtotime ($od->order->tanggal)) }}</td>
                         <td class="text-center"><span class="alert-info p-2 rounded-pill">{{
-                                $order->status_pengerjaan->nama }}</span></td>
+                                $od->Status_pengerjaan->nama }}</span></td>
                         <td class="fw-medium text-end">
-                            @currency($order->total_harga)
+                            @currency($od->total_harga)
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -82,7 +85,7 @@
         <div class="d-sm-flex align-items-center">
             {{-- @dd($order) --}}
             <h5 class="card-title flex-grow-1 mb-0 text-success">Riwayat order dari "{{
-                strtoupper($order->Order->sales_username) }}"
+                strtoupper($order[0]->Order->sales_username) }}"
             </h5>
             <div class="flex-shrink-0 mt-2 mt-sm-0">
                 <a href="javasccript:void(0;)" class="btn d-none btn-soft-info btn-sm mt-2 mt-sm-0"><i
@@ -106,8 +109,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-15 mb-0 fw-semibold">{{ $order->status_pengerjaan->nama }} - <span
-                                            class="fw-normal">{{ date("d-M-Y", strtotime ($order->Order->tanggal))
+                                    <h6 class="fs-15 mb-0 fw-semibold">{{ $order[0]->status_pengerjaan->nama }} - <span
+                                            class="fw-normal">{{
+                                            date("d-M-Y", strtotime ($order[0]->Order->tanggal))
                                             }}</span></h6>
                                 </div>
                             </div>
@@ -116,7 +120,7 @@
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body ms-2 ps-5 pt-0">
-                            <h6 class="mb-1">{{ $order->Barang->Status_barang->nama }}</h6>
+                            <h6 class="mb-1">{{ $order[0]->Barang->Status_barang->nama }}</h6>
                             <p class="text-muted">Wed, 15 Dec 2021 - 05:34PM</p>
 
                             <h6 class="mb-1">Seller has proccessed your order.</h6>

@@ -30,4 +30,9 @@ class Barang extends Model
     {
         return $this->hasOne(Transaksi_barang::class, 'kode_barang', 'kode_barang')->latest();
     }
+
+    // public function Order_detail()
+    // {
+    //     return $this->hasMany(Order_detail::class);
+    // }
 }
