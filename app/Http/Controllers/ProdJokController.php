@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Order_detail;
 use App\Models\Prod_jok;
 use App\Models\Prod_jok_detail;
+use App\Models\Prod_packing;
 use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Isset_;
@@ -117,6 +118,11 @@ class ProdJokController extends Controller
                 'status_pengerjaan_id' => 6
             ];
             Order_detail::where('id', $request->order_detail_id)->update($data_update_status);
+
+            $data_packing = [
+                'order_detail_id' => $request->order_detail_id
+            ];
+            Prod_packing::create($data_packing);
         } elseif (isset($request->kode_barang)) {
             // ini dari vendor sendiri
             // return $request->all();
@@ -131,6 +137,7 @@ class ProdJokController extends Controller
                 'biaya' => $total_biaya,
                 'is_selesai' => 1
             ];
+
             Prod_jok::where('id', $request->jok_id)->update($dataUpdate);
 
             // insert ke prod_jok_detail
@@ -148,6 +155,11 @@ class ProdJokController extends Controller
                 'status_pengerjaan_id' => 6
             ];
             Order_detail::where('id', $request->order_detail_id)->update($data_update_status);
+
+            $data_packing = [
+                'order_detail_id' => $request->order_detail_id
+            ];
+            Prod_packing::create($data_packing);
         } else {
             $data_vendor = [
                 'vendor_produksi_id' => $request->vendor,

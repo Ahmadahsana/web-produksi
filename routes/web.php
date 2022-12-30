@@ -13,6 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\ProdFinishingController;
 use App\Http\Controllers\ProdJokController;
+use App\Http\Controllers\ProdPackingController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RiwayatOrderController;
 use App\Http\Controllers\VendorProduksiController;
@@ -99,3 +100,8 @@ Route::resource('/vendor', VendorProduksiController::class)->middleware('admin')
 Route::resource('/jok', ProdJokController::class)->middleware('admin');
 Route::get('/buat_jok/{jok_id}', [ProdJokController::class, 'buat_jok'])->middleware('admin');
 Route::post('/edit_jok', [ProdJokController::class, 'edit_jok'])->middleware('admin');
+
+// packing
+Route::resource('/packing', ProdPackingController::class)->middleware('admin');
+Route::get('/buat_packing/{packing_id}', [ProdPackingController::class, 'buat_packing'])->middleware('admin');
+Route::post('/edit_packing', [ProdPackingController::class, 'edit_packing'])->middleware('admin');

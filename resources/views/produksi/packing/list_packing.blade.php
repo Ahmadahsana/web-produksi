@@ -39,7 +39,7 @@
                             <th class="sort" data-sort="alamat">Nama barang</th>
                             <th class="sort" data-sort="phone">Jumlah</th>
                             <th class="sort" data-sort="action">Status</th>
-                            <th class="sort" data-sort="action">Status jok</th>
+                            <th class="sort" data-sort="action">Status Packing</th>
                             <th class="sort" data-sort="action">Action</th>
                         </tr>
                     </thead>
@@ -47,10 +47,10 @@
                         @php
                         $no = 1;
                         @endphp
-                        @foreach ($jok as $m)
+                        @foreach ($packing as $m)
                         {{-- @foreach ($order->order_detail as $barang) --}}
                         {{-- @dd($m->finishing->vendor_produksi_id) --}}
-                        
+                        {{-- @dd($m->packing) --}}
                         <tr>
                             <th scope="row">{{ $no++ }}</th>
                             <td class="id" style="display:none;"><a href="javascript:void(0);"
@@ -72,7 +72,7 @@
                                     <div class="edit">
                                         {{-- <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                             data-bs-target="#showModal">Edit</button> --}}
-                                        <a href="/buat_jok/{{ $m->jok->id }}"
+                                        <a href="/buat_packing/{{ $m->packing->id }}"
                                             class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                     </div>
                                     {{-- <div class="remove">
