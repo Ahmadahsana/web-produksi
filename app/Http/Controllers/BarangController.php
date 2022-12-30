@@ -67,8 +67,14 @@ class BarangController extends Controller
         }
 
         Barang::create($validatedCreate);
-
-        return redirect('/barang')->with('success', 'Sukses Menambah Barang !!');
+        if ($validatedCreate['kategori_barang_id'] == 1) {
+            return redirect('/mentahan_barang')->with('success', 'Sukses Menambah Inventori Mentahan !!');
+        } elseif ($validatedCreate['kategori_barang_id'] == 2) {
+            return redirect('/jok_aksesoris_barang')->with('success', 'Sukses Menambah Inventori Jok/Aksesoris !!');
+        } elseif ($validatedCreate['kategori_barang_id'] == 4) {
+            return redirect('/packing_barang')->with('success', 'Sukses Menambah Inventori Packing !!');
+        }
+        return redirect('/barang')->with('success', 'Sukses Menambah Inventori Barang Jadi !!');
     }
 
     /**

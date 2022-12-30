@@ -17,7 +17,7 @@
         </div>
         <div class="col-lg-3 col-xl-3">
             <h6 class="card-title flex-grow-1 mb-1">
-                Total : <span class="alert-sm rounded-3 px-1 alert-success">@currency($order->total_bayar)</span>
+                Pembayaran: <span class="alert-sm rounded-3 px-1 alert-success">@currency($order->total_bayar)</span>
             </h6>
         </div>
         <div class="col-lg-3 col-xl-3">
@@ -44,29 +44,28 @@
                 <h5 class="mb-1">{{ strtoupper($or->barang->nama) }}</h5>
                 <h5 class="text-muted">#{{ $or->barang->kode_barang }}</h5>
             </div>
-
-            <div class="mb-2 row ">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Jumlah Pesanan</label>
-                <div class="col-sm-10">
-                    {{ $or->jumlah }} {{ $or->barang->satuan }}
-                </div>
-            </div>
-            <div class="mb-2 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Harga</label>
-                <div class="col-sm-10">
-                    <p> @currency($or->barang->hpp)</p>
-                </div>
-            </div>
-            <div class="mb-2 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Total Bayar</label>
-                <div class="col-sm-10">
-                    @currency($or->jumlah * $or->barang->hpp)
-                </div>
+            <div class=" mt-5 row  ">
+                <table class="table table-bordered table-responsive table-active">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col">Jumlah Pesanan</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Total Harga</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center">
+                            <td>{{ $or->jumlah }} {{ $or->barang->satuan }}</td>
+                            <td>@currency($or->barang->hpp)</td>
+                            <td>@currency($or->jumlah * $or->barang->hpp)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
         </div>
         <div class="card-header">
-            <div class="d-flex align-items-center text-center">
+            <div class="d-flex  text-center">
                 <h5 class="card-title flex-grow-1 mb-0">Order Status</h5>
             </div>
         </div>

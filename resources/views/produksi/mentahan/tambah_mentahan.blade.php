@@ -15,13 +15,13 @@
         <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Nama Barang</label>
             <div class="col-sm-10">
-                {{ $order_detail->barang->nama }}
+                <h6 class="form-control-plaintext">{{ $order_detail->barang->nama }}</h6>
             </div>
         </div>
         <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Jumlah</label>
             <div class="col-sm-10">
-                {{ $order_detail->jumlah }}
+                <h6 class="form-control-plaintext">{{ $order_detail->jumlah }}</h6>
             </div>
         </div>
     </div><!-- end card -->
