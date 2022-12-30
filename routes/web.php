@@ -7,14 +7,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BarangController;
-use App\Http\Controllers\ProfilController;
-use App\Http\Controllers\ProdJokController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\ProdFinishingController;
 use App\Http\Controllers\ProdJokController;
 use App\Http\Controllers\ProfilController;
-use App\Http\Controllers\RiwayatOrderController;
 use App\Http\Controllers\VendorProduksiController;
 use App\Http\Controllers\TransaksiBarangController;
 
