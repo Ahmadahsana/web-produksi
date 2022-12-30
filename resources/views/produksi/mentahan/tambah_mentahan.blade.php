@@ -15,15 +15,15 @@
         <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Nama Barang</label>
             <div class="col-sm-10">
-              {{ $order_detail->barang->nama }}
+                {{ $order_detail->barang->nama }}
             </div>
-          </div>
-          <div class="mb-3 row">
+        </div>
+        <div class="mb-3 row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Jumlah</label>
             <div class="col-sm-10">
                 {{ $order_detail->jumlah }}
             </div>
-          </div>
+        </div>
     </div><!-- end card -->
 </div>
 {{-- @dd($mentahan) --}}
@@ -35,17 +35,18 @@
                 <select class="form-select" aria-label="Default select example" id="mentahan">
                     <option selected disabled></option>
                     @foreach ($mentahan as $m)
-                        <option value="{{ $m->kode_barang }}" data-value="{{ $m->nama }}" data-harga="{{ $m->harga }}"  data-hpp="{{ $m->hpp }}">{{ $m->nama }} </option>
+                    <option value="{{ $m->kode_barang }}" data-value="{{ $m->nama }}" data-harga="{{ $m->harga }}"
+                        data-hpp="{{ $m->hpp }}">{{ $m->nama }} </option>
                     @endforeach
                 </select>
-              </div>
-              <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
                 <label for="inputPassword4" class="form-label">Jumlah</label>
                 <input type="text" class="form-control" id="jumlah">
-              </div>
-              <div class="col-md-2 align-self-end">
+            </div>
+            <div class="col-md-2 align-self-end">
                 <button type="button" id="tambah" class="btn btn-primary">Tambah</button>
-              </div>
+            </div>
         </div>
         <hr>
 
@@ -65,13 +66,13 @@
                     </tr>
                 </thead>
                 <tbody id="wadah_mentahan">
-                    
+
                 </tbody>
             </table>
             <div class="row">
                 <div class="col-9"></div>
                 <div class="col-3" id="wadah_tombol">
-                    
+
                 </div>
             </div>
         </form>
@@ -116,7 +117,6 @@
 <script src="assets/js/pages/listjs.init.js"></script>
 
 <script>
-
     let tombolKonfir = false
     document.querySelector('#tambah').addEventListener('click', function(){
         let kodeBarang = document.querySelector('#mentahan').value;

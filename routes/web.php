@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\ProdFinishingController;
 use App\Http\Controllers\ProdJokController;
+use App\Http\Controllers\ProdPackingController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\VendorProduksiController;
 use App\Http\Controllers\TransaksiBarangController;
@@ -76,6 +77,8 @@ Route::get('/list_permintaan', [OrderController::class, 'permintaan'])->middlewa
 Route::get('/list_order', [OrderController::class, 'list'])->middleware('admin');
 Route::get('/order_sales', [OrderController::class, 'order_by_sales'])->middleware('sales');
 Route::get('/order_sales/{id}', [OrderController::class, 'order_by_sales_edit'])->middleware('sales');
+
+// Riwayat Order
 Route::get('/riwayatOrder', [OrderController::class, 'riwayatOrder'])->middleware('sales');
 Route::get('/riwayatOrder/{id_order}', [OrderController::class, 'Detailriwayatorder'])->middleware('sales');
 

@@ -5,7 +5,28 @@
   <div class="card-header">
     <h4 class="card-title mb-0">{{ $tittlePage }}</h4>
   </div><!-- end card header -->
-{{-- @dd($finishing) --}}
+  <div class="card-body">
+    @if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+      {{ session('success') }}
+    </div>
+    @endif
+  </div><!-- end card -->
+  <div class="card-body">
+    <div class="mb-3 row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Nama Barang</label>
+      <div class="col-sm-10">
+        {{ $finishing->Order_detail->Barang->nama}}
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Jumlah</label>
+      <div class="col-sm-10">
+        {{ $finishing->Order_detail->jumlah}}
+      </div>
+    </div>
+  </div>
+  {{-- @dd($finishing) --}}
   <div class="card-body">
     @if (isset($finishing->tgl_diproses))
     <form action="/edit_finishing" method="POST">
