@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Order;
-use App\Models\Prod_mentahan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -12,7 +10,6 @@ use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\ProdFinishingController;
 use App\Http\Controllers\ProdPackingController;
 use App\Http\Controllers\RegistrasiController;
-use App\Http\Controllers\RiwayatOrderController;
 use App\Http\Controllers\VendorProduksiController;
 use App\Http\Controllers\TransaksiBarangController;
 
