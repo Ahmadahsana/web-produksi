@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,12 +20,25 @@ class LoginController extends Controller
             'password' => ['required']
         ]);
 
-        if (Auth::attempt($credential)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/');
-        }
 
-        return back()->with('loginError', 'Login gagal !');
+
+
+
+        $User = User::where('username', $request->username)->first();
+
+        if ($User) {
+            if ($User->status_user_id == '0') {
+                return back()->with('loginError', 'Login gagal !');
+            } else if ($User->status_user_id == '1') {
+                if (Auth::attempt($credential)) {
+                    // dd('belum');
+                    $request->session()->regenerate();
+                    return redirect()->intended('/');
+                }
+            }
+        } else {
+            return redirect('/login')->with('loginError', 'Anda tidak terdaftar!! silahkan daftar dahulu !!');
+        }
     }
 
     public function logout(Request $request)

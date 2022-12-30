@@ -1,6 +1,7 @@
 @extends('dashboard.layout.main')
 
 @section('container')
+{{-- @dd($order->order_detail) --}}
 <div class="card">
     <div class="card-header">
         <div class="d-flex align-items-center">
@@ -16,7 +17,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive table-card">
-            <table class="table table-nowrap align-middle table-borderless mb-0">
+            {{-- <table class="table table-nowrap align-middle table-borderless mb-0">
                 <thead class="table-light text-muted">
                     <tr>
                         <th scope="col">Detail Produk</th>
@@ -41,32 +42,29 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h5 class="fs-15"><a href="apps-ecommerce-product-details.html"
-                                            class="link-primary">{{ strtoupper($od->Barang->nama) }} | #{{
-                                            strtoupper($od->Barang->kode_barang) }}</a></h5>
+                                            class="link-primary">{{ strtoupper($od->Order_detail->Barang->nama) }} | #{{
+                                            strtoupper($od->Order_detail->Barang->kode_barang) }}</a></h5>
                                     <p class="text-muted mb-2">Status Barang: <span
                                             class="fw-medium p-1 rounded-pill alert-info">{{
-                                            $od->barang->Status_barang->nama }}</span></p>
+                                            $od->Order_detail->barang->Status_barang->nama }}</span></p>
                                     <p class="text-muted mb-2">Status Jual: <span
                                             class="fw-medium p-1 rounded-pill alert-info">{{
-                                            $od->barang->Status_jual->nama }}</span></p>
+                                            $od->Order_detail->barang->Status_jual->nama }}</span></p>
                                     <p class="text-muted mb-0">Kategori Barang: <span
                                             class="fw-medium p-1 rounded-pill alert-info">{{
-                                            $od->barang->Kategori_barang->nama }}</span></p>
+                                            $od->Order_detail->barang->Kategori_barang->nama }}</span></p>
                                 </div>
                             </div>
                         </td>
-                        <td class="text-center">@currency($od->barang->harga)</td>
+                        <td class="text-center">@currency($od->Order_detail->barang->harga)</td>
                         <td class="text-center">
                             {{ $od->jumlah }}
-                            {{-- <div class="text-warning fs-15">
-                                <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
-                                    class="ri-star-fill"></i><i class="ri-star-half-fill"></i>
-                            </div> --}}
+
                         </td>
-                        <td class="text-center">{{ $od->barang->satuan }}</td>
-                        <td class="text-center">@currency( $od->order->dp )</td>
-                        <td class="text-center">{{ strtoupper($od->order->payment) }}</td>
-                        <td class="text-center">{{ date("d-M-Y", strtotime ($od->order->tanggal)) }}</td>
+                        <td class="text-center">{{ $od->Order_detail->barang->satuan }}</td>
+                        <td class="text-center">@currency( $od->dp )</td>
+                        <td class="text-center">{{ strtoupper($od->payment) }}</td>
+                        <td class="text-center">{{ date("d-M-Y", strtotime ($od->tanggal)) }}</td>
                         <td class="text-center"><span class="alert-info p-2 rounded-pill">{{
                                 $od->Status_pengerjaan->nama }}</span></td>
                         <td class="fw-medium text-end">
@@ -75,7 +73,7 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>
+            </table> --}}
         </div>
     </div>
 </div>
@@ -85,7 +83,7 @@
         <div class="d-sm-flex align-items-center">
             {{-- @dd($order) --}}
             <h5 class="card-title flex-grow-1 mb-0 text-success">Riwayat order dari "{{
-                strtoupper($order[0]->Order->sales_username) }}"
+                strtoupper($order->sales_username) }}"
             </h5>
             <div class="flex-shrink-0 mt-2 mt-sm-0">
                 <a href="javasccript:void(0;)" class="btn d-none btn-soft-info btn-sm mt-2 mt-sm-0"><i
@@ -109,9 +107,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-15 mb-0 fw-semibold">{{ $order[0]->status_pengerjaan->nama }} - <span
-                                            class="fw-normal">{{
-                                            date("d-M-Y", strtotime ($order[0]->Order->tanggal))
+                                    <h6 class="fs-15 mb-0 fw-semibold">{{ $order->order_detail->status_pengerjaan->nama
+                                        }} - <span class="fw-normal">{{
+                                            date("d-M-Y", strtotime ($order->tanggal))
                                             }}</span></h6>
                                 </div>
                             </div>
@@ -120,7 +118,7 @@
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body ms-2 ps-5 pt-0">
-                            <h6 class="mb-1">{{ $order[0]->Barang->Status_barang->nama }}</h6>
+                            <h6 class="mb-1">{{ $order->Barang->Status_barang->nama }}</h6>
                             <p class="text-muted">Wed, 15 Dec 2021 - 05:34PM</p>
 
                             <h6 class="mb-1">Seller has proccessed your order.</h6>

@@ -6,15 +6,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\SalesController;
 use App\Http\Controllers\BarangController;
-use App\Http\Controllers\SalessController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\ProdJokController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\ProdFinishingController;
-use App\Http\Controllers\ProdJokController;
-use App\Http\Controllers\ProfilController;
-use App\Http\Controllers\RiwayatOrderController;
+use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\VendorProduksiController;
 use App\Http\Controllers\TransaksiBarangController;
 
@@ -39,10 +37,14 @@ Route::get('/', function () {
 
 // LOGIN
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-
 Route::post('/login', [LoginController::class, 'login']);
 
+// LOGOUT
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
+
+// REGISTRASI
+Route::get('/registrasi', [RegistrasiController::class, 'index'])->middleware('guest');
+Route::post('/registrasi', [RegistrasiController::class, 'store']);
 
 // Admin //sales
 Route::resource('/sales', UserController::class)->middleware('admin'); //ini membingungkan saat kembali, detail, edit
@@ -76,7 +78,7 @@ Route::get('/list_order', [OrderController::class, 'list'])->middleware('admin')
 Route::get('/order_sales', [OrderController::class, 'order_by_sales'])->middleware('sales');
 Route::get('/order_sales/{id}', [OrderController::class, 'order_by_sales_edit'])->middleware('sales');
 Route::get('/riwayatOrder', [OrderController::class, 'riwayatOrder'])->middleware('sales');
-Route::get('/riwayatOrder/{id_order_detail}', [OrderController::class, 'Detailriwayatorder'])->middleware('sales');
+Route::get('/riwayatOrder/{id_order}', [OrderController::class, 'Detailriwayatorder'])->middleware('sales');
 
 // Riwayat Order
 // Route::get('/riwayatOrder/{Order:auth()->user()->id}', [RiwayatOrderController::class, 'riwayatOrder'])->middleware('sales');

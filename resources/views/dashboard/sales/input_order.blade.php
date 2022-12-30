@@ -147,7 +147,7 @@
         document.querySelector('#tampung_gambar').appendChild(muncul)
         let id = this.value;
         let index = dataBarang.findIndex((barang) => barang.id == id);
-        let harga = dataBarang[index].harga
+        let harga = dataBarang[index].hpp
         let tampilHarga = document.querySelector('#cleave-numeral');
         let muncul_gambar = document.querySelector('#muncul_gambar');
 
@@ -173,7 +173,7 @@
         let idBarang = dataBarang[index].id;
         let fotoBarang = dataBarang[index].foto;
         let jumlahBarang = jumlah.value
-        let hargaBarang = dataBarang[index].harga
+        let hargaBarang = dataBarang[index].hpp
         let Total = parseInt(jumlahBarang) * parseInt(hargaBarang)
         
         let found = masukKeranjang.find(({id}) => id == idBarang);

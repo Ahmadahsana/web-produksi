@@ -9,6 +9,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                    @if (session()->has('loginError'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('loginError') }}
+                    </div>
+                    @endif
                     <div class="card overflow-hidden">
                         <div class="row g-0">
                             <div class="col-lg-6">
@@ -130,7 +140,7 @@
                                     </div>
 
                                     <div class="mt-5 text-center">
-                                        <p class="mb-0">Don't have an account ? <a href="auth-signup-cover.html"
+                                        <p class="mb-0">Don't have an account ? <a href="/registrasi"
                                                 class="fw-bold text-primary text-decoration-underline"> Signup</a>
                                         </p>
                                     </div>
