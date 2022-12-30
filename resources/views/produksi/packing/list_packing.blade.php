@@ -60,7 +60,7 @@
                             <td class="status"><span class="badge badge-soft-success text-uppercase">{{
                                     $m->status_pengerjaan->nama }}</span></td>
                             <td class="status"><span class="badge badge-soft-success text-uppercase">
-                                @if (isset($m->jok->vendor_produksi_id))
+                                @if (isset($m->packing->vendor_produksi_id))
                                     Dalam proses
                                 @else
                                     Belum diproses
