@@ -9,7 +9,7 @@
   <div class="card-body">
     @if (isset($packing->tgl_diproses))
     <div class="mb-3 row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">vendor Jok :</label>
+      <label for="staticEmail" class="col-sm-2 col-form-label">vendor Packing :</label>
       <div class="col-sm-10">
         <h6 class="form-control-plaintext">{{ $packing->Vendor_produksi->nama_vendor }}</h6>
       </div>
@@ -24,7 +24,7 @@
     <form action="/edit_packing" method="POST" enctype="multipart/form-data">
       @csrf
       <input type="text" value="{{ $packing->order_detail_id }}" name="order_detail_id" class="d-none">
-      <input type="text" class="d-none" value="{{ $packing->id }}" name="jok_id">
+      <input type="text" class="d-none" value="{{ $packing->id }}" name="packing_id">
       <div class="row">
         <div class="col-6">
           <label for="exampleFormControlInput1" class="form-label">Pilih vendor</label>
@@ -37,7 +37,7 @@
         </div>
         <div class="col-4 align-self-end">
           <button type="submit" class="btn btn-primary">Proses packing</button>
-          <a href="/jok" class="btn btn-danger">Kembali</a>
+          <a href="/packing" class="btn btn-danger">Kembali</a>
         </div>
       </div>
     </form>
@@ -45,12 +45,12 @@
 
     {{-- jika sudah di tentukan vendornya --}}
     @if (isset($packing->tgl_diproses))
-      @if ($packing->Vendor_produksi->id !== 1) {{-- jika pakai vendor lain --}}
-        <form action="/edit_jok" method="POST" enctype="multipart/form-data">
+      @if ($packing->vendor_produksi_id !== 1) {{-- jika pakai vendor lain --}}
+        <form action="/edit_packing" method="POST" enctype="multipart/form-data">
           @csrf
           <input type="text" class="d-none" value="{{ $packing->id }}" name="jok_id">
           <input type="text" value="{{ $packing->order_detail_id }}" name="order_detail_id" class="d-none">
-          <label for="basic-url" class="form-label">Biaya Jok / Aksesoris</label>
+          <label for="basic-url" class="form-label">Biaya Packing</label>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon3">Rp. </span>
             <div class="col-6">
@@ -58,12 +58,12 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary">Selesai Jok</button>
+          <button type="submit" class="btn btn-primary">Selesai Packing</button>
         </form>
       @else {{-- jika pakai vendor sendiri --}}
         <div class="row">
           <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Jok / Aksesoris</label>
+              <label for="inputEmail4" class="form-label">Bahan packing</label>
               <select class="form-select" aria-label="Default select example" id="jok">
                   <option selected disabled></option>
                   @foreach ($packings as $j)
@@ -84,9 +84,9 @@
         <h5>Daftar Jok / Aksesoris</h5>
 
         <!-- Striped Rows -->
-        <form action="/edit_jok" method="POST">
+        <form action="/edit_packing" method="POST">
             @csrf
-            <input type="text" class="d-none" value="{{ $packing->id }}" name="jok_id">
+            <input type="text" class="d-none" value="{{ $packing->id }}" name="packing_id">
             <input type="text" value="{{ $packing->order_detail_id }}" name="order_detail_id" class="d-none">
             <table class="table table-striped mt-2">
                 <thead>
