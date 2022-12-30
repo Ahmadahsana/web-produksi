@@ -40,4 +40,9 @@ class Order_detail extends Model
     {
         return $this->hasOne(Prod_jok::class);
     }
+
+    public function packing()
+    {
+        return $this->hasOne(Prod_packing::class);
+    }
 }

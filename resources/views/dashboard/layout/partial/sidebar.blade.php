@@ -110,6 +110,11 @@
                         <i class="ri-radio-2-fill"></i> <span data-key="t-landing">Jok</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Request::is('packing*') ? 'active' : '' }}" href="/packing">
+                        <i class="ri-radio-2-fill"></i> <span data-key="t-landing">Packing</span>
+                    </a>
+                </li>
                 @endcan
                 <li class="menu-title"><span data-key="t-menu">Order</span></li>
                 @can('admin')
