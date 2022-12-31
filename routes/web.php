@@ -12,6 +12,7 @@ use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\ProdPackingController;
 use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\ProdFinishingController;
+use App\Http\Controllers\ProdKirimBarangController;
 use App\Http\Controllers\VendorProduksiController;
 use App\Http\Controllers\TransaksiBarangController;
 
@@ -107,3 +108,8 @@ Route::post('/edit_jok', [ProdJokController::class, 'edit_jok'])->middleware('ad
 Route::resource('/packing', ProdPackingController::class)->middleware('admin');
 Route::get('/buat_packing/{packing_id}', [ProdPackingController::class, 'buat_packing'])->middleware('admin');
 Route::post('/edit_packing', [ProdPackingController::class, 'edit_packing'])->middleware('admin');
+
+// pengiriman
+Route::resource('/pengiriman', ProdKirimBarangController::class)->middleware('admin');
+Route::get('/pengiriman/{pengiriman_id}', [ProdKirimBarangController::class, 'buat_packing'])->middleware('admin');
+Route::post('/edit_pengiriman', [ProdKirimBarangController::class, 'edit_packing'])->middleware('admin');

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Order_detail;
+use App\Models\Prod_kirim_barang;
 use App\Models\Prod_packing;
 use App\Models\Prod_packing_detail;
+use App\Models\Prod_pengiriman;
 use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
 
@@ -113,9 +115,14 @@ class ProdPackingController extends Controller
             Prod_packing::where('id', $request->jok_id)->update($dataUpdate);
 
             $data_update_status = [
-                'status_pengerjaan_id' => 6
+                'status_pengerjaan_id' => 7
             ];
             Order_detail::where('id', $request->order_detail_id)->update($data_update_status);
+
+            $data_pengiriman = [
+                'order_detail_id' => $request->order_detail_id
+            ];
+            Prod_kirim_barang::create($data_pengiriman);
         } elseif (isset($request->kode_barang)) {
             // ini dari vendor sendiri
             // return $request->all();
@@ -125,7 +132,7 @@ class ProdPackingController extends Controller
                 $total_biaya = $total_biaya + $biaya;
             }
 
-            // insert ke tabel prod_jok
+            // insert ke tabel prod_packing
             $dataUpdate = [
                 'biaya' => $total_biaya,
                 'is_selesai' => 1
@@ -133,7 +140,7 @@ class ProdPackingController extends Controller
 
             Prod_packing::where('id', $request->packing_id)->update($dataUpdate);
 
-            // insert ke prod_jok_detail
+            // insert ke prod_packing_detail
             foreach ($request->jumlah_barang as $no => $jum) {
                 $data_detail = [
                     'prod_packing_id' => $request->packing_id,
@@ -145,14 +152,14 @@ class ProdPackingController extends Controller
             }
 
             $data_update_status = [
-                'status_pengerjaan_id' => 6
+                'status_pengerjaan_id' => 7
             ];
             Order_detail::where('id', $request->order_detail_id)->update($data_update_status);
 
-            $data_packing = [
+            $data_pengiriman = [
                 'order_detail_id' => $request->order_detail_id
             ];
-            Prod_packing::create($data_packing);
+            Prod_kirim_barang::create($data_pengiriman);
         } else {
             $data_vendor = [
                 'vendor_produksi_id' => $request->vendor,

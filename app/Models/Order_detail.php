@@ -45,4 +45,9 @@ class Order_detail extends Model
     {
         return $this->hasOne(Prod_packing::class);
     }
+
+    public function pengiriman()
+    {
+        return $this->hasOne(Prod_kirim_barang::class);
+    }
 }
