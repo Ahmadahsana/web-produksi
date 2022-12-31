@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Province;
+use App\Models\Order;
 use App\Models\Sales;
+use App\Models\Province;
+use App\Models\Status_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -47,6 +49,7 @@ class UserController extends Controller
         $request->validate([
             'nama' => 'required',
             'nomor' => 'required',
+            'email' => 'email',
             'alamat' => 'required',
             'provinsi' => 'required',
             'kota' => 'required',
@@ -62,6 +65,7 @@ class UserController extends Controller
         $validatedData = [
             'nama' => $request->nama,
             'username' => $request->username,
+            'email' => $request->email,
             'nomor' => $request->nomor,
             'alamat' => $request->alamat,
             'provinsi' => $request->provinsi,
@@ -163,9 +167,10 @@ class UserController extends Controller
 
     public function show_sales(User $user)
     {
+
         return view('dashboard.admin.show_sales', [
             'tittlePage'    =>  'DETAIL PROFIL',
-            'sales' => $user->where('id', $user->id)->with(['province', 'city', 'district'])->first()
+            'sales' => $user->where('id', $user->id)->with(['province', 'city', 'district'])->first(),
         ]);
     }
 
@@ -228,5 +233,34 @@ class UserController extends Controller
             ->update($update);
 
         return redirect()->back('/dashboard')->with('success', 'Edit Profil Success');
+    }
+
+    public function permohonan()
+    {
+        return view('dashboard.admin.daftar_permohonan', [
+            'tittlePage'    =>  'Daftar Permohonan User',
+            'sales' => User::where('status_user_id', 0)->get()
+        ]);
+    }
+
+    public function updatepermohonan(User $id)
+    {
+        return view('dashboard.admin.edit_permohonan', [
+            'tittlePage'    =>  'Edit Permohonan User',
+            'sales' => $id,
+            'status'    =>  Status_user::all()
+        ]);
+    }
+
+    public function prosesupdatepermohonan(Request $request, User $id)
+    {
+        $update = $request->validate([
+            'status_user_id'      => 'required',
+        ]);
+
+        User::where('id', $id->id)
+            ->update($update);
+
+        return redirect('/permohonanuser')->with('success', 'Edit Permohonan Success');
     }
 }

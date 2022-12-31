@@ -69,6 +69,12 @@
                         <i class="ri-team-fill"></i> <span data-key="t-landing">Sales</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Request::is('permohonanuser*') ? 'active' : '' }}"
+                        href="/permohonanuser">
+                        <i class="ri-recycle-fill"></i> <span data-key="t-landing">Permohonan User</span>
+                    </a>
+                </li>
                 <li class="menu-title"><span data-key="t-menu">Inventori</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('barang*') ? 'active' : '' }}" href="/barang">
@@ -107,17 +113,17 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('jok*') ? 'active' : '' }}" href="/jok">
-                        <i class="ri-radio-2-fill"></i> <span data-key="t-landing">Jok</span>
+                        <i class="ri-bubble-chart-line"></i> <span data-key="t-landing">Jok</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('packing*') ? 'active' : '' }}" href="/packing">
-                        <i class="ri-radio-2-fill"></i> <span data-key="t-landing">Packing</span>
+                        <i class="ri-pie-chart-fill"></i> <span data-key="t-landing">Packing</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('pengiriman*') ? 'active' : '' }}" href="/pengiriman">
-                        <i class="ri-radio-2-fill"></i> <span data-key="t-landing">pengiriman</span>
+                        <i class="ri-pie-chart-box-line"></i> <span data-key="t-landing">Pengiriman</span>
                     </a>
                 </li>
                 @endcan
