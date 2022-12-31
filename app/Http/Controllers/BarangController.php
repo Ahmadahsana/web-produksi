@@ -68,9 +68,9 @@ class BarangController extends Controller
 
         Barang::create($validatedCreate);
         if ($validatedCreate['kategori_barang_id'] == 1) {
-            return redirect('/mentahan_barang')->with('success', 'Sukses Menambah Inventori Mentahan !!');
+            return redirect('/barangmentahan')->with('success', 'Sukses Menambah Inventori Mentahan !!');
         } elseif ($validatedCreate['kategori_barang_id'] == 2) {
-            return redirect('/jok_aksesoris_barang')->with('success', 'Sukses Menambah Inventori Jok/Aksesoris !!');
+            return redirect('/aksesorisjok')->with('success', 'Sukses Menambah Inventori Jok/Aksesoris !!');
         } elseif ($validatedCreate['kategori_barang_id'] == 4) {
             return redirect('/packing_barang')->with('success', 'Sukses Menambah Inventori Packing !!');
         }
@@ -138,7 +138,13 @@ class BarangController extends Controller
 
         Barang::where('id', $barang->id)
             ->update($validateEdit);
-
+        if ($validateEdit['kategori_barang_id'] == 1) {
+            return redirect('/barangmentahan')->with('success', 'Sukses Update Inventori Mentahan !!');
+        } elseif ($validateEdit['kategori_barang_id'] == 2) {
+            return redirect('/aksesorisjok')->with('success', 'Sukses Update Inventori Jok/Aksesoris !!');
+        } elseif ($validateEdit['kategori_barang_id'] == 4) {
+            return redirect('/packing_barang')->with('success', 'Sukses Update Inventori Packing !!');
+        }
         return redirect('/barang')->with('success', 'Update Barang Success');
     }
 
@@ -154,7 +160,13 @@ class BarangController extends Controller
             Storage::delete($barang->foto);
         }
         Barang::destroy($barang->id);
-
+        if ($barang->kategori_barang_id == 1) {
+            return redirect('/barangmentahan')->with('success', 'Sukses Delete Inventori Mentahan !!');
+        } elseif ($barang->kategori_barang_id == 2) {
+            return redirect('/aksesorisjok')->with('success', 'Sukses Delete Inventori Jok/Aksesoris !!');
+        } elseif ($barang->kategori_barang_id == 4) {
+            return redirect('/packing_barang')->with('success', 'Sukses Delete Inventori Packing !!');
+        }
         return redirect('/barang')->with('success', 'Delete Barang Success');
     }
 

@@ -66,8 +66,8 @@ Route::resource('/profil', ProfilController::class)->middleware('auth');
 
 
 // BARANG
-Route::get('/mentahan_barang', [BarangController::class, 'tampilmentahan'])->middleware('admin');
-Route::get('/jok_aksesoris_barang', [BarangController::class, 'tampiljokaksesoris'])->middleware('admin');
+Route::get('/barangmentahan', [BarangController::class, 'tampilmentahan'])->middleware('admin');
+Route::get('/aksesorisjok', [BarangController::class, 'tampiljokaksesoris'])->middleware('admin');
 Route::get('/packing_barang', [BarangController::class, 'packingbarang'])->middleware('admin');
 Route::resource('/barang', BarangController::class)->middleware('admin');
 
