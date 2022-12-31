@@ -28,7 +28,7 @@ class LoginController extends Controller
 
         if ($User) {
             if ($User->status_user_id == '0') {
-                return back()->with('loginError', 'Login gagal !');
+                return back()->with('loginError', 'Login gagal !! Silahkan Aktivasi Akun atau Hubungi Administrator !!');
             } else if ($User->status_user_id == '1') {
                 if (Auth::attempt($credential)) {
                     // dd('belum');
