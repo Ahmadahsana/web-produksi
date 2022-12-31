@@ -15,4 +15,8 @@ class Prod_finishing extends Model
     {
         return $this->belongsTo(Vendor_produksi::class);
     }
+    public function Order_detail()
+    {
+        return $this->belongsTo(Order_detail::class);
+    }
 }

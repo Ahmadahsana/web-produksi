@@ -39,6 +39,9 @@ class TransaksiBarangController extends Controller
      */
     public function store(Request $request, Barang $barang)
     {
+        // $mentahan = Barang::where('kategori_barang_id', 1)->get();
+        // $aksesoris = Barang::where('kategori_barang_id', 2)->get();
+
         $request->validate([
             'kode_barang'       =>  'required',
             'jumlah'            =>  'required'
@@ -55,7 +58,7 @@ class TransaksiBarangController extends Controller
                 'stok_akhir'        => $request->jumlah, //stok akhir iku tak padakke jumlah mergo stok awale 0
                 'jumlah'            =>  $request->jumlah,
                 'jenis_transaksi'   => 'Debit',
-                'keterangan'        => 'dari input stok',
+                'keterangan'        => 'Dari Input Stok',
             ];
         } else {
             // ini jika sebelumnya sudah ada stok
@@ -65,13 +68,18 @@ class TransaksiBarangController extends Controller
                 'stok_akhir'        => $request->jumlah + $stokBarang[0]['stok_akhir'], //stok akhir iku tak padakke jumlah mergo stok awale 0
                 'jumlah'            =>  $request->jumlah,
                 'jenis_transaksi'   => 'Debit',
-                'keterangan'        => 'Dari Input Stok' . auth()->user(),
+                'keterangan'        => 'Dari Input Stok ' . auth()->user()->username,
             ];
         }
 
-
-
         Transaksi_barang::create($data);
+
+        // if ($mentahan === $data['kode_barang']) {
+        //     return redirect('/mentahan_barang')->with('success', 'Sukses Menambah Stok Mentahan !!');
+        // } elseif ($aksesoris === $data['kode_barang']) {
+        //     return redirect('/jok_aksesoris_barang')->with('success', 'Sukses Menambah Inventori Jok/Aksesoris !!');
+        // }
+
         return redirect('/barang')->with('success', 'Tambah Stok Berhasil');
     }
 
