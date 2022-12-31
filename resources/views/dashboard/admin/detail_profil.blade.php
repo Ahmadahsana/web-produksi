@@ -27,8 +27,8 @@
                     <!--end col-->
                     <div class="col">
                         <div class="p-2">
-                            <h3 class="text-white mb-1">{{ auth()->user()->nama }}</h3>
-                            <p class="text-white-75">{{ auth()->user()->Role->nama }}</p>
+                            <h3 class="text-white mb-1">{{ strtoupper(auth()->user()->nama) }}</h3>
+                            <p class="text-white-75">{{ strtoupper(auth()->user()->Role->nama) }}</p>
                             <div class="hstack text-white-50 gap-1">
                                 <div class="me-2"><i
                                         class="ri-map-pin-user-line me-1 text-white-75 fs-16 align-middle"></i>{{
@@ -61,13 +61,14 @@
                                             class="d-none d-md-inline-block">Profile</span>
                                     </a>
                                 </li>
-
+                                @can('sales')
                                 <li class="nav-item">
                                     <a class="nav-link fs-14" data-bs-toggle="tab" href="#projects" role="tab">
                                         <i class="ri-price-tag-line d-inline-block d-md-none"></i> <span
-                                            class="d-none d-md-inline-block">Projects</span>
+                                            class="d-none d-md-inline-block">Riwayat Order</span>
                                     </a>
                                 </li>
+                                @endcan
                             </ul>
                             <div class="flex-shrink-0">
                                 <a href="/profil/{{ $user->id }}/edit" class="btn btn-success"><i
@@ -94,11 +95,13 @@
                                                         <tbody>
                                                             <tr>
                                                                 <th class="ps-0" scope="row">Nama Lengkap</th>
-                                                                <td class="text-muted">: {{ auth()->user()->nama }}</td>
+                                                                <td class="text-muted">: {{
+                                                                    strtoupper(auth()->user()->nama) }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <th class="ps-0" scope="row">Username </th>
-                                                                <td class="text-muted">: {{ auth()->user()->username }}
+                                                                <td class="text-muted">: {{
+                                                                    strtoupper(auth()->user()->username) }}
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -108,11 +111,12 @@
                                                             </tr>
                                                             <tr>
                                                                 <th class="ps-0" scope="row">Alamat</th>
-                                                                <td class="text-muted">: {{ auth()->user()->alamat . ',
+                                                                <td class="text-muted">: {{
+                                                                    strtoupper(auth()->user()->alamat . ',
                                                                     ' .
                                                                     auth()->user()->district->dis_name.', '.
                                                                     auth()->user()->city->city_name. ', '.
-                                                                    auth()->user()->province->prov_name }}
+                                                                    auth()->user()->province->prov_name) }}
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -174,56 +178,34 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
+                                            @foreach ($order as $od)
                                             <div class="col-xxl-3 col-sm-6">
                                                 <div
                                                     class="card profile-project-card shadow-none profile-project-warning">
                                                     <div class="card-body p-4">
                                                         <div class="d-flex">
                                                             <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">Chat App Update</a>
+                                                                <h5 class="fs-14 text-dark text-truncate mb-1">Tanggal
+                                                                    Order :
+                                                                    {{$od->tanggal }}
                                                                 </h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">2 year
-                                                                        Ago</span></p>
+                                                                <p class="text-dark text-truncate mb-1">Total Biaya :
+                                                                    <span class="fw-semibold text-dark">@currency(
+                                                                        $od->total_bayar)</span>
+                                                                </p>
+                                                                <p class="text-dark text-truncate mb-1">DP :
+                                                                    <span class="fw-semibold text-dark">@currency(
+                                                                        $od->dp)</span>
+                                                                </p>
+                                                                <p class="fs-14 text-truncate"><a
+                                                                        href="riwayatOrder/{{ $od->id }}"
+                                                                        class="btn btn-sm btn-info">View
+                                                                        Detail</a>
+                                                                </p>
                                                             </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-warning fs-10">
-                                                                    Inprogress</div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="assets/images/users/avatar-1.jpg"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="assets/images/users/avatar-3.jpg"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <div
-                                                                                    class="avatar-title rounded-circle bg-light text-primary">
-                                                                                    J
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                            <div class="flex-shrink-1 ms-2">
+                                                                <div class="badge badge-soft-info fs-10">
+                                                                    {{ strtoupper($od->payment) }}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -232,648 +214,11 @@
                                                 </div>
                                                 <!-- end card -->
                                             </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div
-                                                    class="card profile-project-card shadow-none profile-project-success">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">ABC Project
-                                                                        Customization</a></h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">2 month
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-primary fs-10">
-                                                                    Progress</div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-8.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-7.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-6.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <div
-                                                                                    class="avatar-title rounded-circle bg-primary">
-                                                                                    2+
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div class="card profile-project-card shadow-none profile-project-info">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">Client - Frank
-                                                                        Hook</a></h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">1 hr
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-info fs-10">New
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-4.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <div
-                                                                                    class="avatar-title rounded-circle bg-light text-primary">
-                                                                                    M
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-3.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div
-                                                    class="card profile-project-card shadow-none profile-project-primary">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">Velzon Project</a>
-                                                                </h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">11 hr
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-success fs-10">
-                                                                    Completed</div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-7.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-5.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div
-                                                    class="card profile-project-card shadow-none profile-project-danger">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">Brand Logo Design</a>
-                                                                </h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">10 min
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-info fs-10">New
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-7.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-6.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <div
-                                                                                    class="avatar-title rounded-circle bg-light text-primary">
-                                                                                    E
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div
-                                                    class="card profile-project-card shadow-none profile-project-primary">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">Chat App</a></h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">8 hr
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-warning fs-10">
-                                                                    Inprogress</div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <div
-                                                                                    class="avatar-title rounded-circle bg-light text-primary">
-                                                                                    R
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-3.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-8.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div
-                                                    class="card profile-project-card shadow-none profile-project-warning">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">Project Update</a>
-                                                                </h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">48 min
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-warning fs-10">
-                                                                    Inprogress</div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-6.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-5.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-4.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div
-                                                    class="card profile-project-card shadow-none profile-project-success">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">Client - Jennifer</a>
-                                                                </h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">30 min
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-primary fs-10">
-                                                                    Process</div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-1.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div
-                                                    class="card profile-project-card shadow-none mb-xxl-0   profile-project-info">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">Bsuiness Template -
-                                                                        UI/UX design</a></h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">7 month
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-success fs-10">
-                                                                    Completed</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-2.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-3.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-4.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <div
-                                                                                    class="avatar-title rounded-circle bg-primary">
-                                                                                    2+
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end card body -->
-                                                </div>
-                                                <!-- end card -->
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div
-                                                    class="card profile-project-card shadow-none mb-xxl-0  profile-project-success">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">Update Project</a>
-                                                                </h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">1 month
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-info fs-10">New
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-7.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <div
-                                                                                    class="avatar-title rounded-circle bg-light text-primary">
-                                                                                    A
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- end card body -->
-                                                </div><!-- end card -->
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div
-                                                    class="card profile-project-card shadow-none mb-sm-0  profile-project-danger">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">Bank Management
-                                                                        System</a></h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">10
-                                                                        month
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-success fs-10">
-                                                                    Completed</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-7.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-6.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-5.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <div
-                                                                                    class="avatar-title rounded-circle bg-primary">
-                                                                                    2+
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- end card body -->
-                                                </div><!-- end card -->
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-xxl-3 col-sm-6">
-                                                <div
-                                                    class="card profile-project-card shadow-none mb-0  profile-project-primary">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-flex">
-                                                            <div class="flex-grow-1 text-muted overflow-hidden">
-                                                                <h5 class="fs-14 text-truncate"><a href="#"
-                                                                        class="text-dark">PSD to HTML
-                                                                        Convert</a></h5>
-                                                                <p class="text-muted text-truncate mb-0">Last
-                                                                    Update : <span class="fw-semibold text-dark">29 min
-                                                                        Ago</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="badge badge-soft-info fs-10">New
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex mt-4">
-                                                            <div class="flex-grow-1">
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div>
-                                                                        <h5 class="fs-12 text-muted mb-0">
-                                                                            Members :</h5>
-                                                                    </div>
-                                                                    <div class="avatar-group">
-                                                                        <div class="avatar-group-item">
-                                                                            <div class="avatar-xs">
-                                                                                <img src="{{ url('assets/images/users/avatar-7.jpg') }}"
-                                                                                    alt=""
-                                                                                    class="rounded-circle img-fluid" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- end card body -->
-                                                </div><!-- end card -->
-                                            </div>
+                                            @endforeach
                                             <!--end col-->
                                             <div class="col-lg-12">
-                                                <div class="mt-4">
-                                                    <ul
-                                                        class="pagination pagination-separated justify-content-center mb-0">
-                                                        <li class="page-item disabled">
-                                                            <a href="javascript:void(0);" class="page-link"><i
-                                                                    class="mdi mdi-chevron-left"></i></a>
-                                                        </li>
-                                                        <li class="page-item active">
-                                                            <a href="javascript:void(0);" class="page-link">1</a>
-                                                        </li>
-                                                        <li class="page-item">
-                                                            <a href="javascript:void(0);" class="page-link">2</a>
-                                                        </li>
-                                                        <li class="page-item">
-                                                            <a href="javascript:void(0);" class="page-link">3</a>
-                                                        </li>
-                                                        <li class="page-item">
-                                                            <a href="javascript:void(0);" class="page-link">4</a>
-                                                        </li>
-                                                        <li class="page-item">
-                                                            <a href="javascript:void(0);" class="page-link">5</a>
-                                                        </li>
-                                                        <li class="page-item">
-                                                            <a href="javascript:void(0);" class="page-link"><i
-                                                                    class="mdi mdi-chevron-right"></i></a>
-                                                        </li>
-                                                    </ul>
+                                                <div class="mt-4 d-flex justify-content-center">
+                                                    <span> {{ $order->links() }}</span>
                                                 </div>
                                             </div>
                                         </div>

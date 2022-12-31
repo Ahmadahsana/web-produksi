@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Sales;
 use App\Models\District;
 use App\Models\Province;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Order_detail;
 use Illuminate\Support\Facades\Storage;
 
 class ProfilController extends Controller
@@ -17,11 +19,12 @@ class ProfilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index(Order $order)
     {
         return view('dashboard.admin.detail_profil', [
             'tittlePage'    =>  "Detail Profil",
-            'user'          =>  User::where('id', auth()->user()->id)->first()
+            'user'          =>  User::where('id', auth()->user()->id)->first(),
+            'order'         =>  Order::where('sales_username', auth()->user()->username)->paginate(6),
         ]);
     }
 
