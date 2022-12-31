@@ -50,4 +50,9 @@ class Order_detail extends Model
     {
         return $this->hasOne(Prod_kirim_barang::class);
     }
+
+    public function mentahan()
+    {
+        return $this->hasOne(Prod_mentahan::class, 'Order_detail_id', 'id');
+    }
 }
