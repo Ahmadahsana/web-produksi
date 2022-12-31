@@ -47,9 +47,14 @@ Route::get('/registrasi', [RegistrasiController::class, 'index'])->middleware('g
 Route::post('/registrasi', [RegistrasiController::class, 'store']);
 
 // Admin //sales
-Route::resource('/sales', UserController::class)->middleware('admin'); //ini membingungkan saat kembali, detail, edit
-Route::post('/sales/{user}', [UserController::class, 'destroy_sales'])->middleware('admin'); //ini membingungkan saat kembali, detail, edit
-Route::get('/sales_show/{user}', [UserController::class, 'show_sales'])->middleware('admin'); //ini membingungkan saat kembali, detail, edit
+Route::resource('/sales', UserController::class)->middleware('admin');
+Route::post('/sales/{user}', [UserController::class, 'destroy_sales'])->middleware('admin');
+Route::get('/sales_show/{user}', [UserController::class, 'show_sales'])->middleware('admin');
+
+// Permohonan User
+Route::get('/permohonanuser', [UserController::class, 'permohonan'])->middleware('admin');
+Route::get('/permohonanuser/{id}', [UserController::class, 'updatepermohonan'])->middleware('admin');
+Route::POST('/permohonanuser/{id}', [UserController::class, 'prosesupdatepermohonan'])->middleware('admin');
 // Route::put('/sales_update/{sales}', [UserController::class, 'sales_update'])->middleware('auth'); //ini membingungkan saat kembali, detail, edit
 
 // Profil

@@ -26,7 +26,7 @@
                     <!--end col-->
                     <div class="col">
                         <div class="p-2">
-                            <h3 class="text-white mb-1">{{ $sales->nama }}</h3>
+                            <h3 class="text-white mb-1">{{ strtoupper($sales->nama) }}</h3>
                             <p class="text-white-75">Sales</p>
                             <div class="hstack text-white-50 gap-1">
                                 <div class="me-2"><i
@@ -61,7 +61,7 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
+                                <li class="nav-item d-none">
                                     <a class="nav-link fs-14" data-bs-toggle="tab" href="#projects" role="tab">
                                         <i class="ri-price-tag-line d-inline-block d-md-none"></i> <span
                                             class="d-none d-md-inline-block">Projects</span>
@@ -90,11 +90,13 @@
                                                         <tbody>
                                                             <tr>
                                                                 <th class="ps-0" scope="row">Nama Lengkap</th>
-                                                                <td class="text-muted">: {{ $sales->nama }}</td>
+                                                                <td class="text-muted">: {{ strtoupper($sales->nama) }}
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <th class="ps-0" scope="row">Username </th>
-                                                                <td class="text-muted">: {{ $sales->username }}</td>
+                                                                <td class="text-muted">: {{ strtoupper($sales->username)
+                                                                    }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <th class="ps-0" scope="row">Nomor HP </th>
@@ -102,10 +104,11 @@
                                                             </tr>
                                                             <tr>
                                                                 <th class="ps-0" scope="row">Alamat</th>
-                                                                <td class="text-muted">: {{ $sales->alamat . ', ' .
+                                                                <td class="text-muted">: {{ strtoupper($sales->alamat .
+                                                                    ', ' .
                                                                     $sales->district->dis_name.', '.
                                                                     $sales->city->city_name. ', '.
-                                                                    $sales->province->prov_name }}
+                                                                    $sales->province->prov_name) }}
                                                                 </td>
                                                             </tr>
                                                             <tr>

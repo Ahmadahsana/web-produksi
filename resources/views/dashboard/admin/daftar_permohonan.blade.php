@@ -14,12 +14,6 @@
         @endif
         <div id="customerList">
             <div class="row g-4 mb-3">
-                <div class="col-sm-auto">
-                    <div>
-                        <a href="/sales/create" class="btn btn-success add-btn"><i
-                                class="ri-add-line align-bottom me-1"></i> Add</a>
-                    </div>
-                </div>
                 <div class="col-sm">
                     <div class="d-flex justify-content-sm-end">
                         <div class="search-box ms-2">
@@ -58,18 +52,16 @@
                                     Active @else NonActive @endif</span></td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <div class="detail">
-                                        <a href="/sales_show/{{ $s->id }}"
-                                            class="btn btn-sm btn-success edit-item-btn">Detail</a>
+                                    <div class="edit">
+                                        <a href="/permohonanuser/{{ $s->id }}" class="btn btn-warning btn-sm">Edit</a>
                                     </div>
-
-                                    <div class="remove">
+                                    {{-- <div class="remove">
                                         <form action="/sales/{{ $s->id }}" method="post">
                                             @csrf
                                             <button class="btn btn-sm btn-danger"
                                                 onclick="return confirm('Apakah yakin ingin menghapus data ( {{ $s->nama }} ) ?')">Remove</button>
                                         </form>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </td>
                         </tr>

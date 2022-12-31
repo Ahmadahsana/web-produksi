@@ -10,6 +10,7 @@ use App\Models\Role;
 use App\Models\Status_barang;
 use App\Models\Status_jual;
 use App\Models\Status_pengerjaan;
+use App\Models\Status_user;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -32,6 +33,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'nama' => 'admin',
             'username' => 'admin',
+            'email' => 'admin@gmail.com',
             'password' => bcrypt('admin'),
             'role_id' => 1,
             'nomor' => '087777666555',
@@ -45,6 +47,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'nama' => 'marketing',
             'username' => 'marketing',
+            'email' => 'marketing@gmail.com',
             'password' => bcrypt('marketing'),
             'role_id' => 2,
             'nomor' => '087777666555',
@@ -122,6 +125,14 @@ class DatabaseSeeder extends Seeder
             'id' => 9,
             'nama' => 'Tolak',
             'warna' => 'success'
+        ]);
+
+        Status_user::create([
+            'nama' => 'ACTIVE'
+        ]);
+
+        Status_user::create([
+            'nama' => 'NONACTIVE'
         ]);
     }
 }
