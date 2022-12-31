@@ -16,10 +16,6 @@
         <div id="customerList">
             <div class="row g-4 mb-3">
                 <div class="col-sm-auto">
-                    {{-- <div>git 
-                        <a href="/sales/create" class="btn btn-success add-btn"><i
-                                class="ri-add-line align-bottom me-1"></i> Add</a>
-                    </div> --}}
                 </div>
                 <div class="col-sm">
                     <div class="d-flex justify-content-sm-end">
@@ -48,8 +44,6 @@
                         $no = 1;
                         @endphp
                         @foreach ($pengiriman as $m)
-                        {{-- @foreach ($order->order_detail as $barang) --}}
-                        {{-- @dd($m->finishing->vendor_produksi_id) --}}
                         
                         <tr>
                             <th scope="row">{{ $no++ }}</th>
@@ -68,18 +62,24 @@
                                 </span>
                             </td>
                             <td>
-                                <div class="d-flex gap-2">
-                                    <div class="edit">
-                                        {{-- <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
-                                            data-bs-target="#showModal">Edit</button> --}}
-                                        <a href="/buat_jok/{{ $m->jok->id }}"
-                                            class="btn btn-sm btn-success edit-item-btn">Edit</a>
+                                @if (isset($m->pengiriman->tgl_diproses))
+                                    <div class="d-flex gap-2">
+                                        <div class="edit">
+                                            <a href="/buat_pengiriman/{{ $m->pengiriman->id }}"
+                                                class="btn btn-sm btn-success edit-item-btn">Edit</a>
+                                        </div>
                                     </div>
-                                    {{-- <div class="remove">
-                                        <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRecordModal">Remove</button>
-                                    </div> --}}
-                                </div>
+                                @else
+                                    <div class="d-flex gap-2">
+                                        <div class="edit">
+                                            <form action="/edit_pengiriman" method="post">
+                                                @csrf
+                                                <input type="text" class="d-none" value="{{ $m->pengiriman->id }}" name="pengiriman_id">
+                                                <button type="submit" class="btn btn-sm btn-primary edit-item-btn">Kirim Sekarang</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                @endif
                             </td>
                         </tr>
                         {{-- @endforeach --}}
