@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order_detail;
 use App\Models\Prod_kirim_barang;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class ProdKirimBarangController extends Controller
      */
     public function index()
     {
-        //
+        return view('produksi.pengiriman.list_pengiriman', [
+            'tittlePage' => 'List pengiriman barang',
+            'pengiriman' => Order_detail::where('status_pengerjaan_id', 7)->get()
+        ]);
     }
 
     /**
