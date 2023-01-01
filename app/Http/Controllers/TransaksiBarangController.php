@@ -42,6 +42,10 @@ class TransaksiBarangController extends Controller
         // $mentahan = Barang::where('kategori_barang_id', 1)->get();
         // $aksesoris = Barang::where('kategori_barang_id', 2)->get();
 
+        $kode_barang = $request->kode_barang;
+        $cari_kategori_barang = Barang::where('kode_barang', $kode_barang)->first();
+        $kategori_barang = $cari_kategori_barang['kategori_barang_id'];
+
         $request->validate([
             'kode_barang'       =>  'required',
             'jumlah'            =>  'required'
