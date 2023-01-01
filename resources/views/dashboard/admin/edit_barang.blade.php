@@ -136,8 +136,8 @@
                     <label for="harga" class="form-label">Harga Barang</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="text" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga"
-                        placeholder="Masukkan Harga" value="{{ $barang->harga }}" autocomplete="off">
+                    <input type="number" class="form-control @error('harga') is-invalid @enderror" id="harga"
+                        name="harga" placeholder="Masukkan Harga" value="{{ $barang->harga }}" autocomplete="off">
                 </div>
                 @error('harga')
                 <div class="invalid-feedback">
@@ -150,7 +150,7 @@
                     <label for="hpp" class="form-label">HPP Barang</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="text" class="form-control @error('hpp') is-invalid @enderror" id="hpp" name="hpp"
+                    <input type="number" class="form-control @error('hpp') is-invalid @enderror" id="hpp" name="hpp"
                         placeholder="Masukkan hpp" value="{{ $barang->hpp }}" autocomplete="off">
                 </div>
                 @error('hpp')

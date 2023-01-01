@@ -104,7 +104,7 @@
                     <label for="harga" class="form-label">Harga</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="harga" name="harga" placeholder="Harga"
+                    <input type="number" class="form-control" id="harga" name="harga" placeholder="Harga"
                         value="{{ old('harga') }}" required>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                     <label for="hpp" class="form-label">HPP</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="hpp" name="hpp" placeholder="HPP"
+                    <input type="number" class="form-control" id="hpp" name="hpp" placeholder="HPP"
                         value="{{ old('hpp') }}" required>
                 </div>
             </div>

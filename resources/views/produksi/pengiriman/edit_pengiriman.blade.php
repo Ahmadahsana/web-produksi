@@ -49,21 +49,21 @@
           <label for="inputPassword4" class="form-label">Biaya Pengiriman</label>
           <div class="input-group">
             <div class="input-group-text">Rp. </div>
-            <input type="text" class="form-control" id="" placeholder="" name="biaya_pengiriman" required>
+            <input type="number" class="form-control" id="" placeholder="" name="biaya_pengiriman" required>
           </div>
         </div>
         <div class="col-md-6 mt-3">
           <label for="inputPassword4" class="form-label">Biaya Perakitan</label>
           <div class="input-group">
             <div class="input-group-text">Rp. </div>
-            <input type="text" class="form-control" id="" placeholder="" name="biaya_perakitan" required>
+            <input type="number" class="form-control" id="" placeholder="" name="biaya_perakitan" required>
           </div>
         </div>
         <div class="col-md-6 mt-3">
           <label for="inputPassword4" class="form-label">Biaya Service</label>
           <div class="input-group">
             <div class="input-group-text">Rp. </div>
-            <input type="text" class="form-control" id="" placeholder="" name="biaya_service" required>
+            <input type="number" class="form-control" id="" placeholder="" name="biaya_service" required>
           </div>
         </div>
       </div>

@@ -43,7 +43,7 @@
                     <label for="nomer" class="form-label">Nomer</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="nomer" name="nomer" placeholder="Nomer"
+                    <input type="number" class="form-control" id="nomer" name="nomer" placeholder="Nomer"
                         value="{{ old('nomer') }}" required>
                 </div>
             </div>

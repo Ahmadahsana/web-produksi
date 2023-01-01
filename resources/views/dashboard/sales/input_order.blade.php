@@ -31,7 +31,7 @@
                                 <label for="harga" class="form-label">harga</label>
                                 <div class="input-group">
                                     <div class="input-group-text">Rp. </div>
-                                    <input type="text" class="form-control" placeholder="Harga" id="cleave-numeral"
+                                    <input type="number" class="form-control" placeholder="Harga" id="cleave-numeral"
                                         readonly>
                                 </div>
                             </div>

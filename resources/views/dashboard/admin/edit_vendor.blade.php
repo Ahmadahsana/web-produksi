@@ -61,8 +61,8 @@
                     <label for="nomer" class="form-label">Nomor Telpon</label>
                 </div>
                 <div class="col-lg-9">
-                    <input type="text" class="form-control @error('nomer') is-invalid @enderror" id="nomer" name="nomer"
-                        placeholder="Masukkan Nomor Telpon" value="{{ old('nomer', $vendorr->nomer) }}"
+                    <input type="number" class="form-control @error('nomer') is-invalid @enderror" id="nomer"
+                        name="nomer" placeholder="Masukkan Nomor Telpon" value="{{ old('nomer', $vendorr->nomer) }}"
                         autocomplete="off">
                 </div>
                 @error('nomer')

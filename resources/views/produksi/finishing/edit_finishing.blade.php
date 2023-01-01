@@ -60,7 +60,7 @@
           <label for="inputPassword4" class="form-label">Harga finishing</label>
           <div class="input-group">
             <div class="input-group-text">Rp. </div>
-            <input type="text" class="form-control" id="" placeholder="" name="harga_finishing" required>
+            <input type="number" class="form-control" id="" placeholder="" name="harga_finishing" required>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
           <label for="inputPassword4" class="form-label">Harga servis</label>
           <div class="input-group">
             <div class="input-group-text">Rp. </div>
-            <input type="text" class="form-control" id="" placeholder="" name="harga_servis" required>
+            <input type="number" class="form-control" id="" placeholder="" name="harga_servis" required>
           </div>
         </div>
       </div>
