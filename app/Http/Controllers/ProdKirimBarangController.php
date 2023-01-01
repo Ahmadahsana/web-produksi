@@ -101,15 +101,6 @@ class ProdKirimBarangController extends Controller
     {
         if (isset($request->biaya_pengiriman)) {
             // dd($request->all());
-            // melakukan query untuk mengambil biaya dari semua proses produksi
-            $query_cari_biaya = Order_detail::where('id', $request->order_detail_id)->with(['mentahan', 'finishing', 'jok', 'packing', 'pengiriman'])->first();
-            $biaya_mentahan = $query_cari_biaya['mentahan']->biaya;
-            $biaya_finishing = $query_cari_biaya['finishing']->biaya;
-            $biaya_jok = $query_cari_biaya['jok']->biaya;
-            $biaya_packing = $query_cari_biaya['packing']->biaya;
-            $biaya_pengiriman = $query_cari_biaya['pengiriman']->biaya_total;
-
-            $total_biaya_produksi = $biaya_mentahan + $biaya_finishing + $biaya_jok + $biaya_packing + $biaya_pengiriman;
 
             $dataUpdate = [
                 'biaya_pengiriman' => $request->biaya_pengiriman,
@@ -125,6 +116,16 @@ class ProdKirimBarangController extends Controller
                 'status_pengerjaan_id' => 8
             ];
             Order_detail::where('id', $request->order_detail_id)->update($data_update_status);
+
+            // melakukan query untuk mengambil biaya dari semua proses produksi
+            $query_cari_biaya = Order_detail::where('id', $request->order_detail_id)->with(['mentahan', 'finishing', 'jok', 'packing', 'pengiriman'])->first();
+            $biaya_mentahan = $query_cari_biaya['mentahan']->biaya;
+            $biaya_finishing = $query_cari_biaya['finishing']->biaya;
+            $biaya_jok = $query_cari_biaya['jok']->biaya;
+            $biaya_packing = $query_cari_biaya['packing']->biaya;
+            $biaya_pengiriman = $query_cari_biaya['pengiriman']->biaya_total;
+
+            $total_biaya_produksi = $biaya_mentahan + $biaya_finishing + $biaya_jok + $biaya_packing + $biaya_pengiriman;
 
             $data_keuntungan = [
                 'order_detail_id' => $request->order_detail_id,
