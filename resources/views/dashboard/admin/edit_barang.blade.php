@@ -137,7 +137,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga"
-                        placeholder="Masukkan Harga" value=" @currency($barang->harga) " autocomplete="off">
+                        placeholder="Masukkan Harga" value="{{ $barang->harga }}" autocomplete="off">
                 </div>
                 @error('harga')
                 <div class="invalid-feedback">
@@ -151,7 +151,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control @error('hpp') is-invalid @enderror" id="hpp" name="hpp"
-                        placeholder="Masukkan hpp" value=" @currency($barang->hpp)" autocomplete="off">
+                        placeholder="Masukkan hpp" value="{{ $barang->hpp }}" autocomplete="off">
                 </div>
                 @error('hpp')
                 <div class="invalid-feedback">
@@ -209,7 +209,15 @@
             <div class="text-end">
                 <button type="submit" class="btn btn-primary"
                     onclick="return confirm('Yakin ingin mengubah data {{ strtoupper($barang->nama) }} ?')">Update</button>
+                @if ($barang->kategori_barang_id == 1)
+                <a href="/barangmentahan" class="btn btn-danger">Kembali</a>
+                @elseif ($barang->kategori_barang_id == 2)
+                <a href="/aksesorisjok" class="btn btn-danger">Kembali</a>
+                @elseif ($barang->kategori_barang_id == 3)
                 <a href="/barang" class="btn btn-danger">Kembali</a>
+                @elseif ($barang->kategori_barang_id == 4)
+                <a href="/packing_barang" class="btn btn-danger">Kembali</a>
+                @endif
             </div>
         </form>
     </div>

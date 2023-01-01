@@ -15,16 +15,22 @@
 
   {{-- @dd($finishing) --}}
   <div class="card-body">
-    <div class="mb-3 row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">Nama Barang</label>
+    <div class="mb-1 row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Nama Sales</label>
       <div class="col-sm-10">
-        <h6 class="form-control-plaintext">{{ $finishing->Order_detail->Barang->nama}}</h6>
+        <h6 class="form-control-plaintext">: {{ strtoupper($finishing->Order_detail->Order->sales_username)}}</h6>
       </div>
     </div>
-    <div class="mb-3 row">
+    <div class="mb-1 row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Nama Barang</label>
+      <div class="col-sm-10">
+        <h6 class="form-control-plaintext">: {{ strtoupper($finishing->Order_detail->Barang->nama)}}</h6>
+      </div>
+    </div>
+    <div class="mb-2 row">
       <label for="inputPassword" class="col-sm-2 col-form-label">Jumlah</label>
       <div class="col-sm-10">
-        <h6 class="form-control-plaintext">{{ $finishing->Order_detail->jumlah}}</h6>
+        <h6 class="form-control-plaintext">: {{ $finishing->Order_detail->jumlah}}</h6>
       </div>
     </div>
     @if (isset($finishing->tgl_diproses))

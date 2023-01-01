@@ -61,12 +61,28 @@
                                     $order->status_pengerjaan->nama }}</span></td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <div class="edit">
+                                    @if ($order->status_pengerjaan_id == 1)
+                                    <div class="text-end">
+                                        <form action="/order/{{ $order->id }}" method="POST" class="d-inline">
+                                            @method('put')
+                                            @csrf
+                                            <input class="d-none" type="text" value="2" name="status">
+                                            <button type="submit" class="btn btn-sm btn-success">Terima</button>
+                                        </form>
+                                        <form action="/order/{{ $order->id }}" method="post" class="d-inline">
+                                            @method('put')
+                                            @csrf
+                                            <input class="d-none" type="text" value="9" name="status">
+                                            <button type="submit" class="btn btn-sm btn-danger">Tolak</button>
+                                        </form>
+                                    </div>
+                                    @endif
+                                    {{-- <div class="edit"> --}}
                                         {{-- <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
                                             data-bs-target="#showModal">Edit</button> --}}
-                                        <a href="/order/{{ $order->id }}/edit"
+                                        {{-- <a href="/order/{{ $order->id }}/edit"
                                             class="btn btn-sm btn-success edit-item-btn">Edit</a>
-                                    </div>
+                                    </div> --}}
                                     {{-- <div class="remove">
                                         <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
                                             data-bs-target="#deleteRecordModal">Remove</button>
