@@ -8,6 +8,7 @@ use App\Models\Barang;
 use App\Models\Order_detail;
 use App\Models\Prod_finishing;
 use App\Models\Prod_mentahan_detail;
+use App\Models\Transaksi_barang;
 use Illuminate\Http\Request;
 
 class ProdMentahanController extends Controller
@@ -43,13 +44,32 @@ class ProdMentahanController extends Controller
      */
     public function store(Request $request)
     {
-
+        // return $request->all();
         $total_biaya = 0;
         foreach ($request->jumlah_barang as $no => $jum) {
             $biaya = $request->jumlah_barang[$no] * $request->hpp_barang[$no];
             $total_biaya = $total_biaya + $biaya;
-        }
 
+
+            $query_stok_terakhir = Transaksi_barang::Where('kode_barang', $request->kode_barang[$no])->latest('created_at')->first();
+
+            if ($query_stok_terakhir == null) {
+                return 'stok barang habis';
+            } else {
+                $stok_akhir = $query_stok_terakhir->stok_akhir;
+
+                $data_kredit = [
+                    'kode_barang' => $request->kode_barang[$no],
+                    'stok_awal' => $stok_akhir,
+                    'stok_akhir' => $stok_akhir - $request->jumlah_barang[$no],
+                    'jumlah' => $request->jumlah_barang[$no],
+                    'jenis_transaksi' => 'Kredit',
+                    'keterangan' => 'dari input mentahan',
+                ];
+
+                Transaksi_barang::create($data_kredit);
+            }
+        }
 
 
         $data = [
