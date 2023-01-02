@@ -108,100 +108,7 @@
                 <div class="d-flex align-items-center">
                     <div class="flex-grow-1 overflow-hidden">
                         <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                            Mentahan</p>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <h5 class="text-success fs-14 mb-0">
-                            {{ count($mentahan) }}
-                        </h5>
-                    </div>
-                </div>
-                <div class="d-flex align-items-end justify-content-between mt-4">
-                    <div>
-                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="{{ count($mentahan) }}">0</span> Mentahan B.
-                        </h4>
-                        <a href="/mentahan_barang" class="text-decoration-underline">View Details</a>
-                    </div>
-                    <div class="avatar-sm flex-shrink-0">
-                        <span class="avatar-title bg-soft-warning rounded fs-3">
-                            <i class="bx bx-archive text-warning"></i>
-                        </span>
-                    </div>
-                </div>
-            </div><!-- end card body -->
-        </div><!-- end card -->
-    </div><!-- end col -->
-    <div class="col-xl-3 col-md-6">
-        <!-- card -->
-        <div class="card card-animate">
-            <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <div class="flex-grow-1 overflow-hidden">
-                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                            Aksesoris / Jok</p>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <h5 class="text-success fs-14 mb-0">
-                            {{ count($accesoris) }}
-                        </h5>
-                    </div>
-                </div>
-                <div class="d-flex align-items-end justify-content-between mt-4">
-                    <div>
-                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="{{ count($accesoris) }}">0</span> Aksesoris/Jok
-                        </h4>
-                        <a href="/jok_aksesoris_barang" class="text-decoration-underline">View Details</a>
-                    </div>
-                    <div class="avatar-sm flex-shrink-0">
-                        <span class="avatar-title bg-soft-warning rounded fs-3">
-                            <i class="bx bx-archive text-warning"></i>
-                        </span>
-                    </div>
-                </div>
-            </div><!-- end card body -->
-        </div><!-- end card -->
-    </div><!-- end col -->
-    <div class="col-xl-3 col-md-6">
-        <!-- card -->
-        <div class="card card-animate">
-            <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <div class="flex-grow-1 overflow-hidden">
-                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                            Packing</p>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <h5 class="text-success fs-14 mb-0">
-                            {{ count($packing) }}
-                        </h5>
-                    </div>
-                </div>
-                <div class="d-flex align-items-end justify-content-between mt-4">
-                    <div>
-                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="{{ count($packing) }}">0</span> Packing
-                        </h4>
-                        <a href="/packing_barang" class="text-decoration-underline">View Details</a>
-                    </div>
-                    <div class="avatar-sm flex-shrink-0">
-                        <span class="avatar-title bg-soft-warning rounded fs-3">
-                            <i class="bx bx-archive text-warning"></i>
-                        </span>
-                    </div>
-                </div>
-            </div><!-- end card body -->
-        </div><!-- end card -->
-    </div><!-- end col -->
-    <div class="col-xl-3 col-md-6">
-        <!-- card -->
-        <div class="card card-animate">
-            <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <div class="flex-grow-1 overflow-hidden">
-                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                            Proses Mentahan</p>
+                            Produksi Mentahan</p>
                     </div>
                     <div class="flex-shrink-0">
                         <h5 class="text-success fs-14 mb-0">
@@ -212,7 +119,7 @@
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
                         <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="{{ count($mentahanP) }}">0</span> Mentahan P.
+                                data-target="{{ count($mentahanP) }}">0</span> Mentahan
                         </h4>
                         <a href="/mentahan" class="text-decoration-underline">View Details</a>
                     </div>
@@ -232,7 +139,7 @@
                 <div class="d-flex align-items-center">
                     <div class="flex-grow-1 overflow-hidden">
                         <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                            Proses Finishing</p>
+                            Produksi Finishing</p>
                     </div>
                     <div class="flex-shrink-0">
                         <h5 class="text-success fs-14 mb-0">
@@ -243,7 +150,7 @@
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
                         <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="{{ count($finishingP) }}">0</span> Finishing P.
+                                data-target="{{ count($finishingP) }}">0</span> Finishing
                         </h4>
                         <a href="/finishing" class="text-decoration-underline">View Details</a>
                     </div>
@@ -263,24 +170,24 @@
                 <div class="d-flex align-items-center">
                     <div class="flex-grow-1 overflow-hidden">
                         <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                            List Permintaan</p>
+                            Produksi Jok</p>
                     </div>
                     <div class="flex-shrink-0">
                         <h5 class="text-success fs-14 mb-0">
-                            {{ count($lpermintaan) }}
+                            {{ count($jokp) }}
                         </h5>
                     </div>
                 </div>
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
-                        <h4 class="fs-20 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="{{ count($lpermintaan) }}">0</span> List Permintaan
+                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
+                                data-target="{{ count($jokp) }}">0</span> Jok
                         </h4>
-                        <a href="/list_permintaan" class="text-decoration-underline">View Details</a>
+                        <a href="/jok" class="text-decoration-underline">View Details</a>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
-                        <span class="avatar-title bg-soft-success rounded fs-3">
-                            <i class="bx bx-list-plus text-success"></i>
+                        <span class="avatar-title bg-soft-danger rounded fs-3">
+                            <i class="bx bx-sync text-danger"></i>
                         </span>
                     </div>
                 </div>
@@ -294,24 +201,55 @@
                 <div class="d-flex align-items-center">
                     <div class="flex-grow-1 overflow-hidden">
                         <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                            List Order</p>
+                            Produksi Packing</p>
                     </div>
                     <div class="flex-shrink-0">
                         <h5 class="text-success fs-14 mb-0">
-                            {{ count($lorder) }}
+                            {{ count($packingp) }}
                         </h5>
                     </div>
                 </div>
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
-                        <h4 class="fs-20 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="{{ count($lorder) }}">0</span> List Order
+                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
+                                data-target="{{ count($packingp) }}">0</span> Packing
                         </h4>
-                        <a href="/list_order" class="text-decoration-underline">View Details</a>
+                        <a href="/packing" class="text-decoration-underline">View Details</a>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
-                        <span class="avatar-title bg-soft-success rounded fs-3">
-                            <i class="bx bx-list-plus text-success"></i>
+                        <span class="avatar-title bg-soft-danger rounded fs-3">
+                            <i class="bx bx-sync text-danger"></i>
+                        </span>
+                    </div>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-animate">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 overflow-hidden">
+                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
+                            Produksi Pengiriman</p>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <h5 class="text-success fs-14 mb-0">
+                            {{ count($packingp) }}
+                        </h5>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end justify-content-between mt-4">
+                    <div>
+                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
+                                data-target="{{ count($packingp) }}">0</span> Pengiriman
+                        </h4>
+                        <a href="/pengiriman" class="text-decoration-underline">View Details</a>
+                    </div>
+                    <div class="avatar-sm flex-shrink-0">
+                        <span class="avatar-title bg-soft-danger rounded fs-3">
+                            <i class="bx bx-sync text-danger"></i>
                         </span>
                     </div>
                 </div>

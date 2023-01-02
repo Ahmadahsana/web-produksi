@@ -3,27 +3,25 @@
 @section('container')
 <div class="card rounded-3 shadow-lg">
     <div class="card-header d-flex text-center justify-content-around">
-        <div class="col-lg-3 col-xl-3 ">
-            <h6 class="card-title flex-grow-1 mb-1">
-                Nama Sales : {{
-                strtoupper($order->sales_username)
-                }}
-            </h6>
-        </div>
-        <div class="col-lg-3 col-xl-3 ">
-            <h6 class="card-title flex-grow-1 mb-1">
-                Payment : {{ strtoupper($order->payment) }}
-            </h6>
-        </div>
-        <div class="col-lg-3 col-xl-3">
-            <h6 class="card-title flex-grow-1 mb-1">
-                Pembayaran: <span class="alert-sm rounded-3 px-1 alert-success">@currency($order->total_bayar)</span>
-            </h6>
-        </div>
-        <div class="col-lg-3 col-xl-3">
-            <h6 class="card-title flex-grow-1 mb-1">
-                DP : <span class="alert-sm rounded-3 px-1 alert-success">@currency($order->dp)</span>
-            </h6>
+        <div class="col-lg-12 col-xl-12 ">
+            <table class="table table-responsive">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Nama Sales</th>
+                        <th scope="col">Payment</th>
+                        <th scope="col">Total Bayar</th>
+                        <th scope="col">DP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center">
+                        <td>{{ strtoupper($order->sales_username)}}</td>
+                        <td>{{ strtoupper($order->payment) }}</td>
+                        <td>@currency($order->total_bayar)</td>
+                        <td>@currency($order->dp)</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
