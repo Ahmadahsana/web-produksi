@@ -190,11 +190,16 @@ class OrderController extends Controller
             'orders'        =>  Order::where('sales_username', auth()->user()->username)->get()
         ]);
     }
+
     public function Detailriwayatorder(Order $id_order)
     {
         return view('dashboard.sales.detail_riwayatOrder', [
             'tittlePage'    =>  'DETAIL RIWAYAT ORDER',
             'order'         =>  $id_order,
         ]);
+    }
+
+    public function order_selesai()
+    {
     }
 }

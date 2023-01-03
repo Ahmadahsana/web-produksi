@@ -118,3 +118,6 @@ Route::post('/edit_packing', [ProdPackingController::class, 'edit_packing'])->mi
 Route::resource('/pengiriman', ProdKirimBarangController::class)->middleware('admin');
 Route::get('/buat_pengiriman/{pengiriman_id}', [ProdKirimBarangController::class, 'buat_pengiriman'])->middleware('admin');
 Route::post('/edit_pengiriman', [ProdKirimBarangController::class, 'edit_pengiriman'])->middleware('admin');
+
+// order Selesai
+Route::get('/order_selesai', [OrderController::class, 'order_selesai'])->middleware(['admin', 'auth']);

@@ -64,6 +64,11 @@
                         <i class="ri-chat-download-fill"></i> <span data-key="t-landing">List order</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Request::is('order_selesai') ? 'active' : '' }}" href="/order_selesai">
+                        <i class="ri-chat-download-fill"></i> <span data-key="t-landing">Order selesai</span>
+                    </a>
+                </li>
                 @endcan
                 @can('admin')
                 <li class="menu-title"><span data-key="t-menu">Produksi</span></li>
