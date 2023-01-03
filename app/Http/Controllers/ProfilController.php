@@ -10,7 +10,12 @@ use App\Models\Province;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order_detail;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class ProfilController extends Controller
 {
@@ -107,7 +112,7 @@ class ProfilController extends Controller
         User::where('id', auth()->user()->id)
             ->update($validateEdit);
 
-        return redirect('/dashboard')->with('success', 'Update Profil Success');
+        return redirect()->back()->with('success', 'Update Profile Success');
     }
 
     /**
@@ -119,5 +124,35 @@ class ProfilController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function ganti_password(Request $request)
+    {
+        // return $request->all();
+        $request->validate([
+            'old_password' => ['required'],
+            'password' => ['required', 'min:6', 'confirmed']
+        ]);
+
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
+            throw ValidationException::withMessages([
+                'old_password' => 'Password yang anda masukkan salah'
+            ]);
+        } else {
+            auth()->user()->update(['password' => bcrypt($request->password)]);
+            return redirect()->back()->with('success', 'Update Password Success');
+        }
+
+        // $validator = Validator::make($request->all(), [
+        //     'old_password' => 'required',
+        //     'password' => 'required|min:6|confirmed',
+        // ]);
+
+        // if ($validator->fails()) {
+        //     // return 'gagal';
+        //     return Redirect::to(URL::previous() . "#changePassword");
+        // } else {
+        //     return 'sukses';
+        // }
     }
 }
