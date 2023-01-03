@@ -593,7 +593,7 @@
                             <img class="rounded-circle header-profile-user"
                                 src="{{ asset('storage').'/'. auth()->user()->foto }}" alt="Header Avatar">
                             @else
-                            <img class="rounded-circle header-profile-user" src="/storage/foto-sales/default.jpg"
+                            <img class="rounded-circle header-profile-user" src="./storage/foto-sales/default.jpg"
                                 alt="Header Avatar">
                             @endif
 
