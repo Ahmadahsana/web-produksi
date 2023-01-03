@@ -78,11 +78,13 @@ class TransaksiBarangController extends Controller
 
         Transaksi_barang::create($data);
 
-        // if ($mentahan === $data['kode_barang']) {
-        //     return redirect('/mentahan_barang')->with('success', 'Sukses Menambah Stok Mentahan !!');
-        // } elseif ($aksesoris === $data['kode_barang']) {
-        //     return redirect('/jok_aksesoris_barang')->with('success', 'Sukses Menambah Inventori Jok/Aksesoris !!');
-        // }
+        if ($kategori_barang == 1) {
+            return redirect('/barangmentahan')->with('success', 'Sukses Menambah Stok Mentahan !!');
+        } elseif ($kategori_barang == 2) {
+            return redirect('/aksesorisjok')->with('success', 'Sukses Menambah Inventori Jok/Aksesoris !!');
+        } elseif ($kategori_barang == 4) {
+            return redirect('/packing_barang')->with('success', 'Sukses Menambah Inventori Packing/Bungkus !!');
+        }
 
         return redirect('/barang')->with('success', 'Tambah Stok Berhasil');
     }

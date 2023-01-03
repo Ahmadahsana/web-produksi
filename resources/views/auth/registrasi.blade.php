@@ -1,5 +1,4 @@
 @extends('auth.main')
-
 @section('container')
 
 <div class="auth-page-wrapper pt-5">
@@ -44,21 +43,77 @@
                             <div class="p-2 mt-4">
                                 <form action="/registrasi" method="post" enctype="multipart/form-data">
                                     @csrf
+
+                                    {{-- <div class="card-body">
+                                        <p class="text-muted">FilePond is a JavaScript library with profile
+                                            picture-shaped file upload variation.</p>
+                                        <div class="avatar-xl mx-auto">
+                                            <input type="file" class="filepond filepond-input-circle" name="filepond"
+                                                accept="image/png, image/jpeg, image/gif" id="dropzone-preview-list">
+                                        </div>
+
+                                    </div> --}}
+                                    <!-- end card body -->
+
+                                    {{-- <div class="avatar-xl mx-auto">
+                                        <div class="filepond--root filepond filepond-input-circle filepond--hopper"
+                                            data-style-panel-layout="compact circle"
+                                            data-style-button-remove-item-position="left bottom"
+                                            data-style-button-process-item-position="right bottom"
+                                            data-style-load-indicator-position="center bottom"
+                                            data-style-progress-indicator-position="right bottom"
+                                            data-style-button-remove-item-align="false" style="height: 120px;"><input
+                                                class="filepond--browser" type="file" id="filepond--browser" name="foto"
+                                                aria-controls="filepond--assistant"
+                                                aria-labelledby="filepond--drop-label"><a class="filepond--credits"
+                                                aria-hidden="true" href="https://pqina.nl/" target="_blank"
+                                                rel="noopener noreferrer" style="transform: translateY(120px);">Powered
+                                                by PQINA</a>
+                                            <div class="filepond--drop-label"
+                                                style="transform: translate3d(0px, 0px, 0px); opacity: 1;"><label
+                                                    for="filepond--browser" id="filepond--drop-label"
+                                                    aria-hidden="true">Drag &amp;
+                                                    Drop
+                                                    your picture or <span class="filepond--label-action"
+                                                        tabindex="0">Browse</span></label></div>
+                                            <div class="filepond--list-scroller"
+                                                style="transform: translate3d(0px, 0px, 0px);">
+                                                <ul class="filepond--list" role="list"></ul>
+                                            </div>
+                                            <div class="filepond--panel filepond--panel-root" data-scalable="false">
+                                                <div class="filepond--panel-top filepond--panel-root"></div>
+                                                <div class="filepond--panel-center filepond--panel-root"
+                                                    style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1.2, 1);">
+                                                </div>
+                                                <div class="filepond--panel-bottom filepond--panel-root"
+                                                    style="transform: translate3d(0px, 120px, 0px);">
+                                                </div>
+                                            </div><span class="filepond--assistant" id="filepond--assistant"
+                                                role="status" aria-live="polite" aria-relevant="additions"></span>
+                                            <div class="filepond--drip"></div>
+                                            <fieldset class="filepond--data"></fieldset>
+                                        </div>
+                                    </div> --}}
+
                                     <div class="row">
-                                        <div class="col-lg-6 col-xl-6">
+                                        <div class="col">
                                             <div class="mb-3">
-                                                <label for="foto" class="form-label">Foto Profil <span
-                                                        class="text-danger"></span></label>
+                                                <label for="nama" class="form-label">Masukkan Foto <span
+                                                        class="text-danger">*</span></label>
                                                 <input type="file"
                                                     class="form-control @error('foto')is-invalid @enderror" name="foto"
-                                                    id="foto" placeholder="Masukkan Foto">
+                                                    id="foto" placeholder="Masukkan Foto" required autofocus
+                                                    autocomplete="off">
                                                 @error('foto')
                                                 <div class="text-danger">
-                                                    {{-- {{ $message }} --}}
+                                                    {{ $message }}
                                                 </div>
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-lg-6 col-xl-6">
                                             <div class="mb-3">
                                                 <label for="nama" class="form-label">Nama <span
@@ -74,9 +129,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
                                         <div class="col-lg-6 col-xl-6">
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Username <span
@@ -92,6 +144,9 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-lg-6 col-xl-6">
                                             <div class="mb-3">
                                                 <label for="nomor" class="form-label">Nomor Telp<span
@@ -107,8 +162,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-lg-6 col-xl-6">
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Email<span
@@ -124,6 +177,8 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-6 col-xl-6">
                                             <div class="mb-3">
                                                 <label for="alamat" class="form-label">Alamat<span
@@ -139,8 +194,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-lg-6 col-xl-6">
                                             <div class="mb-3">
                                                 <label for="provinsi" class="form-label">Provinsi<span
@@ -156,6 +209,8 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-6 col-xl-6">
                                             <div class="mb-3">
                                                 <label for="kota" class="form-label">Kota<span
@@ -171,8 +226,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-lg-6 col-xl-6">
                                             <div class="mb-3">
                                                 <label for="kecamatan" class="form-label">Kecamatan<span
@@ -188,7 +241,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-xl-6"></div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6 col-xl-6">
@@ -278,6 +330,7 @@
 </div>
 <!-- end auth-page-wrapper -->
 
+
 <script>
     let provinsi = @json($provinsi);
 let selectProvinsi = document.querySelector('#provinsi');
@@ -311,4 +364,20 @@ selectKota.addEventListener('change', function () {
     });
 })
 </script>
+
+<!-- dropzone min -->
+<script src="{{ url('assets/libs/dropzone/dropzone-min.js') }}"></script>
+<!-- filepond js -->
+<script src="{{ url('assets/libs/filepond/filepond.min.js') }}"></script>
+<script src="{{ url('assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}"></script>
+<script src="{{ url('assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js') }}">
+</script>
+<script
+    src="{{ url('assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js') }}">
+</script>
+<script src="{{ url('assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js') }}"></script>
+
+<script src="{{ url('assets/js/pages/form-file-upload.init.js') }}"></script>
+
+<script src="{{ url('assets/js/app.js') }}"></script>
 @endsection

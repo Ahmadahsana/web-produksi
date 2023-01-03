@@ -13,7 +13,7 @@ class RegistrasiController extends Controller
     public function index()
     {
         return view('auth.registrasi', [
-            'tittlePage'    => 'Registrasi Akun',
+            'tittlePage'    => 'Sign Up',
             'provinsi' => Province::with(['city', 'city.district'])->get()
         ]);
     }

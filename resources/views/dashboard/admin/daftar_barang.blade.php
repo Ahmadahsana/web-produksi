@@ -12,6 +12,11 @@
             {{ session('success') }}
         </div>
         @endif
+        @if (session()->has('Gagal'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('Gagal') }}
+        </div>
+        @endif
         <div id="customerList">
             <div class="row g-4 mb-3">
                 <div class="col-sm-auto">
@@ -212,8 +217,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="jumlah" class="form-label">Jumlah</label>
-                        <input type="text" id="jumlah" class="form-control" placeholder="masukkan jumlah" name="jumlah"
-                            required />
+                        <input type="number" id="jumlah" class="form-control" placeholder="masukkan jumlah"
+                            name="jumlah" required />
                     </div>
                 </div>
                 <div class="modal-footer">

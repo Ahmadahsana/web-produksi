@@ -54,7 +54,7 @@ class ProdMentahanController extends Controller
             $query_stok_terakhir = Transaksi_barang::Where('kode_barang', $request->kode_barang[$no])->latest('created_at')->first();
 
             if ($query_stok_terakhir == null) {
-                return 'stok barang habis';
+                return redirect('/mentahan')->with('Gagal', 'Stok Barang Habis !! Silahkan Tambah Stok !!');
             } else {
                 $stok_akhir = $query_stok_terakhir->stok_akhir;
 

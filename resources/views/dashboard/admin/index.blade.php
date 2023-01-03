@@ -156,7 +156,7 @@
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                         <span class="avatar-title bg-soft-danger rounded fs-3">
-                            <i class="bx bx-sync text-danger"></i>
+                            <i class="bx bx-check-double text-danger"></i>
                         </span>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                         <span class="avatar-title bg-soft-danger rounded fs-3">
-                            <i class="bx bx-sync text-danger"></i>
+                            <i class="bx bx-briefcase-alt-2 text-danger"></i>
                         </span>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                         <span class="avatar-title bg-soft-danger rounded fs-3">
-                            <i class="bx bx-sync text-danger"></i>
+                            <i class="bx bx-badge-check text-danger"></i>
                         </span>
                     </div>
                 </div>
@@ -249,7 +249,7 @@
                     </div>
                     <div class="avatar-sm flex-shrink-0">
                         <span class="avatar-title bg-soft-danger rounded fs-3">
-                            <i class="bx bx-sync text-danger"></i>
+                            <i class="bx bx-archive-out text-danger"></i>
                         </span>
                     </div>
                 </div>

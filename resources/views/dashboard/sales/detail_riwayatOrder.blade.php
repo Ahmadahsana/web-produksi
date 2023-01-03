@@ -15,10 +15,26 @@
                 </thead>
                 <tbody>
                     <tr class="text-center">
-                        <td>{{ strtoupper($order->sales_username)}}</td>
-                        <td>{{ strtoupper($order->payment) }}</td>
-                        <td>@currency($order->total_bayar)</td>
-                        <td>@currency($order->dp)</td>
+                        <td>
+                            <span class="alert-sm px-2 rounded-3 alert-info">
+                                {{ strtoupper($order->sales_username)}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="alert-sm px-2 rounded-3 alert-info">
+                                {{ strtoupper($order->payment)}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="alert-sm px-2 rounded-3 alert-success">
+                                @currency($order->total_bayar)
+                            </span>
+                        </td>
+                        <td>
+                            <span class="alert-sm px-2 rounded-3 alert-success">
+                                @currency($order->dp)
+                            </span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
