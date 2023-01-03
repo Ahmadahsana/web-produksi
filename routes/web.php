@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\Transaksi_barang;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProdJokController;
 use App\Http\Controllers\DashboardController;
@@ -12,8 +14,8 @@ use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\ProdPackingController;
 use App\Http\Controllers\ProdMentahanController;
 use App\Http\Controllers\ProdFinishingController;
-use App\Http\Controllers\ProdKirimBarangController;
 use App\Http\Controllers\VendorProduksiController;
+use App\Http\Controllers\ProdKirimBarangController;
 use App\Http\Controllers\TransaksiBarangController;
 
 /*
@@ -68,10 +70,12 @@ Route::resource('/profil', ProfilController::class)->middleware('auth');
 // BARANG
 Route::get('/barangmentahan', [BarangController::class, 'tampilmentahan'])->middleware('admin');
 Route::get('/aksesorisjok', [BarangController::class, 'tampiljokaksesoris'])->middleware('admin');
-Route::get('/packing_barang', [BarangController::class, 'packingbarang'])->middleware('admin');
+Route::get('/bungkuspacking', [BarangController::class, 'packingbarang'])->middleware('admin');
 Route::resource('/barang', BarangController::class)->middleware('admin');
 
 // Transaksi Barang
+Route::get('/inventransaksi', [TransaksiBarangController::class, 'tampiltransaksi'])->middleware('admin');
+// exsport
 Route::resource('/transaksibarang', TransaksiBarangController::class)->middleware('admin');
 
 // Order

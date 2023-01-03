@@ -13,6 +13,6 @@ class Transaksi_barang extends Model
 
     public function Barang()
     {
-        return $this->belongsTo(Barang::class);
+        return $this->belongsTo(Barang::class, 'kode_barang', 'kode_barang');
     }
 }

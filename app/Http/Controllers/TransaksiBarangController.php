@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
-use App\Models\Transaksi_barang;
 use Illuminate\Http\Request;
+use App\Models\Transaksi_barang;
 
 class TransaksiBarangController extends Controller
 {
@@ -39,9 +39,6 @@ class TransaksiBarangController extends Controller
      */
     public function store(Request $request, Barang $barang)
     {
-        // $mentahan = Barang::where('kategori_barang_id', 1)->get();
-        // $aksesoris = Barang::where('kategori_barang_id', 2)->get();
-
         $kode_barang = $request->kode_barang;
         $cari_kategori_barang = Barang::where('kode_barang', $kode_barang)->first();
         $kategori_barang = $cari_kategori_barang['kategori_barang_id'];
@@ -83,7 +80,7 @@ class TransaksiBarangController extends Controller
         } elseif ($kategori_barang == 2) {
             return redirect('/aksesorisjok')->with('success', 'Sukses Menambah Inventori Jok/Aksesoris !!');
         } elseif ($kategori_barang == 4) {
-            return redirect('/packing_barang')->with('success', 'Sukses Menambah Inventori Packing/Bungkus !!');
+            return redirect('/bungkuspacking')->with('success', 'Sukses Menambah Inventori Packing/Bungkus !!');
         }
 
         return redirect('/barang')->with('success', 'Tambah Stok Berhasil');
@@ -132,5 +129,13 @@ class TransaksiBarangController extends Controller
     public function destroy(Transaksi_barang $transaksi_barang)
     {
         //
+    }
+
+    public function tampiltransaksi(Barang $barang)
+    {
+        return view('dashboard.admin.daftar_transaksi_barang', [
+            'tittlePage'    =>  'Daftar Transaksi',
+            'transaksi'     =>  Transaksi_barang::latest('created_at')->with('Barang')->get()
+        ]);
     }
 }
