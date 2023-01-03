@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 use App\Models\Transaksi_barang;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 
 class TransaksiBarangController extends Controller
 {
@@ -137,5 +138,15 @@ class TransaksiBarangController extends Controller
             'tittlePage'    =>  'Daftar Transaksi',
             'transaksi'     =>  Transaksi_barang::latest('created_at')->with('Barang')->get()
         ]);
+    }
+
+    public function pdftransaksi()
+    {
+
+        $data = Transaksi_barang::latest('created_at')->with('Barang')->get();
+
+        view()->share('data', $data);
+        $pdf = FacadePdf::loadview('dashboard.admin.eksportPDF_transaksi_barang');
+        return $pdf->download('Daftar-Riwayat-Transaksi.pdf');
     }
 }

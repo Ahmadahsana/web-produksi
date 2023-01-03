@@ -76,6 +76,7 @@ Route::resource('/barang', BarangController::class)->middleware('admin');
 // Transaksi Barang
 Route::get('/inventransaksi', [TransaksiBarangController::class, 'tampiltransaksi'])->middleware('admin');
 // exsport
+Route::get('/pdftransaksi', [TransaksiBarangController::class, 'pdftransaksi'])->middleware('admin');
 Route::resource('/transaksibarang', TransaksiBarangController::class)->middleware('admin');
 
 // Order

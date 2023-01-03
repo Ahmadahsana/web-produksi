@@ -16,6 +16,9 @@
             <div class="row g-4 mb-3">
                 <div class="col-sm">
                     <div class="d-flex justify-content-sm-end">
+                        <div class="mt-2">
+                            <a href="pdftransaksi" class="btn btn-sm btn-info">Eksport PDF</a>
+                        </div>
                         <div class="search-box ms-2">
                             <input type="text" class="form-control search" placeholder="Search...">
                             <i class="ri-search-line search-icon"></i>
