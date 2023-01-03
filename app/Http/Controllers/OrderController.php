@@ -201,5 +201,10 @@ class OrderController extends Controller
 
     public function order_selesai()
     {
+        return view('dashboard.admin.permintaan_order', [
+            'tittlePage'    => 'LIST ORDER SELESAI',
+            'orders' => Order_detail::where('status_pengerjaan_id', '=', '8')->with(['barang', 'status_pengerjaan', 'Order', 'Order.sales'])
+                ->get()
+        ]);
     }
 }
