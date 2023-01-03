@@ -65,8 +65,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('order_selesai') ? 'active' : '' }}" href="/order_selesai">
-                        <i class="ri-chat-download-fill"></i> <span data-key="t-landing">Order selesai</span>
+                    <a class="nav-link menu-link {{ Request::is('order_selesai') ? 'active' : '' }}"
+                        href="/order_selesai">
+                        <i class="ri-file-reduce-fill"></i> <span data-key="t-landing">Order selesai</span>
                     </a>
                 </li>
                 @endcan
@@ -130,9 +131,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('packing_barang') ? 'active' : '' }}"
-                        href="/packing_barang">
+                    <a class="nav-link menu-link {{ Request::is('bungkuspacking') ? 'active' : '' }}"
+                        href="/bungkuspacking">
                         <i class="ri-file-lock-fill"></i> <span data-key="t-landing">Packing / Bungkus</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ Request::is('inventransaksi') ? 'active' : '' }}"
+                        href="/inventransaksi">
+                        <i class="ri-money-dollar-circle-fill"></i> <span data-key="t-landing">Transaksi</span>
                     </a>
                 </li>
                 @endcan

@@ -9,13 +9,13 @@
     {{-- {{ dd($order) }} --}}
     <div class="card-body">
         <div class="row text-center">
-            <div class="col-lg">
+            <div class="col">
                 @if ($barang->foto)
-                <img src="{{ asset('storage/'. $barang->foto) }}" alt="" class="rounded-3 shadow-lg my-3"
-                    height="300px">
+                <img src="{{ asset('storage/'. $barang->foto) }}" alt="" class="rounded-3 shadow-lg my-3" height="300px"
+                    width="420px">
                 @else
                 <img src="https://source.unsplash.com/random/300×300?{{ $barang->nama }}" alt=""
-                    class="rounded-3 shadow-lg my-3" height="300px">
+                    class="rounded-3 shadow-lg my-3" height="300px" width="420px">
                 @endif
             </div>
         </div>
@@ -216,7 +216,7 @@
                 @elseif ($barang->kategori_barang_id == 3)
                 <a href="/barang" class="btn btn-danger">Kembali</a>
                 @elseif ($barang->kategori_barang_id == 4)
-                <a href="/packing_barang" class="btn btn-danger">Kembali</a>
+                <a href="/bungkuspacking" class="btn btn-danger">Kembali</a>
                 @endif
             </div>
         </form>

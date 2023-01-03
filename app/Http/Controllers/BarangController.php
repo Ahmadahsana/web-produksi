@@ -36,7 +36,7 @@ class BarangController extends Controller
             'tittlePage'        => 'TAMBAH BARANG',
             'status_barang'     => Status_barang::all(),
             'status_jual'       => Status_jual::all(),
-            'kategori_barang'   => Kategori_barang::all()
+            'kategori_barang'   => Kategori_barang::all(),
         ]);
     }
 
@@ -72,7 +72,7 @@ class BarangController extends Controller
         } elseif ($validatedCreate['kategori_barang_id'] == 2) {
             return redirect('/aksesorisjok')->with('success', 'Sukses Menambah Inventori Jok/Aksesoris !!');
         } elseif ($validatedCreate['kategori_barang_id'] == 4) {
-            return redirect('/packing_barang')->with('success', 'Sukses Menambah Inventori Packing/Bungkus !!');
+            return redirect('/bungkuspacking')->with('success', 'Sukses Menambah Inventori Packing/Bungkus !!');
         }
         return redirect('/barang')->with('success', 'Sukses Menambah Inventori Barang Jadi !!');
     }
@@ -143,7 +143,7 @@ class BarangController extends Controller
         } elseif ($validateEdit['kategori_barang_id'] == 2) {
             return redirect('/aksesorisjok')->with('success', 'Sukses Update Inventori Jok/Aksesoris !!');
         } elseif ($validateEdit['kategori_barang_id'] == 4) {
-            return redirect('/packing_barang')->with('success', 'Sukses Update Inventori Packing/Bungkus !!');
+            return redirect('/bungkuspacking')->with('success', 'Sukses Update Inventori Packing/Bungkus !!');
         }
         return redirect('/barang')->with('success', 'Update Barang Success');
     }
@@ -165,7 +165,7 @@ class BarangController extends Controller
         } elseif ($barang->kategori_barang_id == 2) {
             return redirect('/aksesorisjok')->with('success', 'Sukses Delete Inventori Jok/Aksesoris !!');
         } elseif ($barang->kategori_barang_id == 4) {
-            return redirect('/packing_barang')->with('success', 'Sukses Delete Inventori Packing/Bungkus !!');
+            return redirect('/bungkuspacking')->with('success', 'Sukses Delete Inventori Packing/Bungkus !!');
         }
         return redirect('/barang')->with('success', 'Delete Barang Success');
     }
