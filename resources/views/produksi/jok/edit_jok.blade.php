@@ -3,6 +3,11 @@
 @section('container')
 {{-- @dd($jok->Vendor_produksi) --}}
 <div class="card">
+  @if (session()->has('danger'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('danger') }}
+    </div>
+  @endif
   <div class="card-header">
     <h4 class="card-title mb-0">{{ $tittlePage }}</h4>
   </div><!-- end card header -->

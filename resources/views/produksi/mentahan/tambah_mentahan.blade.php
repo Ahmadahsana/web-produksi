@@ -12,6 +12,11 @@
             {{ session('success') }}
         </div>
         @endif
+        @if (session()->has('danger'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('danger') }}
+            </div>
+        @endif
         <div class="mb-1 row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Nama Sales</label>
             <div class="col-sm-10">

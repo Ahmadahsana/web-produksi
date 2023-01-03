@@ -46,31 +46,38 @@ class ProdMentahanController extends Controller
     {
         // return $request->all();
         $total_biaya = 0;
+        $data_kredit = [];
         foreach ($request->jumlah_barang as $no => $jum) {
             $biaya = $request->jumlah_barang[$no] * $request->hpp_barang[$no];
             $total_biaya = $total_biaya + $biaya;
 
-
             $query_stok_terakhir = Transaksi_barang::Where('kode_barang', $request->kode_barang[$no])->latest('created_at')->first();
 
             if ($query_stok_terakhir == null) {
-                return redirect('/mentahan')->with('Gagal', 'Stok Barang Habis !! Silahkan Tambah Stok !!');
+                return redirect()->back()->with('danger', 'Stok tidak cukup')->withInput();
             } else {
-                $stok_akhir = $query_stok_terakhir->stok_akhir;
+                if ($query_stok_terakhir->stok_akhir < $request->jumlah_barang[$no]) {
+                    return redirect()->back()->with('danger', 'Stok tidak cukup')->withInput();
+                } else {
+                    $stok_akhir = $query_stok_terakhir->stok_akhir;
 
-                $data_kredit = [
-                    'kode_barang' => $request->kode_barang[$no],
-                    'stok_awal' => $stok_akhir,
-                    'stok_akhir' => $stok_akhir - $request->jumlah_barang[$no],
-                    'jumlah' => $request->jumlah_barang[$no],
-                    'jenis_transaksi' => 'Kredit',
-                    'keterangan' => 'dari input mentahan',
-                ];
-
-                Transaksi_barang::create($data_kredit);
+                    $data_kredit[] = [
+                        'kode_barang' => $request->kode_barang[$no],
+                        'stok_awal' => $stok_akhir,
+                        'stok_akhir' => $stok_akhir - $request->jumlah_barang[$no],
+                        'jumlah' => $request->jumlah_barang[$no],
+                        'jenis_transaksi' => 'Kredit',
+                        'keterangan' => 'produksi mentahan',
+                        'created_at' => date("Y-m-d H:i:s"),
+                        'updated_at' => date("Y-m-d H:i:s")
+                    ];
+                }
             }
         }
 
+        // return $data_kredit;
+
+        Transaksi_barang::insert($data_kredit);
 
         $data = [
             'Order_detail_id' => $request->order_detail_id,

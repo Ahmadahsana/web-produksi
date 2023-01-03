@@ -8,6 +8,7 @@ use App\Models\Prod_kirim_barang;
 use App\Models\Prod_packing;
 use App\Models\Prod_packing_detail;
 use App\Models\Prod_pengiriman;
+use App\Models\Transaksi_barang;
 use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
 
@@ -126,11 +127,37 @@ class ProdPackingController extends Controller
         } elseif (isset($request->kode_barang)) {
             // ini dari vendor sendiri
             // return $request->all();
+            $data_kredit = [];
             $total_biaya = 0;
             foreach ($request->jumlah_barang as $no => $jum) {
                 $biaya = $request->jumlah_barang[$no] * $request->hpp_barang[$no];
                 $total_biaya = $total_biaya + $biaya;
+
+                $query_stok_terakhir = Transaksi_barang::Where('kode_barang', $request->kode_barang[$no])->latest('created_at')->first();
+
+                if ($query_stok_terakhir == null) {
+                    return redirect()->back()->with('danger', 'Stok tidak cukup')->withInput();
+                } else {
+                    if ($query_stok_terakhir->stok_akhir < $request->jumlah_barang[$no]) {
+                        return redirect()->back()->with('danger', 'Stok tidak cukup')->withInput();
+                    } else {
+                        $stok_akhir = $query_stok_terakhir->stok_akhir;
+
+                        $data_kredit[] = [
+                            'kode_barang' => $request->kode_barang[$no],
+                            'stok_awal' => $stok_akhir,
+                            'stok_akhir' => $stok_akhir - $request->jumlah_barang[$no],
+                            'jumlah' => $request->jumlah_barang[$no],
+                            'jenis_transaksi' => 'Kredit',
+                            'keterangan' => 'produksi packing',
+                            'created_at' => date("Y-m-d H:i:s"),
+                            'updated_at' => date("Y-m-d H:i:s")
+                        ];
+                    }
+                }
             }
+
+            Transaksi_barang::insert($data_kredit);
 
             // insert ke tabel prod_packing
             $dataUpdate = [
