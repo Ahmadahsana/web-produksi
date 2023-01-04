@@ -55,4 +55,9 @@ class Order_detail extends Model
     {
         return $this->hasOne(Prod_mentahan::class, 'Order_detail_id', 'id');
     }
+
+    public function keuntungan()
+    {
+        return $this->hasOne(Prod_keuntungan::class);
+    }
 }

@@ -127,3 +127,4 @@ Route::post('/edit_pengiriman', [ProdKirimBarangController::class, 'edit_pengiri
 
 // order Selesai
 Route::get('/order_selesai', [OrderController::class, 'order_selesai'])->middleware(['admin', 'auth']);
+Route::get('/order_selesai/{id_order_detail}', [OrderController::class, 'detail_order_selesai'])->middleware(['admin', 'auth']);
