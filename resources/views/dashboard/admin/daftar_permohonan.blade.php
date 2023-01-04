@@ -34,7 +34,7 @@
                             <th class="sort" data-sort="customer_name">Nama</th>
                             <th class="sort" data-sort="phone">Nomor</th>
                             <th class="sort" data-sort="alamat">Alamat</th>
-                            <th class="sort" data-sort="phone">Status</th>
+                            <th class="sort" data-sort="status">Status</th>
                             <th class="sort" data-sort="action">Action</th>
                         </tr>
                     </thead>
