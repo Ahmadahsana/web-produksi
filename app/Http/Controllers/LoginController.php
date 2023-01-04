@@ -25,19 +25,19 @@ class LoginController extends Controller
 
 
 
-
+        $admin = User::where('id', 1)->first();
         $User = User::where('username', $request->username)->first();
 
         if ($User) {
             if ($User->status_user_id == '0') {
-                return back()->with('loginError', 'Login gagal !! Silahkan Aktivasi Akun atau Hubungi Administrator !!');
+                return back()->with('loginError', 'Login gagal !! Silahkan Aktivasi Akun atau Hubungi Administrator di Nomor ' . $admin->nomor . ' atau Email ' . $admin->email . ' !!');
             } else if ($User->status_user_id == '1') {
                 if (Auth::attempt($credential)) {
                     // dd('belum');
                     $request->session()->regenerate();
                     return redirect()->intended('/');
                 } else {
-                    return back()->with('loginError', 'Kombinasi password / username salah');
+                    return back()->with('loginError', 'Kombinasi Password / Username Salah !!');
                 }
             }
         } else {
