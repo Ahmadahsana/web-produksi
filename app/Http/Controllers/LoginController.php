@@ -36,6 +36,8 @@ class LoginController extends Controller
                     // dd('belum');
                     $request->session()->regenerate();
                     return redirect()->intended('/');
+                } else {
+                    return back()->with('loginError', 'Kombinasi password / username salah');
                 }
             }
         } else {

@@ -41,6 +41,7 @@
                                 <label for="jumlah" class="form-label">jumlah</label>
                                 <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder=""
                                     min="1">
+                                <div id="wadah_peringatan_jumlah"></div>
                             </div>
                         </div>
                     </div>
@@ -63,7 +64,7 @@
 
     </div><!-- end card -->
 </div>
-<form action="" method="post">
+<form action="" method="post" id="form_submit_order">
     @csrf
     <div class="row">
         <div class="col-sm">
@@ -82,6 +83,7 @@
                 </div><!-- end card header -->
                 <div class="card-body">
                     <div class="" id="masukSini"></div>
+                    <div id="wadah_peringatan_barang"></div>
 
 
                     <div class="row">
@@ -106,6 +108,7 @@
                     <div class="col-12">
                         <label for="dp" class="form-label">DP</label>
                         <input type="number" class="form-control" id="dp" name="dp" placeholder="dp">
+                        <div id="wadah_peringatan_dp"></div>
                     </div>
                 </div>
                 <div class="row ">
@@ -116,11 +119,12 @@
                             <option value="bni">BNI</option>
                             <option value="mandiri">Mandiri</option>
                         </select>
+                        <div id="wadah_peringatan_payment"></div>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Input Data</button>
+                        <button type="button" id="submit_order" class="btn btn-primary">Input Data</button>
                     </div>
                 </div>
             </div>
@@ -135,6 +139,7 @@
 <!-- form masks init -->
 {{-- <script src="assets/js/pages/form-masks.init.js"></script> --}}
 <script>
+    let wadah_peringatan_barang = document.querySelector('#wadah_peringatan_barang');
     let dataBarang = @json($barang);
     let tampung_gambar = document.querySelector('#tampung_gambar')
     let nama = document.querySelector('#nama');
@@ -176,51 +181,62 @@
         let hargaBarang = dataBarang[index].hpp
         let Total = parseInt(jumlahBarang) * parseInt(hargaBarang)
         
+        let wadah_peringatan_jumlah = document.querySelector('#wadah_peringatan_jumlah');
         let found = masukKeranjang.find(({id}) => id == idBarang);
 
-        if (found !== undefined) {
-            // console.log('sudah ada');
-        } else {
-            masukKeranjang.push({
-                id : idBarang,
-                nama : namaBarang,
-                harga : hargaBarang,
-                jumlah : jumlahBarang
-            });
-            hargaKeranjang.push(Total)
-            sum = sum + Total
-
-            let masukSini = document.querySelector('#masukSini');
-
-            masukSini.insertAdjacentHTML('beforeend', `<div class="row d-flex align-items-center mb-2">
-                                                            <div class="col-3">
-                                                                <img src="{{ asset('storage/')}}/${fotoBarang}" class="rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                                            </div>
-                                                            <div class="col-5">
-                                                                <div class="flex-1">
-                                                                    <h6 class="mt-0 mb-1 fs-14">
-                                                                        ${namaBarang}
-                                                                    </h6>
-                                                                    <p class="mb-0 fs-12 text-muted">
-                                                                        Quantity: <span>${jumlahBarang} x ${hargaBarang}</span>
-                                                                    </p>
+        if (jumlahBarang == '') {
+            // console.log('kosong');
+            wadah_peringatan_jumlah.innerHTML = '<p class="text-danger">Masukkan jumlah barang</p>'
+        }else{
+            if (found !== undefined) {
+                // console.log('sudah ada');
+            } else {
+                masukKeranjang.push({
+                    id : idBarang,
+                    nama : namaBarang,
+                    harga : hargaBarang,
+                    jumlah : jumlahBarang
+                });
+                hargaKeranjang.push(Total)
+                sum = sum + Total
+    
+                let masukSini = document.querySelector('#masukSini');
+                wadah_peringatan_jumlah.innerHTML = ''
+                wadah_peringatan_barang.innerHTML = ''
+    
+                masukSini.insertAdjacentHTML('beforeend', `<div class="row d-flex align-items-center mb-2 list_barang">
+                                                                <div class="col-3">
+                                                                    <img src="{{ asset('storage/')}}/${fotoBarang}" class="rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-3">
-                                                                <h5 class="m-0 fw-normal">Rp. <span class="cart-item-price">${Total}</span> </h5>
-                                                            </div>
-                                                            <div class="col-1">
-                                                                <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn" onclick="hapusItem(this, ${idBarang}, ${Total})">
-                                                                    <i class="ri-close-fill fs-16"></i></button>
-                                                            </div>
+                                                                <div class="col-5">
+                                                                    <div class="flex-1">
+                                                                        <h6 class="mt-0 mb-1 fs-14">
+                                                                            ${namaBarang}
+                                                                        </h6>
+                                                                        <p class="mb-0 fs-12 text-muted">
+                                                                            Quantity: <span>${jumlahBarang} x ${hargaBarang}</span>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3">
+                                                                    <h5 class="m-0 fw-normal"><span class="cart-item-price">${formatCurrency(Total)}</span> </h5>
+                                                                </div>
+                                                                <div class="col-1">
+                                                                    <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn" onclick="hapusItem(this, ${idBarang}, ${Total})">
+                                                                        <i class="ri-close-fill fs-16"></i></button>
+                                                                </div>
+                                                                
+                                                                <input type="text" class="d-none" name="idbarang[]" value="${idBarang}">
+                                                                <input type="text" class="d-none" name="jumlahbarang[]" value="${jumlahBarang}">
+                                                                <input type="text" class="d-none" name="total_harga[]" value="${Total}">
+                                                            </div>`);
                                                             
-                                                            <input type="text" class="d-none" name="idbarang[]" value="${idBarang}">
-                                                            <input type="text" class="d-none" name="jumlahbarang[]" value="${jumlahBarang}">
-                                                            <input type="text" class="d-none" name="total_harga[]" value="${Total}">
-                                                        </div>`);
                 
-                
+                    
+                    
             }
+        }
+
 
         
         // hargaKeranjang.forEach(harga => {
@@ -230,7 +246,7 @@
         let totalItem = document.querySelector('#totalItem');
         let totalBayar = document.querySelector('#totalBayar');
         totalItem.innerHTML= masukKeranjang.length;
-        totalBayar.innerHTML = `<h5 class="m-0" id="cart-item-total">Rp ${sum}</h5><input type="text" class="d-none" value="${sum}" name="total_bayar">`;
+        totalBayar.innerHTML = `<h5 class="m-0" id="cart-item-total">${formatCurrency(sum)}</h5><input type="text" class="d-none" value="${sum}" name="total_bayar">`;
 
         harga.value = '';
         jumlah.value = '';
@@ -252,5 +268,37 @@
         totalBayar.innerHTML = `<h5 class="m-0" id="cart-item-total">Rp ${sum}</h5><input type="text" class="d-none" value="${sum}" name="total_bayar">`;
         console.log(sum);
     } 
+
+    let submit_order = document.querySelector('#submit_order');
+
+    submit_order.addEventListener('click', function (e) {
+        let list_barang = document.querySelector('.list_barang');
+        let dp = document.querySelector('#dp').value;
+        let payment = document.querySelector('#payment').value;
+        let wadah_peringatan_dp = document.querySelector('#wadah_peringatan_dp');
+
+        if (list_barang == null) {
+            wadah_peringatan_barang.innerHTML = '<p class="text-danger">Barang tidak boleh kosong</p>'
+        }else{
+            if (dp == '') {
+            // console.log(list_barang);
+            wadah_peringatan_dp.innerHTML = '<p class="text-danger">Dp harus diisi</p>'
+            }else{
+                if (dp > sum) {
+                    wadah_peringatan_dp.innerHTML = '<p class="text-danger">Dp tidak valid</p>'
+                }else{
+                    wadah_peringatan_dp.innerHTML = ''
+                    if (payment == '') {
+                        let wadah_peringatan_payment = document.querySelector('#wadah_peringatan_payment');
+                        wadah_peringatan_payment.innerHTML = '<p class="text-danger">Pilih metode payment</p>'
+                    }else{
+                        let form_submit_order = document.querySelector('#form_submit_order');
+                        form_submit_order.submit()
+                    }
+                }
+            }
+        }
+
+    })
 </script>
 @endsection

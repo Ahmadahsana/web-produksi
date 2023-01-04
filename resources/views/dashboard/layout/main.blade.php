@@ -22,6 +22,12 @@
     <!-- custom Css-->
     <link href="{{ url('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <script>
+        function formatCurrency(number) {
+        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+        }
+    </script>
+
 
 </head>
 

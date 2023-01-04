@@ -81,6 +81,21 @@
                     <td>Pengiriman</td>
                     <td>Rp. {{ $order_detail->keuntungan->pengiriman}}</td>
                   </tr>
+                  <tr style="">
+                    <th scope="row"></th>
+                    <td align="right"><strong>Total</strong></td>
+                    <td>Rp. <strong>{{ $order_detail->keuntungan->total}}</strong> </td>
+                  </tr>
+                  <tr style="">
+                    <th scope="row"></th>
+                    <td align="right"><strong>Harga jual</strong> </td>
+                    <td>Rp. <strong>{{ $order_detail->keuntungan->harga_jual}}</strong></td>
+                  </tr>
+                  <tr style="">
+                    <th scope="row"></th>
+                    <td align="right"><strong>Keuntungan</strong> </td>
+                    <td>Rp. <strong>{{ $order_detail->keuntungan->keuntungan}}</strong> </td>
+                  </tr>
                 </tbody>
             </table>
         </div>
