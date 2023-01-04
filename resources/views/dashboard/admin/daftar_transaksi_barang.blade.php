@@ -53,7 +53,7 @@
                             <td scope="row">{{ $loop->iteration }}</td>
                             <td class="id" style="display:none;"><a href="javascript:void(0);"
                                     class="fw-medium link-primary">#VZ2101</a></td>
-                            <td class="customer_name">{{ date($tr->created_at) }}</td>
+                            <td class="customer_name">{{ date("d-M-Y", strtotime($tr->created_at)) }}</td>
                             <td class="alamat">{{ strtoupper($tr->Barang->nama) }}</td>
                             <td class="alamat">{{ $tr->kode_barang }}</td>
                             <td class="status"><span

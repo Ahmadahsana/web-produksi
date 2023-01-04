@@ -146,7 +146,9 @@ class TransaksiBarangController extends Controller
         $data = Transaksi_barang::latest('created_at')->with('Barang')->get();
 
         view()->share('data', $data);
-        $pdf = FacadePdf::loadview('dashboard.admin.eksportPDF_transaksi_barang');
+        $pdf = FacadePdf::loadview('dashboard.admin.eksportPDF_transaksi_barang', [
+            'tittlePage'    =>  'Eksport PDF'
+        ]);
         return $pdf->download('Daftar-Riwayat-Transaksi.pdf');
     }
 }

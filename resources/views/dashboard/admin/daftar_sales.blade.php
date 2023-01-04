@@ -39,8 +39,8 @@
                             </th>
                             <th class="sort" data-sort="customer_name">Nama</th>
                             <th class="sort" data-sort="phone">Nomor</th>
-                            <th class="sort" data-sort="alamat">Alamat</th>
-                            <th class="sort" data-sort="phone">Status</th>
+                            <th class="sort" data-sort="addres">Alamat</th>
+                            <th class="sort" data-sort="status">Status</th>
                             <th class="sort" data-sort="action">Action</th>
                         </tr>
                     </thead>
@@ -52,7 +52,7 @@
                                     class="fw-medium link-primary">#VZ2101</a></td>
                             <td class="customer_name">{{ $s->nama }}</td>
                             <td class="phone">{{ $s->nomor }}</td>
-                            <td class="alamat">{{ $s->alamat }}</td>
+                            <td class="addres">{{ $s->alamat }}</td>
                             <td class="status"><span
                                     class="badge  @if ($s->status_user_id==1) badge-soft-success @else badge-soft-danger @endif text-uppercase">@if($s->status_user_id==1)
                                     Active @else NonActive @endif</span></td>

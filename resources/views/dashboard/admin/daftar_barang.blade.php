@@ -44,9 +44,9 @@
                             <th scope="col" style="width: 50px;"> No </th>
                             <th class="sort" data-sort="nama">Nama</th>
                             <th class="sort" data-sort="kode">Kode barang</th>
-                            <th class="sort" data-sort="status_barang">Status Barang</th>
-                            <th class="sort" data-sort="status_jual">Status Jual</th>
-                            <th class="sort" data-sort="kategori_barang">Kategori Barang</th>
+                            <th class="sort" data-sort="statusbarang">Status Barang</th>
+                            <th class="sort" data-sort="statusjual">Status Jual</th>
+                            <th class="sort" data-sort="kategoribarang">Kategori Barang</th>
                             <th class="sort" data-sort="satuan">Satuan</th>
                             <th class="sort" data-sort="stok">Stok</th>
                             <th class="sort" data-sort="action">Action</th>
@@ -60,9 +60,9 @@
                                     class="fw-medium link-primary">#VZ2101</a></td>
                             <td class="nama">{{ $s->nama }}</td>
                             <td class="kode">{{ $s->kode_barang }}</td>
-                            <td class="status_barang">{{ $s->Status_barang->nama }}</td>
-                            <td class="status_jual">{{ $s->Status_jual->nama }}</td>
-                            <td class="kategori_barang">{{ $s->Kategori_barang->nama }}</td>
+                            <td class="statusbarang">{{ $s->Status_barang->nama }}</td>
+                            <td class="statusjual">{{ $s->Status_jual->nama }}</td>
+                            <td class="kategoribarang">{{ $s->Kategori_barang->nama }}</td>
                             <td class="satuan">{{ $s->satuan }}</td>
                             <td class="stok">@if (!empty($s->Transaksi_barang->stok_akhir))
                                 {{ $s->Transaksi_barang->stok_akhir }}
