@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 use App\Models\Transaksi_barang;
+// use Elibyy\TCPDF\Facades\TCPDF as PDF;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 
 class TransaksiBarangController extends Controller
@@ -142,9 +143,23 @@ class TransaksiBarangController extends Controller
 
     public function pdftransaksi()
     {
+        // TCPDF
+        // $filename = 'PDF RIWAYAT TRANSAKSI';
+        // $data = [
+        //     'tittlePage'    => 'DAFTAR RIWAYAT TRANSAKSI',
+        //     'data'          => Transaksi_barang::latest('created_at')->with('Barang')->get()
+        // ];
+        // $html = view()->make('dashboard.admin.eksportPDF_transaksi_barang', $data)->render();
+        // $pdf = new PDF;
+        // $pdf::SetTitle('DAFTAR RIWAYAT TRANSAKSI');
+        // $pdf::AddPage();
+        // $pdf::writeHTML($html, true, false, true, false, '');
 
-        $data = Transaksi_barang::latest('created_at')->with('Barang')->get();
+        // $pdf::Output(public_path($filename), 'F');
 
+        // return response()->download(public_path($filename));
+
+        $data =  Transaksi_barang::latest('created_at')->with('Barang')->get();
         view()->share('data', $data);
         $pdf = FacadePdf::loadview('dashboard.admin.eksportPDF_transaksi_barang', [
             'tittlePage'    =>  'Eksport PDF'

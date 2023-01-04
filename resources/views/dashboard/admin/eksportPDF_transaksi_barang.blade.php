@@ -1,8 +1,9 @@
+{{-- dompdf --}}
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Membuat Laporan PDF Dengan DOMPDF Laravel</title>
+    <title>Daftar Riwayat Transaksi</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -32,13 +33,8 @@
             </tr>
         </thead>
         <tbody class="list form-check-all">
-            {{-- @dd($transaksi) --}}
             @foreach ($data as $tr)
             <tr>
-                {{-- @foreach ($barang as $br)
-                <td class="phone">{{ $br->nama }}</td>
-                @endforeach --}}
-                {{-- @dd($transaksi) --}}
                 <td>{{ $loop->iteration }}</td>
                 <td class="id" style="display:none;"><a href="javascript:void(0);"
                         class="fw-medium link-primary">#VZ2101</a></td>
@@ -63,6 +59,61 @@
 </body>
 
 </html>
+
+{{-- TCPDF --}}
+{{--
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+    <table class="table table-active table-bordered table-responsive table-info" id="customerTable">
+        <thead class="table-light">
+            <tr>
+                <th class="sort" data-sort="phone">No</th>
+                <th class="sort" data-sort="customer_name">Tanggal</th>
+                <th class="sort" data-sort="customer_name">Nama Barang</th>
+                <th class="sort" data-sort="alamat">Kode</th>
+                <th class="sort" data-sort="phone">Transaksi</th>
+                <th class="sort" data-sort="action">Jumlah</th>
+                <th class="sort" data-sort="action">Stok Awal</th>
+                <th class="sort" data-sort="action">Stok Akhir</th>
+                <th class="sort" data-sort="action">Keterangan</th>
+            </tr>
+        </thead>
+        <tbody class="list form-check-all">
+            @foreach ($data as $tr)
+            <tr>
+                <td scope="row">{{ $loop->iteration }}</td>
+                <td class="id" style="display:none;"><a href="javascript:void(0);"
+                        class="fw-medium link-primary">#VZ2101</a></td>
+                <td class="customer_name">{{ date("d-M-Y", strtotime($tr->created_at)) }}</td>
+                <td class="alamat">{{ strtoupper($tr->Barang->nama) }}</td>
+                <td class="alamat">{{ $tr->kode_barang }}</td>
+                <td class="status"><span
+                        class="badge  @if ($tr->jenis_transaksi=='Debit') badge-soft-success @else badge-soft-danger @endif text-uppercase">@if($tr->jenis_transaksi=='Debit')
+                        Debit @else Kredit @endif</span></td>
+                <td class="alamat">{{ $tr->jumlah }}</td>
+                <td class="alamat">{{ $tr->stok_awal }}</td>
+                <td class="alamat">{{ $tr->stok_akhir }}</td>
+                <td class="alamat">{{ strtoupper($tr->keterangan) }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+</body>
+
+</html> --}}
+
+
 
 
 {{--
@@ -116,15 +167,10 @@
                 <th>Keterangan</th>
             </tr>
         </thead>
-        <tbody> --}}
-            {{-- @dd($transaksi) --}}
-            {{-- @foreach ($data as $tr)
-            <tr> --}}
-                {{-- @foreach ($barang as $br)
-                <td class="phone">{{ $br->nama }}</td>
-                @endforeach --}}
-                {{-- @dd($transaksi) --}}
-                {{-- <td scope="row">{{ $loop->iteration }}</td>
+        <tbody>
+            @foreach ($data as $tr)
+            <tr>
+                <td scope="row">{{ $loop->iteration }}</td>
                 <td class="id" style="display:none;"><a href="javascript:void(0);"
                         class="fw-medium link-primary">#VZ2101</a></td>
                 <td class="customer_name">{{ date("d-M-Y", strtotime($tr->created_at)) }}</td>
