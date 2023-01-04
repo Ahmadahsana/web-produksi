@@ -23,8 +23,14 @@
             </div>
             <div class="row">
                 <div class="col-xxl-3">
+                    
                     <div class="card mt-n5">
                         <div class="card-body p-4">
+                            @if (session()->has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                            @endif
                             <div class="text-center">
                                 <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
                                     @if (auth()->user()->foto)
@@ -57,6 +63,9 @@
 
 
                 </div>
+
+                
+
                 <!--end col-->
                 <div class="col-xxl-9">
                     <div class="card mt-xxl-n5">
@@ -69,7 +78,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#changePassword" role="tab">
+                                    <a class="nav-link" id="ubahpassword" data-bs-toggle="tab" href="#changePassword" role="tab">
                                         <i class="far fa-user"></i>
                                         Change Password
                                     </a>
@@ -205,14 +214,23 @@
                         </div>
                         <!--end tab-pane-->
                         <div class="tab-pane" id="changePassword" role="tabpanel">
-                            <form action="javascript:void(0);">
+                            <form action="/ganti_password" method="POST">
+                                @csrf
                                 <div class="row g-2">
                                     <div class="col-lg-4">
                                         <div>
                                             <label for="oldpasswordInput" class="form-label">Old
                                                 Password*</label>
-                                            <input type="password" class="form-control" id="oldpasswordInput"
+                                            <input type="password" class="form-control" name="old_password" id="oldpasswordInput"
                                                 placeholder="Enter current password">
+                                            @error('old_password')
+                                                <p class="text-danger">{{ $message }}</p>
+                                                <script>
+                                                    window.onload=function(){
+                                                    document.getElementById("ubahpassword").click();
+                                                };
+                                                </script>
+                                            @enderror
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -220,8 +238,16 @@
                                         <div>
                                             <label for="newpasswordInput" class="form-label">New
                                                 Password*</label>
-                                            <input type="password" class="form-control" id="newpasswordInput"
+                                            <input type="password" class="form-control" name="password" id="newpasswordInput"
                                                 placeholder="Enter new password">
+                                            @error('password')
+                                                <p class="text-danger">{{ $message }}</p>
+                                                <script>
+                                                    window.onload=function(){
+                                                    document.getElementById("ubahpassword").click();
+                                                };
+                                                </script>
+                                            @enderror
                                         </div>
                                     </div>
                                     <!--end col-->
@@ -229,18 +255,20 @@
                                         <div>
                                             <label for="confirmpasswordInput" class="form-label">Confirm
                                                 Password*</label>
-                                            <input type="password" class="form-control" id="confirmpasswordInput"
+                                            <input type="password" class="form-control" name="password_confirmation" id="confirmpasswordInput"
                                                 placeholder="Confirm password">
+                                            @error('password_confirmation')
+                                                <p class="text-danger">{{ $message }}</p>
+                                                <script>
+                                                    window.onload=function(){
+                                                    document.getElementById("ubahpassword").click();
+                                                };
+                                                </script>
+                                            @enderror
                                         </div>
                                     </div>
                                     <!--end col-->
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <a href="javascript:void(0);"
-                                                class="link-primary text-decoration-underline">Forgot
-                                                Password ?</a>
-                                        </div>
-                                    </div>
+                                    
                                     <!--end col-->
                                     <div class="col-lg-12">
                                         <div class="text-end">
@@ -287,8 +315,11 @@
 </footer>
 </div>
 <!-- end main content-->
+
+
+
 <script>
-    let provinsi = @json($provinsi);
+let provinsi = @json($provinsi);
 let selectProvinsi = document.querySelector('#provinsi');
 let selectKota = document.querySelector('#kota');
 let selectKecamatan = document.querySelector('#kecamatan');

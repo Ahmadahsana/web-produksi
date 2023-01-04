@@ -61,6 +61,7 @@ Route::POST('/permohonanuser/{id}', [UserController::class, 'prosesupdatepermoho
 
 // Profil
 Route::resource('/profil', ProfilController::class)->middleware('auth');
+Route::post('/ganti_password', [ProfilController::class, 'ganti_password'])->middleware('auth');
 
 // Route::get('/profil/{User}', [UserController::class, 'detail_profil'])->middleware('auth');
 // Route::get('/profil_edit/{User}', [UserController::class, 'edit_profil'])->middleware('auth');
