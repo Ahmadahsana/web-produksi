@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Barang;
 use App\Models\Order_detail;
+use App\Models\Riwayat_pengerjaan;
 use App\Models\Status_pengerjaan;
 use Illuminate\Http\Request;
 
@@ -130,9 +131,17 @@ class OrderController extends Controller
         if ($request->status == 9) {
             return redirect('/list_permintaan')->with('success', 'Permintaan Berhasil Menolak Orderan !!');
         } elseif ($request->status > 2) {
-            return redirect('/list_order')->with('success', 'Orderan Sudah Mulai Di Produksi !!');
+            $data_riwayat_order = [
+                'order_detail_id' => $order->id,
+                'status_pengerjaan_id' => $request->status,
+                'keterangan' => 'masuk'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+
+            return redirect('/list_order')->with('success', 'Orderan Sudah Mulai Di Produksi 😊');
         } else {
-            return redirect('/list_permintaan')->with('success', 'Permintaan Berhasil Terima Orderan!!');
+            return redirect('/list_permintaan')->with('success', 'Permintaan Berhasil Terima Orderan 😊');
         }
     }
 

@@ -8,6 +8,7 @@ use App\Models\Barang;
 use App\Models\Order_detail;
 use App\Models\Prod_finishing;
 use App\Models\Prod_mentahan_detail;
+use App\Models\Riwayat_pengerjaan;
 use App\Models\Transaksi_barang;
 use Illuminate\Http\Request;
 
@@ -79,6 +80,8 @@ class ProdMentahanController extends Controller
 
         Transaksi_barang::insert($data_kredit);
 
+
+
         $data = [
             'Order_detail_id' => $request->order_detail_id,
             'biaya' => $total_biaya,
@@ -103,6 +106,16 @@ class ProdMentahanController extends Controller
             'status_pengerjaan_id' => 4
         ];
         Order_detail::where('id', $request->order_detail_id)->update($data_update);
+
+        ////////////////////////insert ke riwayat pengerjaan
+        $data_riwayat_order = [
+            'order_detail_id' => $request->order_detail_id,
+            'status_pengerjaan_id' => 3,
+            'keterangan' => 'selesai'
+        ];
+
+        Riwayat_pengerjaan::create($data_riwayat_order);
+        ////////////////////////////////////////////////////
 
         $data_finishing = [
             'order_detail_id' => $request->order_detail_id

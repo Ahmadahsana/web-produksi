@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order_detail;
 use App\Models\Prod_finishing;
 use App\Models\Prod_jok;
+use App\Models\Riwayat_pengerjaan;
 use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
 
@@ -117,6 +118,16 @@ class ProdFinishingController extends Controller
             ];
             Order_detail::where('id', $request->order_detail_id)->update($data_update);
 
+            ////////////////////////insert ke riwayat pengerjaan
+            $data_riwayat_order = [
+                'order_detail_id' => $request->order_detail_id,
+                'status_pengerjaan_id' => 4,
+                'keterangan' => 'selesai'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+            ////////////////////////////////////////////////////
+
             $data_jok = [
                 'order_detail_id' => $request->order_detail_id
             ];
@@ -126,6 +137,16 @@ class ProdFinishingController extends Controller
                 'vendor_produksi_id' => $request->vendor,
                 'tgl_diproses' => date("Y-m-d H:i:s")
             ];
+
+            ////////////////////////insert ke riwayat pengerjaan
+            $data_riwayat_order = [
+                'order_detail_id' => $request->order_detail_id,
+                'status_pengerjaan_id' => 4,
+                'keterangan' => 'masuk'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+            ////////////////////////////////////////////////////
         }
 
         Prod_finishing::where('id', $request->finishing_id)->update($data_vendor);

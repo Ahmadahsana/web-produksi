@@ -7,6 +7,7 @@ use App\Models\Order_detail;
 use App\Models\Prod_jok;
 use App\Models\Prod_jok_detail;
 use App\Models\Prod_packing;
+use App\Models\Riwayat_pengerjaan;
 use App\Models\Transaksi_barang;
 use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
@@ -124,6 +125,17 @@ class ProdJokController extends Controller
                 'order_detail_id' => $request->order_detail_id
             ];
             Prod_packing::create($data_packing);
+
+            ////////////////////////insert ke riwayat pengerjaan
+            $data_riwayat_order = [
+                'order_detail_id' => $request->order_detail_id,
+                'status_pengerjaan_id' => 5,
+                'keterangan' => 'selesai'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+            ////////////////////////////////////////////////////
+
         } elseif (isset($request->kode_barang)) {
             // ini dari vendor sendiri
             // return $request->all();
@@ -187,6 +199,16 @@ class ProdJokController extends Controller
                 'order_detail_id' => $request->order_detail_id
             ];
             Prod_packing::create($data_packing);
+
+            ////////////////////////insert ke riwayat pengerjaan
+            $data_riwayat_order = [
+                'order_detail_id' => $request->order_detail_id,
+                'status_pengerjaan_id' => 5,
+                'keterangan' => 'selesai'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+            ////////////////////////////////////////////////////
         } else {
             $data_vendor = [
                 'vendor_produksi_id' => $request->vendor,
@@ -194,6 +216,16 @@ class ProdJokController extends Controller
             ];
 
             Prod_jok::where('id', $request->jok_id)->update($data_vendor);
+
+            ////////////////////////insert ke riwayat pengerjaan
+            $data_riwayat_order = [
+                'order_detail_id' => $request->order_detail_id,
+                'status_pengerjaan_id' => 5,
+                'keterangan' => 'masuk'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+            ////////////////////////////////////////////////////
         }
 
         return redirect('/jok')->with('success', 'Berhasil proses jok');

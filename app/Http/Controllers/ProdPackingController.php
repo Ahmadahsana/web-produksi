@@ -8,6 +8,7 @@ use App\Models\Prod_kirim_barang;
 use App\Models\Prod_packing;
 use App\Models\Prod_packing_detail;
 use App\Models\Prod_pengiriman;
+use App\Models\Riwayat_pengerjaan;
 use App\Models\Transaksi_barang;
 use App\Models\Vendor_produksi;
 use Illuminate\Http\Request;
@@ -124,6 +125,16 @@ class ProdPackingController extends Controller
                 'order_detail_id' => $request->order_detail_id
             ];
             Prod_kirim_barang::create($data_pengiriman);
+
+            ////////////////////////insert ke riwayat pengerjaan
+            $data_riwayat_order = [
+                'order_detail_id' => $request->order_detail_id,
+                'status_pengerjaan_id' => 6,
+                'keterangan' => 'selesai'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+            ////////////////////////////////////////////////////
         } elseif (isset($request->kode_barang)) {
             // ini dari vendor sendiri
             // return $request->all();
@@ -187,6 +198,16 @@ class ProdPackingController extends Controller
                 'order_detail_id' => $request->order_detail_id
             ];
             Prod_kirim_barang::create($data_pengiriman);
+
+            ////////////////////////insert ke riwayat pengerjaan
+            $data_riwayat_order = [
+                'order_detail_id' => $request->order_detail_id,
+                'status_pengerjaan_id' => 6,
+                'keterangan' => 'selesai'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+            ////////////////////////////////////////////////////
         } else {
             $data_vendor = [
                 'vendor_produksi_id' => $request->vendor,
@@ -194,6 +215,16 @@ class ProdPackingController extends Controller
             ];
 
             Prod_packing::where('id', $request->packing_id)->update($data_vendor);
+
+            ////////////////////////insert ke riwayat pengerjaan
+            $data_riwayat_order = [
+                'order_detail_id' => $request->order_detail_id,
+                'status_pengerjaan_id' => 6,
+                'keterangan' => 'masuk'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+            ////////////////////////////////////////////////////
         }
 
         return redirect('/packing')->with('success', 'Berhasil proses packing');

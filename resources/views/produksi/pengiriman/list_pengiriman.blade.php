@@ -75,6 +75,7 @@
                                             <form action="/edit_pengiriman" method="post">
                                                 @csrf
                                                 <input type="text" class="d-none" value="{{ $m->pengiriman->id }}" name="pengiriman_id">
+                                                <input type="text" class="d-none" value="{{ $m->pengiriman->order_detail_id }}" name="order_detail_id">
                                                 <button type="submit" class="btn btn-sm btn-primary edit-item-btn">Kirim Sekarang</button>
                                             </form>
                                         </div>

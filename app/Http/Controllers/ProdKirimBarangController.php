@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Order_detail;
 use App\Models\Prod_keuntungan;
 use App\Models\Prod_kirim_barang;
+use App\Models\Riwayat_pengerjaan;
 use Illuminate\Http\Request;
 
 class ProdKirimBarangController extends Controller
@@ -143,14 +144,33 @@ class ProdKirimBarangController extends Controller
 
             Prod_keuntungan::create($data_keuntungan);
 
+            ////////////////////////insert ke riwayat pengerjaan
+            $data_riwayat_order = [
+                'order_detail_id' => $request->order_detail_id,
+                'status_pengerjaan_id' => 7,
+                'keterangan' => 'selesai'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+            ////////////////////////////////////////////////////
+
             return redirect('/pengiriman')->with('success', 'Proses pengiriman barang berhasil');
         } else {
-            // return $request->all();
             $data_proses = [
                 'tgl_diproses' => date("Y-m-d H:i:s")
             ];
 
             Prod_kirim_barang::where('id', $request->pengiriman_id)->update($data_proses);
+
+            ////////////////////////insert ke riwayat pengerjaan
+            $data_riwayat_order = [
+                'order_detail_id' => $request->order_detail_id,
+                'status_pengerjaan_id' => 7,
+                'keterangan' => 'masuk'
+            ];
+
+            Riwayat_pengerjaan::create($data_riwayat_order);
+            ////////////////////////////////////////////////////
 
             return redirect('/pengiriman')->with('success', 'Proses pengiriman barang berhasil');
         }
