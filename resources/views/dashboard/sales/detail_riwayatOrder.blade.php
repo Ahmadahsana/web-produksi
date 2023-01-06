@@ -189,36 +189,33 @@
         <div class="profile-timeline">
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item border-0">
-                    <div class="accordion-header" id="headingTwo">
-                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
-                            aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="accordion-header" id="headingOne">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseOne"
+                            aria-expanded="false" aria-controls="collapseOne">
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0 avatar-xs">
                                     <div class="avatar-title bg-success rounded-circle">
-                                        <i class="mdi mdi-gift-outline"></i>
+                                        <i class="mdi mdi-alpha-m-circle-outline"></i>
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="fs-15 mb-1 fw-semibold">
-                                        Mentahan
+                                        MENTAHAN
                                     </h6>
                                 </div>
                             </div>
                         </a>
                     </div>
                     @foreach ($or->riwayat_pengerjaan as $rp)
-                    <?php $data = collect($rp)
-                        // $data1 = $data->where('status_pengerjaan_id',4)
-                        ?>
-
-                    @dd($data->where('status_pengerjaan_id', 4))
-                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                    @if ($rp->status_pengerjaan_id == 3)
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body ms-2 ps-5 pt-0">
-                            <h6 class="mb-1">{{ $data1->all() }}</h6>
-                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
+                            <h6 class="mb-1">{{ strtoupper($rp->keterangan) }}</h6>
+                            <p class="text-muted mb-0">{{ $rp->created_at }}</p>
                         </div>
                     </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
@@ -232,114 +229,164 @@
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0 avatar-xs">
                                     <div class="avatar-title bg-success rounded-circle">
-                                        <i class="mdi mdi-gift-outline"></i>
+                                        <i class="mdi mdi-airplane-landing"></i>
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="fs-15 mb-1 fw-semibold">
-                                        Finishing
+                                        FINISHING
                                     </h6>
                                 </div>
                             </div>
                         </a>
                     </div>
+                    @foreach ($or->riwayat_pengerjaan as $rp)
+                    @if ($rp->status_pengerjaan_id == 4)
                     <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body ms-2 ps-5 pt-0">
-                            <h6 class="mb-1">Your Item has been picked up by courier patner</h6>
-                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
+                            <h6 class="mb-1">{{ strtoupper($rp->keterangan) }}</h6>
+                            <p class="text-muted mb-0">{{ $rp->created_at }}</p>
                         </div>
                     </div>
+                    @endif
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="profile-timeline">
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item border-0">
-                    <div class="accordion-header" id="headingTwo">
-                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
-                            aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="accordion-header" id="headingThree">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseThree"
+                            aria-expanded="false" aria-controls="collapseThree">
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0 avatar-xs">
                                     <div class="avatar-title bg-success rounded-circle">
-                                        <i class="mdi mdi-gift-outline"></i>
+                                        <i class="mdi mdi-account-filter-outline"></i>
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="fs-15 mb-1 fw-semibold">
-                                        Jok
+                                        JOK
                                     </h6>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                    @foreach ($or->riwayat_pengerjaan as $rp)
+                    @if ($rp->status_pengerjaan_id == 5)
+                    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body ms-2 ps-5 pt-0">
-                            <h6 class="mb-1">Your Item has been picked up by courier patner</h6>
-                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
+                            <h6 class="mb-1">{{ strtoupper($rp->keterangan) }}</h6>
+                            <p class="text-muted mb-0">{{ $rp->created_at }}</p>
                         </div>
                     </div>
+                    @endif
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="profile-timeline">
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item border-0">
-                    <div class="accordion-header" id="headingTwo">
-                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
-                            aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="accordion-header" id="headingFour">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseFour"
+                            aria-expanded="false" aria-controls="collapseFour">
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0 avatar-xs">
                                     <div class="avatar-title bg-success rounded-circle">
-                                        <i class="mdi mdi-gift-outline"></i>
+                                        <i class="mdi mdi-box-cutter"></i>
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="fs-15 mb-1 fw-semibold">
-                                        Packing
+                                        PACKING
                                     </h6>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                    @foreach ($or->riwayat_pengerjaan as $rp)
+                    @if ($rp->status_pengerjaan_id == 6)
+                    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body ms-2 ps-5 pt-0">
-                            <h6 class="mb-1">Your Item has been picked up by courier patner</h6>
-                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
+                            <h6 class="mb-1">{{ strtoupper($rp->keterangan) }}</h6>
+                            <p class="text-muted mb-0">{{ $rp->created_at }}</p>
                         </div>
                     </div>
+                    @endif
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="profile-timeline">
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item border-0">
-                    <div class="accordion-header" id="headingTwo">
-                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
-                            aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="accordion-header" id="headingFive">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseFive"
+                            aria-expanded="false" aria-controls="collapseFive">
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0 avatar-xs">
                                     <div class="avatar-title bg-success rounded-circle">
-                                        <i class="mdi mdi-gift-outline"></i>
+                                        <i class="mdi mdi-package-variant"></i>
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="fs-15 mb-1 fw-semibold">
-                                        Pengiriman
+                                        PENGIRIMAN
                                     </h6>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                    @foreach ($or->riwayat_pengerjaan as $rp)
+                    @if ($rp->status_pengerjaan_id == 7)
+                    <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body ms-2 ps-5 pt-0">
-                            <h6 class="mb-1">Your Item has been picked up by courier patner</h6>
-                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
+                            <h6 class="mb-1">{{ strtoupper($rp->keterangan) }}</h6>
+                            <p class="text-muted mb-0">{{ $rp->created_at }}</p>
                         </div>
                     </div>
+                    @endif
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="profile-timeline">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingSix">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseSix"
+                            aria-expanded="false" aria-controls="collapseSix">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-success rounded-circle">
+                                        <i class="mdi mdi-check-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-15 mb-1 fw-semibold">
+                                        SELESAI
+                                    </h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @foreach ($or->riwayat_pengerjaan as $rp)
+                    @if ($rp->status_pengerjaan_id == 8)
+                    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body ms-2 ps-5 pt-0">
+                            <h6 class="mb-1">{{ strtoupper($rp->keterangan) }}</h6>
+                            <p class="text-muted mb-0">{{ $rp->created_at }}</p>
+                        </div>
+                    </div>
+                    @endif
+                    @endforeach
                 </div>
             </div>
         </div>
