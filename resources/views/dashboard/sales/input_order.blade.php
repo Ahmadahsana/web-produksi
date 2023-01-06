@@ -30,17 +30,21 @@
                             <div class="mb-3">
                                 <label for="harga" class="form-label">harga</label>
                                 <div class="input-group">
-                                    <div class="input-group-text">Rp. </div>
-                                    <input type="number" class="form-control" placeholder="Harga" id="cleave-numeral"
+                                    {{-- <div class="input-group-text">Rp. </div> --}}
+                                    <input type="text" class="form-control" placeholder="Harga" id="cleave-numeral"
                                         readonly>
                                 </div>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="mb-3">
-                                <label for="jumlah" class="form-label">jumlah</label>
-                                <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder=""
-                                    min="1">
+                                <label for="jumlah" class="form-label d-block">jumlah</label>
+                                {{-- <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="" min="1"> --}}
+                                <div class="input-step step-primary inline-block">
+                                    <button type="button" class="minus">-</button>
+                                    <input type="number" class="product-quantity" value="1" min="0" max="100" readonly="" id="jumlah" name="jumlah">
+                                    <button type="button" class="plus">+</button>
+                                </div>
                                 <div id="wadah_peringatan_jumlah"></div>
                             </div>
                         </div>
@@ -51,13 +55,15 @@
                     </div>
                 </form>
             </div>
-            <div class="col-sm">
+            <div class="col-sm-4">
                 <label for="gambar" class="form-label">Gambar</label>
                 <div id="tampung_gambar">
-                    <div id="muncul_gambar"></div>
-                    <div class="input-group">
-                        <img src="" class="img-thumbnail" alt="">
+                    <div id="muncul_gambar" class="d-flex justify-content-center">
+                        
                     </div>
+                    {{-- <div class="input-group">
+                        <img src="" height="100px" class="img-fluid" alt="">
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -107,7 +113,8 @@
                 <div class="row mb-2">
                     <div class="col-12">
                         <label for="dp" class="form-label">DP</label>
-                        <input type="number" class="form-control" id="dp" name="dp" placeholder="dp">
+                        <input type="text" class="form-control" id="dpmask" name="dpmask" placeholder="dp">
+                        <input type="text" class="form-control d-none" id="dp" name="dp" placeholder="dp">
                         <div id="wadah_peringatan_dp"></div>
                     </div>
                 </div>
@@ -138,6 +145,7 @@
 {{-- <script src="assets/libs/cleave.js/cleave.min.js"></script> --}}
 <!-- form masks init -->
 {{-- <script src="assets/js/pages/form-masks.init.js"></script> --}}
+
 <script>
     let wadah_peringatan_barang = document.querySelector('#wadah_peringatan_barang');
     let dataBarang = @json($barang);
@@ -152,12 +160,12 @@
         document.querySelector('#tampung_gambar').appendChild(muncul)
         let id = this.value;
         let index = dataBarang.findIndex((barang) => barang.id == id);
-        let harga = dataBarang[index].hpp
+        let harga = formatCurrency(dataBarang[index].hpp)
         let tampilHarga = document.querySelector('#cleave-numeral');
         let muncul_gambar = document.querySelector('#muncul_gambar');
 
         tampilHarga.value = harga;
-        muncul_gambar.insertAdjacentHTML('afterend', `<img src="{{ asset('storage/')}}/${dataBarang[index].foto}" class="img-thumbnail" alt="">`);
+        muncul_gambar.insertAdjacentHTML('beforeend', `<img src="{{ asset('storage/')}}/${dataBarang[index].foto}" class="img-thumbnail" alt="">`);
         
     });
 
@@ -184,8 +192,8 @@
         let wadah_peringatan_jumlah = document.querySelector('#wadah_peringatan_jumlah');
         let found = masukKeranjang.find(({id}) => id == idBarang);
 
-        if (jumlahBarang == '') {
-            // console.log('kosong');
+        if (jumlahBarang == '' || jumlahBarang == '0') {
+            console.log(jumlahBarang);
             wadah_peringatan_jumlah.innerHTML = '<p class="text-danger">Masukkan jumlah barang</p>'
         }else{
             if (found !== undefined) {
@@ -232,7 +240,8 @@
                                                             </div>`);
                                                             
                 
-                    
+                harga.value = '';
+                jumlah.value = '0';
                     
             }
         }
@@ -248,8 +257,7 @@
         totalItem.innerHTML= masukKeranjang.length;
         totalBayar.innerHTML = `<h5 class="m-0" id="cart-item-total">${formatCurrency(sum)}</h5><input type="text" class="d-none" value="${sum}" name="total_bayar">`;
 
-        harga.value = '';
-        jumlah.value = '';
+        
         console.log(hargaKeranjang);
         
     });
@@ -270,11 +278,13 @@
     } 
 
     let submit_order = document.querySelector('#submit_order');
+    let dp = document.querySelector('#dp').value;
+    let inputdp = document.querySelector('#dp');
+    let dpmask = document.querySelector('#dpmask');
+    let payment = document.querySelector('#payment').value;
 
     submit_order.addEventListener('click', function (e) {
         let list_barang = document.querySelector('.list_barang');
-        let dp = document.querySelector('#dp').value;
-        let payment = document.querySelector('#payment').value;
         let wadah_peringatan_dp = document.querySelector('#wadah_peringatan_dp');
 
         if (list_barang == null) {
@@ -300,5 +310,26 @@
         }
 
     })
+
+
+    dpmask.addEventListener('change', function(event) {
+        // let mask = this.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+        // console.log(mask);
+        // dpmask.value = mask;
+        nomask = destroyMask(this.value);
+        inputdp.value = destroyMask(nomask);
+        
+        mask = createMask(nomask);
+        this.value = mask
+    })
+
+    function createMask(string){
+        return string.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    }
+
+    function destroyMask(string){
+        return string.replace(/\D/g,'').substring(0,9);
+    }
+    
 </script>
 @endsection

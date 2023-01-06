@@ -45,9 +45,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ Request::is('permohonanuser*') ? 'active' : '' }}"
-                        href="/permohonanuser">
+                    <a class="nav-link menu-link {{ Request::is('permohonanuser*') ? 'active' : '' }}" href="/permohonanuser">
                         <i class="ri-recycle-fill"></i> <span data-key="t-landing">Permohonan User</span>
+                        {{-- <span class="badge badge-pill bg-danger" data-key="t-hot">Hot</span> --}}
                     </a>
                 </li>
                 @endcan
