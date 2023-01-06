@@ -84,7 +84,6 @@
             </div>
         </div>
         {{-- template --}}
-
         <div class="card-body">
             <div class="profile-timeline">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -94,18 +93,18 @@
                                 aria-expanded="true" aria-controls="collapseOne">
                                 <div class="d-flex align-items-center">
                                     <div class="flex-shrink-0 avatar-xs">
-                                        <div class="avatar-title bg-success rounded-circle">
-                                            <i class="ri-shopping-bag-line"></i>
+                                        <div class="avatar-title bg-light text-success rounded-circle">
+                                            <i class="mdi mdi-check-outline"></i>
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 ms-3">
-                                        <h6 class="fs-15 mb-0 fw-semibold">MENTAHAN</h6>
+                                        <h6 class="fs-15 mb-0 fw-semibold">SELESAI</h6>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         @foreach ($or->riwayat_pengerjaan as $rp)
-                        @if ($rp->status_pengerjaan_id == 3)
+                        @if ($rp->status_pengerjaan_id == 8)
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body ms-2 ps-5 pt-0">
@@ -122,18 +121,18 @@
                                 aria-expanded="false" aria-controls="collapseTwo">
                                 <div class="d-flex align-items-center">
                                     <div class="flex-shrink-0 avatar-xs">
-                                        <div class="avatar-title bg-success rounded-circle">
-                                            <i class="ri-shopping-bag-3-line"></i>
+                                        <div class="avatar-title bg-light text-success rounded-circle">
+                                            <i class="ri-truck-line"></i>
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 ms-3">
-                                        <h6 class="fs-15 mb-1 fw-semibold">FINISHING</h6>
+                                        <h6 class="fs-15 mb-1 fw-semibold">PENGIRIMAN</h6>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         @foreach ($or->riwayat_pengerjaan as $rp)
-                        @if ($rp->status_pengerjaan_id == 4)
+                        @if ($rp->status_pengerjaan_id == 7)
                         <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body ms-2 ps-5 pt-0">
@@ -151,17 +150,17 @@
                                 <div class="d-flex align-items-center">
                                     <div class="flex-shrink-0 avatar-xs">
                                         <div class="avatar-title bg-success rounded-circle">
-                                            <i class="mdi mdi mdi-gift-outline"></i>
+                                            <i class="mdi mdi-box-cutter"></i>
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 ms-3">
-                                        <h6 class="fs-15 mb-1 fw-semibold">JOK</h6>
+                                        <h6 class="fs-15 mb-1 fw-semibold">PACKING</h6>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         @foreach ($or->riwayat_pengerjaan as $rp)
-                        @if ($rp->status_pengerjaan_id == 5)
+                        @if ($rp->status_pengerjaan_id == 6)
                         <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body ms-2 ps-5 pt-0">
@@ -179,17 +178,17 @@
                                 <div class="d-flex align-items-center">
                                     <div class="flex-shrink-0 avatar-xs">
                                         <div class="avatar-title bg-success rounded-circle">
-                                            <i class="mdi mdi-box-cutter"></i>
+                                            <i class="mdi mdi mdi-gift-outline"></i>
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 ms-3">
-                                        <h6 class="fs-14 mb-0 fw-semibold">PACKING</h6>
+                                        <h6 class="fs-14 mb-0 fw-semibold">JOK</h6>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         @foreach ($or->riwayat_pengerjaan as $rp)
-                        @if ($rp->status_pengerjaan_id == 6)
+                        @if ($rp->status_pengerjaan_id == 5)
                         <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body ms-2 ps-5 pt-0">
@@ -206,18 +205,18 @@
                                 aria-expanded="false">
                                 <div class="d-flex align-items-center">
                                     <div class="flex-shrink-0 avatar-xs">
-                                        <div class="avatar-title bg-light text-success rounded-circle">
-                                            <i class="ri-truck-line"></i>
+                                        <div class="avatar-title bg-success rounded-circle">
+                                            <i class="ri-shopping-bag-3-line"></i>
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 ms-3">
-                                        <h6 class="fs-14 mb-0 fw-semibold">PENGIRIMAN</h6>
+                                        <h6 class="fs-14 mb-0 fw-semibold">FINISHING</h6>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         @foreach ($or->riwayat_pengerjaan as $rp)
-                        @if ($rp->status_pengerjaan_id == 7)
+                        @if ($rp->status_pengerjaan_id == 4)
                         <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body ms-2 ps-5 pt-0">
@@ -234,18 +233,18 @@
                                 aria-expanded="false">
                                 <div class="d-flex align-items-center">
                                     <div class="flex-shrink-0 avatar-xs">
-                                        <div class="avatar-title bg-light text-success rounded-circle">
-                                            <i class="mdi mdi-check-outline"></i>
+                                        <div class="avatar-title bg-success rounded-circle">
+                                            <i class="ri-shopping-bag-line"></i>
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 ms-3">
-                                        <h6 class="fs-14 mb-0 fw-semibold">SELESAI</h6>
+                                        <h6 class="fs-14 mb-0 fw-semibold">MENTAHAN</h6>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         @foreach ($or->riwayat_pengerjaan as $rp)
-                        @if ($rp->status_pengerjaan_id == 8)
+                        @if ($rp->status_pengerjaan_id == 3)
                         <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body ms-2 ps-5 pt-0">
@@ -260,7 +259,6 @@
                 <!--end accordion-->
             </div>
         </div>
-
         {{-- akhir template --}}
     </div>
 </div>
