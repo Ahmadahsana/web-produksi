@@ -60,4 +60,9 @@ class Order_detail extends Model
     {
         return $this->hasOne(Prod_keuntungan::class);
     }
+
+    public function Riwayat_pengerjaan()
+    {
+        return $this->hasMany(Riwayat_pengerjaan::class);
+    }
 }

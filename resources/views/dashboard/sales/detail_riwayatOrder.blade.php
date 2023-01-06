@@ -83,6 +83,7 @@
                 <h5 class="card-title flex-grow-1 mb-0">Order Status</h5>
             </div>
         </div>
+        {{-- @foreach ($or->Riwayat_pengerjaan as $rp)
         <div class="profile-timeline">
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item border-0">
@@ -96,9 +97,12 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-15 mb-0 fw-semibold">Order Placed - <span class="fw-normal">Wed, 15
-                                            Dec
-                                            2021</span></h6>
+                                    <h6 class="fs-15 mb-0 fw-semibold">
+                                        {{ $rp->Status_pengerjaan->nama }} --}}
+                                        {{-- @foreach ($or->Riwayat_pengerjaan as $rp)
+                                        {{ $rp->Status_pengerjaan->nama }} <br> {{ $rp->keterangan }} <br>
+                                        @endforeach --}}
+                                        {{-- </h6>
                                 </div>
                             </div>
                         </a>
@@ -106,42 +110,15 @@
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body ms-2 ps-5 pt-0">
-                            <h6 class="mb-1">An order has been placed.</h6>
+                            <h6 class="mb-1">{{ $rp->keterangan }}</h6>
                             <p class="text-muted">Wed, 15 Dec 2021 - 05:34PM</p>
 
                             <h6 class="mb-1">Seller has proccessed your order.</h6>
                             <p class="text-muted mb-0">Thu, 16 Dec 2021 - 5:48AM</p>
                         </div>
                     </div>
-                </div>
-                <div class="accordion-item border-0">
-                    <div class="accordion-header" id="headingTwo">
-                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
-                            aria-expanded="false" aria-controls="collapseTwo">
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0 avatar-xs">
-                                    <div class="avatar-title bg-success rounded-circle">
-                                        <i class="mdi mdi-gift-outline"></i>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-15 mb-1 fw-semibold">Packed - <span class="fw-normal">Thu,
-                                            16
-                                            Dec 2021</span>
-                                    </h6>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body ms-2 ps-5 pt-0">
-                            <h6 class="mb-1">Your Item has been picked up by courier patner</h6>
-                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item border-0">
+                </div> --}}
+                {{-- <div class="accordion-item border-0">
                     <div class="accordion-header" id="headingThree">
                         <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseThree"
                             aria-expanded="false" aria-controls="collapseThree">
@@ -201,11 +178,171 @@
                             </div>
                         </a>
                     </div>
+                </div> --}}
+                {{--
+            </div> --}}
+            <!--end accordion-->
+            {{--
+        </div>
+        @endforeach --}}
+
+        <div class="profile-timeline">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingTwo">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-success rounded-circle">
+                                        <i class="mdi mdi-gift-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-15 mb-1 fw-semibold">
+                                        Mentahan
+                                    </h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @foreach ($or->riwayat_pengerjaan as $rp)
+                    <?php $data = collect($rp)
+                        // $data1 = $data->where('status_pengerjaan_id',4)
+                        ?>
+
+                    @dd($data->where('status_pengerjaan_id', 4))
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body ms-2 ps-5 pt-0">
+                            <h6 class="mb-1">{{ $data1->all() }}</h6>
+                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
-            <!--end accordion-->
         </div>
-
+        <div class="profile-timeline">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingTwo">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-success rounded-circle">
+                                        <i class="mdi mdi-gift-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-15 mb-1 fw-semibold">
+                                        Finishing
+                                    </h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body ms-2 ps-5 pt-0">
+                            <h6 class="mb-1">Your Item has been picked up by courier patner</h6>
+                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-timeline">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingTwo">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-success rounded-circle">
+                                        <i class="mdi mdi-gift-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-15 mb-1 fw-semibold">
+                                        Jok
+                                    </h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body ms-2 ps-5 pt-0">
+                            <h6 class="mb-1">Your Item has been picked up by courier patner</h6>
+                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-timeline">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingTwo">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-success rounded-circle">
+                                        <i class="mdi mdi-gift-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-15 mb-1 fw-semibold">
+                                        Packing
+                                    </h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body ms-2 ps-5 pt-0">
+                            <h6 class="mb-1">Your Item has been picked up by courier patner</h6>
+                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-timeline">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item border-0">
+                    <div class="accordion-header" id="headingTwo">
+                        <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 avatar-xs">
+                                    <div class="avatar-title bg-success rounded-circle">
+                                        <i class="mdi mdi-gift-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fs-15 mb-1 fw-semibold">
+                                        Pengiriman
+                                    </h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body ms-2 ps-5 pt-0">
+                            <h6 class="mb-1">Your Item has been picked up by courier patner</h6>
+                            <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endforeach

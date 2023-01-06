@@ -204,7 +204,8 @@ class OrderController extends Controller
     {
         return view('dashboard.sales.detail_riwayatOrder', [
             'tittlePage'    =>  'DETAIL RIWAYAT ORDER',
-            'order'         =>  $id_order,
+            'order'         =>  $id_order->load('Order_detail'),
+
         ]);
     }
 
