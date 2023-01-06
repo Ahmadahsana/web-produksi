@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         return view('dashboard.admin.daftar_sales', [
             'tittlePage'    =>  'LIST SALES',
-            'sales' => User::where('role_id', 2)->get()
+            'sales' => User::where('role_id', 2)->where('status_user_id', 1)->get()
         ]);
     }
 
