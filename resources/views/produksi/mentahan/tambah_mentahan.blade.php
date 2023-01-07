@@ -13,9 +13,9 @@
         </div>
         @endif
         @if (session()->has('danger'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('danger') }}
-            </div>
+        <div class="alert alert-danger" role="alert">
+            {{ session('danger') }}
+        </div>
         @endif
         <div class="mb-1 row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Nama Sales</label>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-md-2">
                 <label for="inputPassword4" class="form-label">Jumlah</label>
-                <input type="number" class="form-control" id="jumlah">
+                <input type="number" class="form-control" id="jumlah" required autocomplete="off">
             </div>
             <div class="col-md-2 align-self-end">
                 <button type="button" id="tambah" class="btn btn-primary">Tambah</button>

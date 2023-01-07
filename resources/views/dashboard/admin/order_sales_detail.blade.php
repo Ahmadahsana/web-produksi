@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama"
-                        value="{{ $orders->sales->nama }}" required>
+                        value="{{ $orders->sales->nama }}" required autofocus autocomplete="off">
                 </div>
             </div>
             <div class="row mb-3">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="Nomor" name="Nomor" placeholder="Masukkan Nomor"
-                        value="{{ $orders->sales->nomor }}" required>
+                        value="{{ $orders->sales->nomor }}" required autocomplete="off">
                 </div>
             </div>
             <div class="row mb-3">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan nomor"
-                        value="{{ date(" d-M-Y", strtotime($orders->tanggal)) }}" required>
+                        value="{{ date(" d-M-Y", strtotime($orders->tanggal)) }}" required autocomplete="off">
                 </div>
             </div>
             <div class="row mb-3">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="dp" name="dp" placeholder="" value="{{ $orders->dp }}"
-                        required>
+                        required autocomplete="off">
                 </div>
             </div>
             <table class="table align-middle table-nowrap" id="customerTable">

@@ -11,24 +11,6 @@
             @csrf
             <div class="row mb-3">
                 <div class="col-lg-3">
-                    <label for="nama" class="form-label">Nama</label>
-                </div>
-                <div class="col-lg-9">
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}"
-                        placeholder="Nama barang" required>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-lg-3">
-                    <label for="kode_barang" class="form-label">Kode barang</label>
-                </div>
-                <div class="col-lg-9">
-                    <input type="text" class="form-control" id="kode_barang" name="kode_barang" placeholder="Kode"
-                        value="{{ old('kode_barang') }}" required>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-lg-3">
                     <label for="foto" class="form-label">Foto</label>
                 </div>
                 <div class="col-lg-9">
@@ -40,6 +22,25 @@
                     @enderror
                 </div>
             </div>
+            <div class="row mb-3">
+                <div class="col-lg-3">
+                    <label for="nama" class="form-label">Nama</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}"
+                        placeholder="Nama barang" required autofocus autocomplete="off">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-3">
+                    <label for="kode_barang" class="form-label">Kode barang</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" id="kode_barang" name="kode_barang" placeholder="Kode"
+                        value="{{ old('kode_barang') }}" required autocomplete="off">
+                </div>
+            </div>
+
 
 
             <div class="row mb-3">
@@ -105,7 +106,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="number" class="form-control" id="harga" name="harga" placeholder="Harga"
-                        value="{{ old('harga') }}" required>
+                        value="{{ old('harga') }}" required autocomplete="off">
                 </div>
             </div>
 
@@ -115,7 +116,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="number" class="form-control" id="hpp" name="hpp" placeholder="HPP"
-                        value="{{ old('hpp') }}" required>
+                        value="{{ old('hpp') }}" required autocomplete="off">
                 </div>
             </div>
 
@@ -144,8 +145,8 @@
                     <label for="deskripsi" class="form-label">Deskkripsi</label>
                 </div>
                 <div class="col-lg-9">
-                    <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3"
-                        required>{{ old('deskripsi') }}</textarea>
+                    <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3" required
+                        autocomplete="off">{{ old('deskripsi') }}</textarea>
                 </div>
             </div>
 

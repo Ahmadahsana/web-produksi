@@ -218,7 +218,7 @@
                     <div class="mb-3">
                         <label for="jumlah" class="form-label">Jumlah</label>
                         <input type="number" id="jumlah" class="form-control" placeholder="masukkan jumlah"
-                            name="jumlah" required />
+                            name="jumlah" required autocomplete="off" autofocus />
                     </div>
                 </div>
                 <div class="modal-footer">

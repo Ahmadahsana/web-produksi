@@ -15,7 +15,8 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="nama_vendor" name="nama_vendor"
-                        value="{{ old('nama_vendor') }}" placeholder="Nama Vendor" required>
+                        value="{{ old('nama_vendor') }}" placeholder="Nama Vendor" required autocomplete="off"
+                        autofocus>
                 </div>
             </div>
             <div class="row mb-3">
@@ -24,7 +25,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik"
-                        placeholder="Nama Pemilik" value="{{ old('nama_pemilik') }}" required>
+                        placeholder="Nama Pemilik" value="{{ old('nama_pemilik') }}" required autocomplete="off">
                 </div>
             </div>
 
@@ -34,7 +35,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat"
-                        value="{{ old('alamat') }}" required>
+                        value="{{ old('alamat') }}" required autocomplete="off">
                 </div>
             </div>
 
@@ -44,7 +45,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="number" class="form-control" id="nomer" name="nomer" placeholder="Nomer"
-                        value="{{ old('nomer') }}" required>
+                        value="{{ old('nomer') }}" required autocomplete="off">
                 </div>
             </div>
 
@@ -54,7 +55,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="email" name="email" placeholder="Email"
-                        value="{{ old('email') }}" required>
+                        value="{{ old('email') }}" required autocomplete="off">
                 </div>
             </div>
 

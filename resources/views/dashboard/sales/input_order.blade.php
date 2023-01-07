@@ -39,10 +39,12 @@
                         <div class="col-4">
                             <div class="mb-3">
                                 <label for="jumlah" class="form-label d-block">jumlah</label>
-                                {{-- <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="" min="1"> --}}
+                                {{-- <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder=""
+                                    min="1"> --}}
                                 <div class="input-step step-primary inline-block">
                                     <button type="button" class="minus">-</button>
-                                    <input type="number" class="product-quantity" value="1" min="0" max="100" readonly="" id="jumlah" name="jumlah">
+                                    <input type="number" class="product-quantity" value="1" min="0" max="100"
+                                        readonly="" id="jumlah" name="jumlah" required autocomplete="off">
                                     <button type="button" class="plus">+</button>
                                 </div>
                                 <div id="wadah_peringatan_jumlah"></div>
@@ -59,7 +61,7 @@
                 <label for="gambar" class="form-label">Gambar</label>
                 <div id="tampung_gambar">
                     <div id="muncul_gambar" class="d-flex justify-content-center">
-                        
+
                     </div>
                     {{-- <div class="input-group">
                         <img src="" height="100px" class="img-fluid" alt="">

@@ -4,9 +4,9 @@
 {{-- @dd($jok->Vendor_produksi) --}}
 <div class="card">
   @if (session()->has('danger'))
-    <div class="alert alert-danger" role="alert">
-        {{ session('danger') }}
-    </div>
+  <div class="alert alert-danger" role="alert">
+    {{ session('danger') }}
+  </div>
   @endif
   <div class="card-header">
     <h4 class="card-title mb-0">{{ $tittlePage }}</h4>
@@ -77,7 +77,8 @@
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon3">Rp. </span>
         <div class="col-6">
-          <input type="number" class="form-control" name="biaya" id="biaya" aria-describedby="basic-addon3">
+          <input type="number" class="form-control" name="biaya" id="biaya" aria-describedby="basic-addon3" required
+            autocomplete="off">
         </div>
       </div>
 
@@ -97,7 +98,7 @@
       </div>
       <div class="col-md-2">
         <label for="inputPassword4" class="form-label">Jumlah</label>
-        <input type="number" class="form-control" id="jumlah">
+        <input type="number" class="form-control" id="jumlah" required autocomplete="off">
       </div>
       <div class="col-md-2 align-self-end">
         <button type="button" id="tambah" class="btn btn-primary">Tambah</button>

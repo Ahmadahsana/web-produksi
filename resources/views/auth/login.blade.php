@@ -84,7 +84,7 @@
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Username</label>
                                                 <input type="text" class="form-control" id="username" name="username"
-                                                    placeholder="Enter username">
+                                                    placeholder="Enter username" required autofocus autocomplete="off">
                                             </div>
 
                                             <div class="mb-3">
@@ -95,8 +95,8 @@
                                                 <label class="form-label" for="password-input">Password</label>
                                                 <div class="position-relative auth-pass-inputgroup mb-3">
                                                     <input type="password" class="form-control pe-5"
-                                                        placeholder="Enter password" id="password-input"
-                                                        name="password">
+                                                        placeholder="Enter password" id="password-input" name="password"
+                                                        required autocomplete="off">
                                                     <button
                                                         class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
                                                         type="button" id="password-addon"><i

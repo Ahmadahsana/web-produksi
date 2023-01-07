@@ -12,11 +12,24 @@
             @csrf
             <div class="row mb-3">
                 <div class="col-lg-3">
+                    <label for="foto" class="form-label">Foto</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="file" class="form-control" id="gambar" name="gambar" placeholder="Gambar">
+                    @error('gambar')
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-3">
                     <label for="nama" class="form-label">Name</label>
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama"
-                        value="{{ old('nama') }}" required>
+                        value="{{ old('nama') }}" required autofocus autocomplete="off">
                     @error('nama')
                     <div class="text-danger">
                         {{ $message }}
@@ -30,7 +43,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email"
-                        value="{{ old('email') }}" required>
+                        value="{{ old('email') }}" required autocomplete="off">
                     @error('email')
                     <div class="text-danger">
                         {{ $message }}
@@ -44,7 +57,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Masukkan nomor"
-                        value="{{ old('nomor') }}" required>
+                        value="{{ old('nomor') }}" required autocomplete="off">
                     @error('nomor')
                     <div class="text-danger">
                         {{ $message }}
@@ -57,8 +70,8 @@
                     <label for="alamat" class="form-label">Alamat</label>
                 </div>
                 <div class="col-lg-9">
-                    <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Alamat"
-                        required>{{ old('alamat') }}</textarea>
+                    <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Alamat" required
+                        autocomplete="off">{{ old('alamat') }}</textarea>
                     @error('alamat')
                     <div class="text-danger">
                         {{ $message }}
@@ -127,19 +140,6 @@
             </div>
             <div class="row mb-3">
                 <div class="col-lg-3">
-                    <label for="foto" class="form-label">Foto</label>
-                </div>
-                <div class="col-lg-9">
-                    <input type="file" class="form-control" id="gambar" name="gambar" placeholder="Gambar">
-                    @error('gambar')
-                    <div class="text-danger">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-lg-3">
                     <label for="status" class="form-label">Status</label>
                 </div>
                 <div class="col-lg-9">
@@ -161,7 +161,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="username" name="username" placeholder=""
-                        value="{{ old('username') }}" required>
+                        value="{{ old('username') }}" required autocomplete="off">
                     @error('username')
                     <div class="text-danger">
                         {{ $message }}
@@ -175,7 +175,7 @@
                 </div>
                 <div class="col-lg-9">
                     <input type="password" class="form-control" id="password" name="password" placeholder=""
-                        value="{{ old('password') }}" required>
+                        value="{{ old('password') }}" required autocomplete="off">
                     @error('password')
                     <div class="text-danger">
                         {{ $message }}

@@ -54,26 +54,28 @@
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Jumlah finishing</label>
-          <input type="number" class="form-control" id="" name="jumlah_finishing" required>
+          <input type="number" class="form-control" id="" name="jumlah_finishing" required autocomplete="off">
         </div>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">Harga finishing</label>
           <div class="input-group">
             <div class="input-group-text">Rp. </div>
-            <input type="number" class="form-control" id="" placeholder="" name="harga_finishing" required>
+            <input type="number" class="form-control" id="" placeholder="" name="harga_finishing" required
+              autocomplete="off">
           </div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Jumlah servis</label>
-          <input type="number" class="form-control" id="" name="jumlah_servis" required>
+          <input type="number" class="form-control" id="" name="jumlah_servis" required autocomplete="off">
         </div>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">Harga servis</label>
           <div class="input-group">
             <div class="input-group-text">Rp. </div>
-            <input type="number" class="form-control" id="" placeholder="" name="harga_servis" required>
+            <input type="number" class="form-control" id="" placeholder="" name="harga_servis" required
+              autocomplete="off">
           </div>
         </div>
       </div>

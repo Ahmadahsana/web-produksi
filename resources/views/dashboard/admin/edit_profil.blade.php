@@ -23,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-xxl-3">
-                    
+
                     <div class="card mt-n5">
                         <div class="card-body p-4">
                             @if (session()->has('success'))
@@ -64,7 +64,7 @@
 
                 </div>
 
-                
+
 
                 <!--end col-->
                 <div class="col-xxl-9">
@@ -78,7 +78,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="ubahpassword" data-bs-toggle="tab" href="#changePassword" role="tab">
+                                    <a class="nav-link" id="ubahpassword" data-bs-toggle="tab" href="#changePassword"
+                                        role="tab">
                                         <i class="far fa-user"></i>
                                         Change Password
                                     </a>
@@ -109,7 +110,8 @@
                                                         Lengkap</label>
                                                     <input type="text" class="form-control" id="firstnameInput"
                                                         name="nama" placeholder="Enter your firstname"
-                                                        value="{{ auth()->user()->nama }}">
+                                                        value="{{ auth()->user()->nama }}" required autofocus
+                                                        autocomplete="off">
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -128,7 +130,7 @@
                                                         Number</label>
                                                     <input type="number" class="form-control" name="nomor"
                                                         id="phonenumberInput" placeholder="Enter your phone number"
-                                                        value="{{ auth()->user()->nomor }}">
+                                                        value="{{ auth()->user()->nomor }}" required autocomplete="off">
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -137,7 +139,8 @@
                                                     <label for="emailInput" class="form-label">Alamat</label>
                                                     <input type="text" class="form-control" id="emailInput"
                                                         name="alamat" placeholder="Enter your email"
-                                                        value="{{ auth()->user()->alamat }}">
+                                                        value="{{ auth()->user()->alamat }}" required
+                                                        autocomplete="off">
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -221,15 +224,16 @@
                                         <div>
                                             <label for="oldpasswordInput" class="form-label">Old
                                                 Password*</label>
-                                            <input type="password" class="form-control" name="old_password" id="oldpasswordInput"
-                                                placeholder="Enter current password">
+                                            <input type="password" class="form-control" name="old_password"
+                                                id="oldpasswordInput" placeholder="Enter current password" required
+                                                autocomplete="off">
                                             @error('old_password')
-                                                <p class="text-danger">{{ $message }}</p>
-                                                <script>
-                                                    window.onload=function(){
+                                            <p class="text-danger">{{ $message }}</p>
+                                            <script>
+                                                window.onload=function(){
                                                     document.getElementById("ubahpassword").click();
                                                 };
-                                                </script>
+                                            </script>
                                             @enderror
                                         </div>
                                     </div>
@@ -238,15 +242,16 @@
                                         <div>
                                             <label for="newpasswordInput" class="form-label">New
                                                 Password*</label>
-                                            <input type="password" class="form-control" name="password" id="newpasswordInput"
-                                                placeholder="Enter new password">
+                                            <input type="password" class="form-control" name="password"
+                                                id="newpasswordInput" placeholder="Enter new password" required
+                                                autocomplete="off">
                                             @error('password')
-                                                <p class="text-danger">{{ $message }}</p>
-                                                <script>
-                                                    window.onload=function(){
+                                            <p class="text-danger">{{ $message }}</p>
+                                            <script>
+                                                window.onload=function(){
                                                     document.getElementById("ubahpassword").click();
                                                 };
-                                                </script>
+                                            </script>
                                             @enderror
                                         </div>
                                     </div>
@@ -255,20 +260,20 @@
                                         <div>
                                             <label for="confirmpasswordInput" class="form-label">Confirm
                                                 Password*</label>
-                                            <input type="password" class="form-control" name="password_confirmation" id="confirmpasswordInput"
-                                                placeholder="Confirm password">
+                                            <input type="password" class="form-control" name="password_confirmation"
+                                                id="confirmpasswordInput" placeholder="Confirm password">
                                             @error('password_confirmation')
-                                                <p class="text-danger">{{ $message }}</p>
-                                                <script>
-                                                    window.onload=function(){
+                                            <p class="text-danger">{{ $message }}</p>
+                                            <script>
+                                                window.onload=function(){
                                                     document.getElementById("ubahpassword").click();
                                                 };
-                                                </script>
+                                            </script>
                                             @enderror
                                         </div>
                                     </div>
                                     <!--end col-->
-                                    
+
                                     <!--end col-->
                                     <div class="col-lg-12">
                                         <div class="text-end">
@@ -319,7 +324,7 @@
 
 
 <script>
-let provinsi = @json($provinsi);
+    let provinsi = @json($provinsi);
 let selectProvinsi = document.querySelector('#provinsi');
 let selectKota = document.querySelector('#kota');
 let selectKecamatan = document.querySelector('#kecamatan');
