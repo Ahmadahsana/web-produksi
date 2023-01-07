@@ -71,12 +71,10 @@
                                         </form>
                                     </div>
                                     @endif
-                                    {{-- <div class="edit"> --}}
-                                        {{-- <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal"
-                                            data-bs-target="#showModal">Edit</button> --}}
-                                        {{-- <a href="/order/{{ $order->id }}/edit"
-                                            class="btn btn-sm btn-success edit-item-btn">Edit</a>
-                                    </div> --}}
+                                    <div class="detail">
+                                        <a href="/order/{{ $order->id }}"
+                                            class="btn btn-sm btn-success edit-item-btn">Detail</a>
+                                    </div>
                                     {{-- <div class="remove">
                                         <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
                                             data-bs-target="#deleteRecordModal">Remove</button>

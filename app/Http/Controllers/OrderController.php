@@ -82,11 +82,11 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Order $order)
     {
-        return view('dashboard.admin.edit_order', [
-            'tittlePage'    => 'DETAIL ORDER',
-            'order' => Order_detail::find($request)
+        return view('dashboard.admin.show_order_admin', [
+            'tittlePage'    => 'DETAIL STATUS ORDER',
+            'order'        => $order
         ]);
     }
 
@@ -169,7 +169,7 @@ class OrderController extends Controller
     {
         return view('dashboard.admin.daftar_order', [
             'tittlePage'    => 'LIST ORDER',
-            'orders' => Order_detail::where('status_pengerjaan_id', '!=', '1')->with(['barang', 'status_pengerjaan', 'Order'])
+            'orders' => Order_detail::where('status_pengerjaan_id', '!=', '1')->where('status_pengerjaan_id', '!=', '8')->with(['barang', 'status_pengerjaan', 'Order'])
                 ->get()
         ]);
     }
@@ -224,7 +224,8 @@ class OrderController extends Controller
         return view('produksi.order_selesai.detail_order', [
             'tittlePage'        => 'Detail order',
             'order_detail' => Order_detail::where('id', $id_order_detail)->with(['barang', 'status_pengerjaan', 'Order.sales', 'keuntungan'])
-                ->first()
+                ->first(),
+            'orderdet'     => $id_order_detail
         ]);
     }
 }

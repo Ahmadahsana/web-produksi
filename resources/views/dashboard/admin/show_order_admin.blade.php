@@ -1,54 +1,11 @@
 @extends('dashboard.layout.main')
 
 @section('container')
-<div class="card rounded-3 shadow-lg">
-    <div class="card-header d-flex text-center justify-content-around">
-        <div class="col-lg-12 col-xl-12 ">
-            <table class="table table-responsive">
-                <thead>
-                    <tr class="text-center">
-                        <th scope="col">Nama Sales</th>
-                        <th scope="col">Payment</th>
-                        <th scope="col">Total Bayar</th>
-                        <th scope="col">DP</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="text-center">
-                        <td>
-                            <span class="alert-sm px-2 rounded-3 alert-info">
-                                {{ strtoupper($order->sales_username)}}
-                            </span>
-                        </td>
-                        <td>
-                            <span class="alert-sm px-2 rounded-3 alert-info">
-                                {{ strtoupper($order->payment)}}
-                            </span>
-                        </td>
-                        <td>
-                            <span class="alert-sm px-2 rounded-3 alert-success">
-                                @currency($order->total_bayar)
-                            </span>
-                        </td>
-                        <td>
-                            <span class="alert-sm px-2 rounded-3 alert-success">
-                                @currency($order->dp)
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-
-
 
 @foreach ($order->order_detail as $or )
 <div class="card">
     <div class="card-body p-4">
-        <div class="mb-5">
+        <div class="">
             <div class="flex-shrink-0 avatar-md mx-auto mt-4">
                 <div class="avatar-title bg-transparent">
                     <img src="{{ asset('storage'.'/'.$or->barang->foto) }}" alt="" height="100" />
@@ -59,22 +16,42 @@
                 <h5 class="text-muted">#{{ $or->barang->kode_barang }}</h5>
             </div>
             <div class=" mt-5 row  ">
-                <table class="table table-bordered table-responsive table-active">
+                <table class="table table-responsive">
                     <thead>
                         <tr class="text-center">
+                            <th scope="col">Nama Sales</th>
                             <th scope="col">Jumlah Pesanan</th>
-                            <th scope="col">Harga</th>
-                            <th scope="col">Total Harga</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="text-center">
-                            <td>{{ $or->jumlah }} {{ $or->barang->satuan }}</td>
-                            <td>@currency($or->barang->hpp)</td>
-                            <td>@currency($or->jumlah * $or->barang->hpp)</td>
+                            <td>
+                                <span class="alert-sm px-2 rounded-3 alert-info">
+                                    {{ strtoupper($or->Order->sales_username) }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="alert-sm px-2 rounded-3 alert-info">
+                                    {{ $or->jumlah }} {{ $or->barang->satuan }}
+                                </span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
+                {{-- <table class="table table-bordered table-responsive table-active">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col">Nama Sales</th>
+                            <th scope="col">Jumlah Pesanan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center">
+                            <td>{{ strtoupper($or->Order->sales_username) }}</td>
+                            <td>{{ $or->jumlah }} {{ $or->barang->satuan }}</td>
+                        </tr>
+                    </tbody>
+                </table> --}}
             </div>
 
         </div>
