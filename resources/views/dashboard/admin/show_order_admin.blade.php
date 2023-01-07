@@ -38,20 +38,6 @@
                         </tr>
                     </tbody>
                 </table>
-                {{-- <table class="table table-bordered table-responsive table-active">
-                    <thead>
-                        <tr class="text-center">
-                            <th scope="col">Nama Sales</th>
-                            <th scope="col">Jumlah Pesanan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="text-center">
-                            <td>{{ strtoupper($or->Order->sales_username) }}</td>
-                            <td>{{ $or->jumlah }} {{ $or->barang->satuan }}</td>
-                        </tr>
-                    </tbody>
-                </table> --}}
             </div>
 
         </div>

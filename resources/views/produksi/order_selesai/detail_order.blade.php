@@ -12,39 +12,48 @@
     </div>
     @endif
   </div><!-- end card -->
-
   {{-- @dd($order_detail) --}}
   <div class="card-body">
-    <div class="mb-1 row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">Nama Sales</label>
-      <div class="col-sm-10">
-        <h6 class="form-control-plaintext">: {{ strtoupper($order_detail->Order->sales->nama)}}</h6>
-      </div>
-    </div>
-    <div class="mb-1 row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">Nama Barang</label>
-      <div class="col-sm-10">
-        <h6 class="form-control-plaintext">: {{ strtoupper($order_detail->Barang->nama)}}</h6>
-      </div>
-    </div>
-    <div class="mb-2 row">
-      <label for="inputPassword" class="col-sm-2 col-form-label">Jumlah</label>
-      <div class="col-sm-10">
-        <h6 class="form-control-plaintext">: {{ $order_detail->jumlah}}</h6>
-      </div>
-    </div>
-    <div class="mb-2 row">
-      <label for="inputPassword" class="col-sm-2 col-form-label">Tanggal Order</label>
-      <div class="col-sm-10">
-        <h6 class="form-control-plaintext">: {{ $order_detail->created_at}}</h6>
-      </div>
-    </div>
-    <div class="mb-2 row">
-      <label for="inputPassword" class="col-sm-2 col-form-label">Tanggal Selesai</label>
-      <div class="col-sm-10">
-        <h6 class="form-control-plaintext">: {{ $order_detail->updated_at}}</h6>
-      </div>
-    </div>
+    <table class="table table-responsive-lg">
+      <thead>
+        <tr class="text-center">
+          <th scope="col">Nama Sales</th>
+          <th scope="col">Nama Barang</th>
+          <th scope="col">Jumlah</th>
+          <th scope="col">Tanggal Order</th>
+          <th scope="col">Tanggal Selesai</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center">
+          <td>
+            <span class="alert-sm px-2 rounded-3 alert-info">
+              {{ strtoupper($order_detail->Order->sales->nama)}}
+            </span>
+          </td>
+          <td>
+            <span class="alert-sm px-2 rounded-3 alert-info">
+              {{ strtoupper($order_detail->Barang->nama)}}
+            </span>
+          </td>
+          <td>
+            <span class="alert-sm px-2 rounded-3 alert-success">
+              {{ $order_detail->jumlah}}
+            </span>
+          </td>
+          <td>
+            <span class="alert-sm px-2 rounded-3 alert-success">
+              {{ $order_detail->created_at}}
+            </span>
+          </td>
+          <td>
+            <span class="alert-sm px-2 rounded-3 alert-success">
+              {{ $order_detail->updated_at}}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <div class="row">
       <div class="col-12 col-lg-6">
         <table class="table">
