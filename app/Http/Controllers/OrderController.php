@@ -169,8 +169,7 @@ class OrderController extends Controller
     {
         return view('dashboard.admin.daftar_order', [
             'tittlePage'    => 'LIST ORDER',
-            'orders' => Order_detail::where('status_pengerjaan_id', '!=', '1')->where('status_pengerjaan_id', '!=', '8')->with(['barang', 'status_pengerjaan', 'Order'])
-                ->get()
+            'orders' => Order_detail::where('status_pengerjaan_id', '!=', '1')->where('status_pengerjaan_id', '!=', '8')->with(['barang', 'status_pengerjaan', 'Order'])->get()
         ]);
     }
 
@@ -226,6 +225,14 @@ class OrderController extends Controller
             'order_detail' => Order_detail::where('id', $id_order_detail)->with(['barang', 'status_pengerjaan', 'Order.sales', 'keuntungan'])
                 ->first(),
             'orderdet'     => $id_order_detail
+        ]);
+    }
+
+    public function detailOrderList(Order_detail $id)
+    {
+        return view('dashboard.admin.show_order_admin', [
+            'tittlePage'    => 'DETAIL STATUS ORDER',
+            'orderdet'        => $id
         ]);
     }
 }

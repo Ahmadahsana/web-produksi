@@ -72,7 +72,7 @@
                                     </div>
                                     @endif
                                     <div class="detail">
-                                        <a href="/order/{{ $order->id }}"
+                                        <a href="/list_order/{{ $order->id }}"
                                             class="btn btn-sm btn-success edit-item-btn">Detail</a>
                                     </div>
                                     {{-- <div class="remove">

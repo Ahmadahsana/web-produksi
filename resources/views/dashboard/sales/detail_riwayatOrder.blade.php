@@ -87,6 +87,7 @@
         <div class="card-body">
             <div class="profile-timeline">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
+                    @if ($or->status_pengerjaan_id > 7)
                     <div class="accordion-item border-0">
                         <div class="accordion-header" id="headingOne">
                             <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseOne"
@@ -119,6 +120,8 @@
                         @endif
                         @endforeach
                     </div>
+                    @endif
+                    @if ($or->status_pengerjaan_id > 6)
                     <div class="accordion-item border-0">
                         <div class="accordion-header" id="headingTwo">
                             <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseTwo"
@@ -147,6 +150,8 @@
                         @endif
                         @endforeach
                     </div>
+                    @endif
+                    @if ($or->status_pengerjaan_id > 5)
                     <div class="accordion-item border-0">
                         <div class="accordion-header" id="headingThree">
                             <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseThree"
@@ -175,6 +180,8 @@
                         @endif
                         @endforeach
                     </div>
+                    @endif
+                    @if ($or->status_pengerjaan_id > 4)
                     <div class="accordion-item border-0">
                         <div class="accordion-header" id="headingFour">
                             <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseFour"
@@ -203,6 +210,8 @@
                         @endif
                         @endforeach
                     </div>
+                    @endif
+                    @if ($or->status_pengerjaan_id > 3)
                     <div class="accordion-item border-0">
                         <div class="accordion-header" id="headingFive">
                             <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseFive"
@@ -231,6 +240,8 @@
                         @endif
                         @endforeach
                     </div>
+                    @endif
+                    @if ($or->status_pengerjaan_id > 2)
                     <div class="accordion-item border-0">
                         <div class="accordion-header" id="headingSix">
                             <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse" href="#collapseSix"
@@ -259,6 +270,7 @@
                         @endif
                         @endforeach
                     </div>
+                    @endif
                 </div>
                 <!--end accordion-->
             </div>

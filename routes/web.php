@@ -86,6 +86,7 @@ Route::resource('/order', OrderController::class);
 // admin list order
 Route::get('/list_permintaan', [OrderController::class, 'permintaan'])->middleware('admin'); //pending / belum di terima
 Route::get('/list_order', [OrderController::class, 'list'])->middleware('admin');
+Route::get('/list_order/{id}', [OrderController::class, 'detailOrderList'])->middleware('admin');
 Route::get('/order_sales', [OrderController::class, 'order_by_sales'])->middleware('sales');
 Route::get('/order_sales/{id}', [OrderController::class, 'order_by_sales_edit'])->middleware('sales');
 
