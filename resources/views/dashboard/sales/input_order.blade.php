@@ -116,7 +116,7 @@
                     <div class="col-12">
                         <label for="dp" class="form-label">DP</label>
                         <input type="text" class="form-control" id="dpmask" name="dpmask" placeholder="dp">
-                        <input type="text" class="form-control d-none" id="dp" name="dp" placeholder="dp">
+                        <input type="text" class="form-control d-none" id="dp" name="dp" placeholder="dp" value="">
                         <div id="wadah_peringatan_dp"></div>
                     </div>
                 </div>
@@ -179,6 +179,7 @@
     hargaKeranjang = [];
     let sum = 0;
     let tombol_keranjang = document.querySelector('#tombol_keranjang');
+
     tombol_keranjang.addEventListener('click', function(){
         let id = barang.value;
         
@@ -292,11 +293,11 @@
         if (list_barang == null) {
             wadah_peringatan_barang.innerHTML = '<p class="text-danger">Barang tidak boleh kosong</p>'
         }else{
-            if (dp == '') {
-            // console.log(list_barang);
+            if (inputdp.value == '') {
             wadah_peringatan_dp.innerHTML = '<p class="text-danger">Dp harus diisi</p>'
             }else{
-                if (dp > sum) {
+                console.log(inputdp.value);
+                if (inputdp.value > sum) {
                     wadah_peringatan_dp.innerHTML = '<p class="text-danger">Dp tidak valid</p>'
                 }else{
                     wadah_peringatan_dp.innerHTML = ''

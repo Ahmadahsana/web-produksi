@@ -98,7 +98,13 @@
       </div>
       <div class="col-md-2">
         <label for="inputPassword4" class="form-label">Jumlah</label>
-        <input type="number" class="form-control" id="jumlah" required autocomplete="off">
+        {{-- <input type="number" class="form-control" id="jumlah" required autocomplete="off"> --}}
+        <div class="input-step step-primary inline-block">
+          <button type="button" class="minus">-</button>
+          <input type="number" class="product-quantity" value="1" min="1" max="100"
+              readonly="" id="jumlah" required autocomplete="off">
+          <button type="button" class="plus">+</button>
+        </div>
       </div>
       <div class="col-md-2 align-self-end">
         <button type="button" id="tambah" class="btn btn-primary">Tambah</button>
@@ -156,12 +162,17 @@
                                                       <input type="text" class="form-control d-none" name="jumlah_barang[]" value="${jumlah}">
                                                       <input type="text" class="form-control d-none" name="hpp_barang[]" value="${hppBarang}">
                                                   </td>
-                                                  <td><a href="javascript:void(0)"><span class="badge bg-danger">Hapus</span></a></td>
+                                                  <td><a href="javascript:void(0)" onclick="hapus_barang(this)"><span class="badge bg-danger">Hapus</span></a></td>
                                               </tr>`)
     if (tombolKonfir == false) {
       wadahTombol.insertAdjacentHTML('beforeend', `<button type="submit" class="btn btn-primary">Konfirmasi</button>`)
     }
     tombolKonfir = true
   })
+
+  function hapus_barang(e) {
+        // console.log(e.parentElement.parentElement);
+        e.parentElement.parentElement.remove()
+    }
 </script>
 @endsection
