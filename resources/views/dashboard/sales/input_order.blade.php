@@ -284,7 +284,7 @@
     let dp = document.querySelector('#dp').value;
     let inputdp = document.querySelector('#dp');
     let dpmask = document.querySelector('#dpmask');
-    let payment = document.querySelector('#payment').value;
+    let payment = document.querySelector('#payment');
 
     submit_order.addEventListener('click', function (e) {
         let list_barang = document.querySelector('.list_barang');
@@ -301,7 +301,8 @@
                     wadah_peringatan_dp.innerHTML = '<p class="text-danger">Dp tidak valid</p>'
                 }else{
                     wadah_peringatan_dp.innerHTML = ''
-                    if (payment == '') {
+                    if (payment.value == '') {
+                        console.log(payment.value);
                         let wadah_peringatan_payment = document.querySelector('#wadah_peringatan_payment');
                         wadah_peringatan_payment.innerHTML = '<p class="text-danger">Pilih metode payment</p>'
                     }else{
