@@ -73,7 +73,7 @@
         <form action="/mentahan" method="POST">
             @csrf
             <input type="text" value="{{ $order_detail->id }}" name="order_detail_id" class="d-none">
-            <table class="table table-striped mt-2">
+            <table class="table table-striped mt-2 urut">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -144,8 +144,8 @@
         
         let wadahMentahan = document.querySelector('#wadah_mentahan');
         let wadahTombol = document.querySelector('#wadah_tombol');
-        wadahMentahan.insertAdjacentHTML('beforeend', `<tr>
-                                                                <th scope="row">1</th>
+        wadahMentahan.insertAdjacentHTML('beforeend', `<tr class="angka">
+                                                                <td scope="row" class="nomer"></td>
                                                                 <td>${namaBarang} <input type="text" class="form-control d-none" name="kode_barang[]" value="${kodeBarang}"></td>
                                                                 <td>${jumlah}
                                                                     <input type="text" class="form-control d-none" name="jumlah_barang[]" value="${jumlah}">

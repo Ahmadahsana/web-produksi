@@ -133,7 +133,7 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ Request::is('bungkuspacking') ? 'active' : '' }}"
                         href="/bungkuspacking">
-                        <i class="ri-file-lock-fill"></i> <span data-key="t-landing">Packing / Bungkus</span>
+                        <i class="ri-file-lock-fill"></i> <span data-key="t-landing">Packing</span>
                     </a>
                 </li>
                 <li class="nav-item">

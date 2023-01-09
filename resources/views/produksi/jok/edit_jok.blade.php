@@ -155,8 +155,8 @@
     let wadahJok = document.querySelector('#wadah_jok');
     let wadahTombol = document.querySelector('#wadah_tombol');
 
-    wadahJok.insertAdjacentHTML('beforeend', `<tr>
-                                                  <th scope="row">1</th>
+    wadahJok.insertAdjacentHTML('beforeend', `<tr class="angka">
+                                                  <td scope="row"></td>
                                                   <td>${namaBarang} <input type="text" class="form-control d-none" name="kode_barang[]" value="${kodeBarang}"></td>
                                                   <td>${jumlah}
                                                       <input type="text" class="form-control d-none" name="jumlah_barang[]" value="${jumlah}">
