@@ -28,6 +28,15 @@
                         placeholder="Nama Pemilik" value="{{ old('nama_pemilik') }}" required autocomplete="off">
                 </div>
             </div>
+            <div class="row mb-3">
+                <div class="col-lg-3">
+                    <label for="jabatan" class="form-label">Jabatan</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Nama Jabatan"
+                        value="{{ old('jabatan') }}" required autocomplete="off">
+                </div>
+            </div>
 
             <div class="row mb-3">
                 <div class="col-lg-3">

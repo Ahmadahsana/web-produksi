@@ -37,6 +37,7 @@
                             <th scope="col" style="width: 50px;"> No </th>
                             <th class="sort" data-sort="nama_vendor">Nama Vendor</th>
                             <th class="sort" data-sort="nama_pemilik">Nama Pemilik</th>
+                            <th class="sort" data-sort="jabatan">Jabatan</th>
                             <th class="sort" data-sort="alamat">Alamat</th>
                             <th class="sort" data-sort="nomer">Nomor Telp</th>
                             <th class="sort" data-sort="email">Email</th>
@@ -51,6 +52,7 @@
                                     class="fw-medium link-primary">#VZ2101</a></td>
                             <td class="nama_vendor">{{ $v->nama_vendor }}</td>
                             <td class="nama_pemilik">{{ $v->nama_pemilik }}</td>
+                            <td class="jabatan">{{ $v->jabatan }}</td>
                             <td class="alamat">{{ $v->alamat }}</td>
                             <td class="nomer">{{ $v->nomer }}</td>
                             <td class="email">{{ $v->email }}</td>

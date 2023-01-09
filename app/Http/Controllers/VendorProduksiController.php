@@ -44,6 +44,7 @@ class VendorProduksiController extends Controller
         $validatedCreate = $request->validate([
             'nama_vendor'       =>  'required',
             'nama_pemilik'      =>  'required',
+            'jabatan'           =>  'required',
             'alamat'            =>  'required',
             'nomer'             =>  'required',
             'email'             =>  'required|email',
@@ -91,6 +92,7 @@ class VendorProduksiController extends Controller
         $validateEdit   =   $request->validate([
             'nama_vendor'   =>  'required',
             'nama_pemilik'  =>  'required',
+            'jabatan'       =>  'required',
             'alamat'        =>  'required',
             'nomer'         =>  'required',
             'email'         =>  'required|email'

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_vendor');
             $table->string('nama_pemilik');
+            $table->string('jabatan');
             $table->string('alamat');
             $table->string('nomer');
             $table->string('email')->nullable();

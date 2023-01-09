@@ -43,6 +43,21 @@
             </div>
             <div class="row mb-3">
                 <div class="col-lg-3">
+                    <label for="jabatan" class="form-label">Jabatan</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="text" class="form-control @error('jabatan') is-invalid @enderror" id="jabatan"
+                        name="jabatan" placeholder="Masukkan Nama Jabatan"
+                        value="{{ old('jabatan', $vendorr->jabatan) }}" autocomplete="off" required>
+                </div>
+                @error('jabatan')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
+            <div class="row mb-3">
+                <div class="col-lg-3">
                     <label for="alamat" class="form-label">Alamat</label>
                 </div>
                 <div class="col-lg-9">
