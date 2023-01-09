@@ -22,6 +22,19 @@
     <!-- custom Css-->
     <link href="{{ url('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <style type="text/css">
+        table {
+          width: 50%;
+          counter-reset: row-num;
+        }
+        table tr.angka {
+          counter-increment: row-num;
+        }
+        table tr.angka td:first-child::before {
+            content: counter(row-num) " ";
+        }
+    </style>
+
     <script>
         function formatCurrency(number) {
         return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
