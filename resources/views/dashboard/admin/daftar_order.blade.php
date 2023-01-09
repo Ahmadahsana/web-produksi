@@ -70,11 +70,12 @@
                                             <button type="submit" class="btn btn-sm btn-success">Mulai Produksi</button>
                                         </form>
                                     </div>
-                                    @endif
+                                    @else
                                     <div class="detail">
                                         <a href="/list_order/{{ $order->id }}"
                                             class="btn btn-sm btn-success edit-item-btn">Detail</a>
                                     </div>
+                                    @endif
                                     {{-- <div class="remove">
                                         <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal"
                                             data-bs-target="#deleteRecordModal">Remove</button>
